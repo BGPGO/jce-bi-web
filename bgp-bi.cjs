@@ -174,7 +174,7 @@ function cmdBuild() {
   const errors = [];
   const steps = [
     { name: 'data', script: 'build-data.cjs', required: true },
-    { name: 'data-extras', script: 'build-data-extras.cjs', required: cfg.pages.outros.length > 0 },
+    { name: 'data-extras', script: 'build-data-extras.cjs', required: false },
     { name: 'jsx bundle', script: 'build-jsx.cjs', required: true },
   ];
   for (const step of steps) {

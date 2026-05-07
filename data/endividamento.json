@@ -1,0 +1,2273 @@
+{
+  "fetched_at": "2026-05-06T22:25:37.915376",
+  "fonte": "Razao contabil (sintetica 2.01.01 EMPRESTIMOS+FINANCIAMENTOS, 2.01.02 BENS FINANCIADOS, 2.01.05 DUPLICATAS DESCONTADAS, 2.03.01 OBRIGACOES A LONGO PRAZO)",
+  "totais_consolidados": {
+    "divida_banco": 13742614.72,
+    "intercompany_pagar": 7942093.93,
+    "total_endividamento_consolidado": 21684708.65,
+    "n_instituicoes_distintas": 10,
+    "n_contratos_distintos": 96
+  },
+  "por_empresa": {
+    "1": {
+      "empresa": "GLOBALMAC",
+      "instituicoes": [
+        {
+          "banco": "BRADESCO",
+          "saldo_atual": 3712366.8,
+          "saldo_cp": 2159436.08,
+          "saldo_lp": 1552930.72,
+          "movimentacoes_periodo": 10767414.66,
+          "n_contratos": 15,
+          "ultima_data": "2026-04-16"
+        },
+        {
+          "banco": "ITAU",
+          "saldo_atual": 2635780.6,
+          "saldo_cp": 2363293.56,
+          "saldo_lp": 272487.04,
+          "movimentacoes_periodo": 22930358.78,
+          "n_contratos": 13,
+          "ultima_data": "2026-05-04"
+        },
+        {
+          "banco": "SECURITIZADORA",
+          "saldo_atual": 1333190.58,
+          "saldo_cp": 1333190.58,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 4110491.62,
+          "n_contratos": 2,
+          "ultima_data": "2026-05-03"
+        },
+        {
+          "banco": "SICREDI",
+          "saldo_atual": 986285.51,
+          "saldo_cp": 610496.03,
+          "saldo_lp": 375789.48,
+          "movimentacoes_periodo": 1858766.53,
+          "n_contratos": 6,
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "banco": "TERCEIROS",
+          "saldo_atual": 112302.22,
+          "saldo_cp": 112302.22,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 1040842.78,
+          "n_contratos": 1,
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "banco": "BANCO GM",
+          "saldo_atual": 21270.34,
+          "saldo_cp": 12671.0,
+          "saldo_lp": 8599.34,
+          "movimentacoes_periodo": 102529.29,
+          "n_contratos": 2,
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "banco": "DLL",
+          "saldo_atual": 0.0,
+          "saldo_cp": 0.0,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 325903.68,
+          "n_contratos": 1,
+          "ultima_data": "2026-04-13"
+        }
+      ],
+      "contratos": [
+        {
+          "conta_id": "3500",
+          "conta_nome": "MUTUO DC TRACTOR A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 2063170.0,
+          "movimentacao_periodo": 38409780.02,
+          "n_lctos": 305,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2026-04-30"
+        },
+        {
+          "conta_id": "16700",
+          "conta_nome": "(-)DUL DESCONTADA FID SECURITIZADOR NR 437",
+          "banco": "SECURITIZADORA",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 941260.25,
+          "movimentacao_periodo": 3282721.95,
+          "n_lctos": 15,
+          "primeira_data": "2025-12-02",
+          "ultima_data": "2026-05-03"
+        },
+        {
+          "conta_id": "125712",
+          "conta_nome": "BANCO ITAÚ CONTA GARANTIDA CTA 16217-1",
+          "banco": "ITAU",
+          "contrato_id": "16217-1",
+          "prazo": "CP",
+          "saldo_atual": 757000.0,
+          "movimentacao_periodo": 9483800.0,
+          "n_lctos": 76,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2026-04-28"
+        },
+        {
+          "conta_id": "15340",
+          "conta_nome": "BRADESCO CAP GIRO AVAL  FGI/PEAC Nº237/3271/584609 -16785595",
+          "banco": "BRADESCO",
+          "contrato_id": "237/3271/584609 -16785595",
+          "prazo": "CP",
+          "saldo_atual": 683193.44,
+          "movimentacao_periodo": 1671523.18,
+          "n_lctos": 20,
+          "primeira_data": "2025-04-22",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16462",
+          "conta_nome": "BANCO BRADESCO CAP GIRO FGI-PEAC Nº17375164  LP",
+          "banco": "BRADESCO",
+          "contrato_id": "17375164",
+          "prazo": "LP",
+          "saldo_atual": 565454.92,
+          "movimentacao_periodo": 565454.92,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "15652",
+          "conta_nome": "BANCO ITAÚ UNIBANCO EMPREST INTERN CONTR AGE1581570 CP",
+          "banco": "ITAU",
+          "contrato_id": "E1581570",
+          "prazo": "CP",
+          "saldo_atual": 562470.96,
+          "movimentacao_periodo": 3623299.92,
+          "n_lctos": 18,
+          "primeira_data": "2025-01-10",
+          "ultima_data": "2026-03-09"
+        },
+        {
+          "conta_id": "16137",
+          "conta_nome": "BANCO BRADESCO CP EMPREST CAP GIRO FGI 17217498",
+          "banco": "BRADESCO",
+          "contrato_id": "17217498",
+          "prazo": "CP",
+          "saldo_atual": 543001.51,
+          "movimentacao_periodo": 1436998.49,
+          "n_lctos": 3,
+          "primeira_data": "2025-07-08",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16138",
+          "conta_nome": "BANCO BRADESCO  EMPREST CAP GIRO FGI 17.217.498 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.217.498",
+          "prazo": "LP",
+          "saldo_atual": 446998.49,
+          "movimentacao_periodo": 446998.49,
+          "n_lctos": 2,
+          "primeira_data": "2025-07-08",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "14783",
+          "conta_nome": "BANCO SICREDI FINANC IMPORTAÇÃO FINIMP 6924",
+          "banco": "SICREDI",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 414462.0,
+          "movimentacao_periodo": 501964.0,
+          "n_lctos": 2,
+          "primeira_data": "2025-01-03",
+          "ultima_data": "2025-01-03"
+        },
+        {
+          "conta_id": "14383",
+          "conta_nome": "BANCO BRADESCO CP EMPREST CAP GIRO FGI 16303399",
+          "banco": "BRADESCO",
+          "contrato_id": "16303399",
+          "prazo": "CP",
+          "saldo_atual": 410120.6,
+          "movimentacao_periodo": 1150191.25,
+          "n_lctos": 25,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "15991",
+          "conta_nome": "BANCO ITAÚ GIROPREX DUPL NR 30806-000000301208443",
+          "banco": "ITAU",
+          "contrato_id": "30806-000000301208443",
+          "prazo": "CP",
+          "saldo_atual": 398567.9,
+          "movimentacao_periodo": 1650906.58,
+          "n_lctos": 25,
+          "primeira_data": "2025-05-08",
+          "ultima_data": "2026-05-04"
+        },
+        {
+          "conta_id": "16820",
+          "conta_nome": "PJ SECURITIZADORA SA",
+          "banco": "SECURITIZADORA",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 391930.33,
+          "movimentacao_periodo": 827769.67,
+          "n_lctos": 3,
+          "primeira_data": "2026-03-01",
+          "ultima_data": "2026-04-30"
+        },
+        {
+          "conta_id": "15302",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO C42632833-3  LP",
+          "banco": "SICREDI",
+          "contrato_id": "C42632833-3",
+          "prazo": "LP",
+          "saldo_atual": 375789.48,
+          "movimentacao_periodo": 50105.26,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "15534",
+          "conta_nome": "BRADESCO CAP GIRO  FGI/PEAC Nº237/3271/584609 -16785595 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "237/3271/584609 -16785595",
+          "prazo": "LP",
+          "saldo_atual": 349642.89,
+          "movimentacao_periodo": 847970.13,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "13981",
+          "conta_nome": "BANCO ITAÚ GIRO DE CAPITAL FGI CONTR 2407956206 CP",
+          "banco": "ITAU",
+          "contrato_id": "2407956206",
+          "prazo": "CP",
+          "saldo_atual": 267624.35,
+          "movimentacao_periodo": 885258.29,
+          "n_lctos": 34,
+          "primeira_data": "2025-01-27",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "8986",
+          "conta_nome": "MUTUO DC MAQUINAS A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 241050.0,
+          "movimentacao_periodo": 7746202.99,
+          "n_lctos": 89,
+          "primeira_data": "2025-01-01",
+          "ultima_data": "2026-04-30"
+        },
+        {
+          "conta_id": "16461",
+          "conta_nome": "BANCO BRADESCO CAP GIRO FGI-PEAC Nº17375164 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "17375164",
+          "prazo": "CP",
+          "saldo_atual": 224545.08,
+          "movimentacao_periodo": 1375454.92,
+          "n_lctos": 3,
+          "primeira_data": "2025-10-16",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "15993",
+          "conta_nome": "BANCO BRADESCO S.A., GRAND CAYMAN BRANCH.EMPREST EXTERIOR",
+          "banco": "BRADESCO",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 189116.86,
+          "movimentacao_periodo": 1280308.64,
+          "n_lctos": 7,
+          "primeira_data": "2025-05-06",
+          "ultima_data": "2026-02-05"
+        },
+        {
+          "conta_id": "16682",
+          "conta_nome": "BANCO ITAU CAPITAL GIRO DUPLICATAS NR 4164995021 LP",
+          "banco": "ITAU",
+          "contrato_id": "4164995021",
+          "prazo": "LP",
+          "saldo_atual": 186779.74,
+          "movimentacao_periodo": 186779.74,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-07",
+          "ultima_data": "2025-12-07"
+        },
+        {
+          "conta_id": "16597",
+          "conta_nome": "BANCO ITAU CAPITAL GIRO DUPLICATAS  NR 4164995021",
+          "banco": "ITAU",
+          "contrato_id": "4164995021",
+          "prazo": "CP",
+          "saldo_atual": 175079.9,
+          "movimentacao_periodo": 606929.71,
+          "n_lctos": 8,
+          "primeira_data": "2025-11-07",
+          "ultima_data": "2026-01-07"
+        },
+        {
+          "conta_id": "14085",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO 32631935-9 CP",
+          "banco": "SICREDI",
+          "contrato_id": "32631935-9",
+          "prazo": "CP",
+          "saldo_atual": 144743.32,
+          "movimentacao_periodo": 545992.5,
+          "n_lctos": 31,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2026-01-19"
+        },
+        {
+          "conta_id": "13591",
+          "conta_nome": "BANCO ITAÚ GIRO DE CAPITAL FGI CONTR 2251858227",
+          "banco": "ITAU",
+          "contrato_id": "2251858227",
+          "prazo": "CP",
+          "saldo_atual": 142829.38,
+          "movimentacao_periodo": 471923.33,
+          "n_lctos": 37,
+          "primeira_data": "2025-01-13",
+          "ultima_data": "2026-01-12"
+        },
+        {
+          "conta_id": "16549",
+          "conta_nome": "BRADESCO FINANCIAMENTO BNDES/FINAME  CCB NR 6161177  LP",
+          "banco": "BRADESCO",
+          "contrato_id": "6161177",
+          "prazo": "LP",
+          "saldo_atual": 130170.32,
+          "movimentacao_periodo": 130170.32,
+          "n_lctos": 1,
+          "primeira_data": "2025-11-30",
+          "ultima_data": "2025-11-30"
+        },
+        {
+          "conta_id": "103",
+          "conta_nome": "EMPRESTIMOS DE TERCEIROS",
+          "banco": "TERCEIROS",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 112302.22,
+          "movimentacao_periodo": 1040842.78,
+          "n_lctos": 14,
+          "primeira_data": "2025-05-22",
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "conta_id": "14402",
+          "conta_nome": "BANCO ITAÚ GIRO DE CAPITAL FGI CONTR 2407956206 LP",
+          "banco": "ITAU",
+          "contrato_id": "2407956206",
+          "prazo": "LP",
+          "saldo_atual": 85707.3,
+          "movimentacao_periodo": 257142.86,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16840",
+          "conta_nome": "BANCO BRADESCO CP EMPREST CAP GIRO 17.529.086 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.529.086",
+          "prazo": "CP",
+          "saldo_atual": 84403.2,
+          "movimentacao_periodo": 228299.17,
+          "n_lctos": 6,
+          "primeira_data": "2026-02-06",
+          "ultima_data": "2026-04-06"
+        },
+        {
+          "conta_id": "16841",
+          "conta_nome": "BANCO BRADESCO CP EMPREST CAP GIRO 17.529.086  LP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.529.086",
+          "prazo": "LP",
+          "saldo_atual": 60664.1,
+          "movimentacao_periodo": 60664.1,
+          "n_lctos": 1,
+          "primeira_data": "2026-02-28",
+          "ultima_data": "2026-02-28"
+        },
+        {
+          "conta_id": "16205",
+          "conta_nome": "BANCO ITAÚ CTA GARANTIA  TBI 5729.23874-0 C/C",
+          "banco": "ITAU",
+          "contrato_id": "5729.23874-0",
+          "prazo": "CP",
+          "saldo_atual": 60000.0,
+          "movimentacao_periodo": 4266000.0,
+          "n_lctos": 33,
+          "primeira_data": "2025-07-29",
+          "ultima_data": "2026-04-29"
+        },
+        {
+          "conta_id": "15225",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO C42632833-3 CP",
+          "banco": "SICREDI",
+          "contrato_id": "C42632833-3",
+          "prazo": "CP",
+          "saldo_atual": 51290.71,
+          "movimentacao_periodo": 282383.96,
+          "n_lctos": 35,
+          "primeira_data": "2025-02-03",
+          "ultima_data": "2026-01-13"
+        },
+        {
+          "conta_id": "16548",
+          "conta_nome": "BRADESCO FINANCIAMENTO BNDES/FINAME  CCB NR 6161177  CP",
+          "banco": "BRADESCO",
+          "contrato_id": "6161177",
+          "prazo": "CP",
+          "saldo_atual": 25055.39,
+          "movimentacao_periodo": 374606.13,
+          "n_lctos": 18,
+          "primeira_data": "2025-11-01",
+          "ultima_data": "2026-04-16"
+        },
+        {
+          "conta_id": "14074",
+          "conta_nome": "BANCO GM SA CRED BANCARIO FDU 6806020 CP",
+          "banco": "BANCO GM",
+          "contrato_id": "6806020",
+          "prazo": "CP",
+          "saldo_atual": 12671.0,
+          "movimentacao_periodo": 81890.73,
+          "n_lctos": 32,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "conta_id": "14694",
+          "conta_nome": "BANCO GM SA CRED BANCARIO FDU 6806020 LP",
+          "banco": "BANCO GM",
+          "contrato_id": "6806020",
+          "prazo": "LP",
+          "saldo_atual": 8599.34,
+          "movimentacao_periodo": 20638.56,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "13526",
+          "conta_nome": "BANCO BRADESCO CAPITAL DE GIRO 16596092 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "16596092",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 149545.76,
+          "n_lctos": 13,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2025-12-01"
+        },
+        {
+          "conta_id": "13909",
+          "conta_nome": "BANCO ITAÚ GIRO DE CAP  FGI CONTR 2251858227 LP",
+          "banco": "ITAU",
+          "contrato_id": "2251858227",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 135714.35,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16779",
+          "conta_nome": "BANCO SICREDI SALDO CREDOR",
+          "banco": "SICREDI",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 319261.42,
+          "n_lctos": 8,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "conta_id": "14605",
+          "conta_nome": "BANCO BRADESCO LP EMPREST. CAP GIRO FGI 16303399",
+          "banco": "BRADESCO",
+          "contrato_id": "16303399",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 410120.6,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "14901",
+          "conta_nome": "BANCO ITAÚ UNIBANCO EMPREST INTERN CONTR AGE 1491380",
+          "banco": "ITAU",
+          "contrato_id": "1491380",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 197835.79,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "14621",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO 32631935-9 LP",
+          "banco": "SICREDI",
+          "contrato_id": "32631935-9",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 159059.39,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "5380",
+          "conta_nome": "BANCO DE LAGE LANDEN -DLL",
+          "banco": "DLL",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 325903.68,
+          "n_lctos": 24,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2026-04-13"
+        },
+        {
+          "conta_id": "16780",
+          "conta_nome": "BANCO ITAÚ C/C SALDO CREDOR",
+          "banco": "ITAU",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 198916.96,
+          "n_lctos": 4,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-02-01"
+        },
+        {
+          "conta_id": "5630",
+          "conta_nome": "BRADESCO S/A -C/C",
+          "banco": "BRADESCO",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 639108.56,
+          "n_lctos": 4,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-02-01"
+        },
+        {
+          "conta_id": "14900",
+          "conta_nome": "BANCO ITAÚ UNIBANCO EMPREST INTERN CONTR AGE 1491380",
+          "banco": "ITAU",
+          "contrato_id": "1491380",
+          "prazo": "CP",
+          "saldo_atual": -278.93,
+          "movimentacao_periodo": 965851.25,
+          "n_lctos": 21,
+          "primeira_data": "2025-02-10",
+          "ultima_data": "2026-04-14"
+        }
+      ],
+      "total_dividas_banco": 8801196.05,
+      "total_intercompany": 2304220.0,
+      "total_consolidado": 11105416.05,
+      "total_cp": 6591389.47,
+      "total_lp": 2209806.58,
+      "n_contratos": 40
+    },
+    "2": {
+      "empresa": "DCTRACTOR",
+      "instituicoes": [
+        {
+          "banco": "SICREDI",
+          "saldo_atual": 1007026.0,
+          "saldo_cp": 500282.64,
+          "saldo_lp": 506743.36,
+          "movimentacoes_periodo": 3405476.78,
+          "n_contratos": 11,
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "banco": "ITAU",
+          "saldo_atual": 474124.75,
+          "saldo_cp": 436029.51,
+          "saldo_lp": 38095.24,
+          "movimentacoes_periodo": 10888189.09,
+          "n_contratos": 7,
+          "ultima_data": "2026-04-27"
+        },
+        {
+          "banco": "BRADESCO",
+          "saldo_atual": 398150.21,
+          "saldo_cp": 326691.88,
+          "saldo_lp": 71458.33,
+          "movimentacoes_periodo": 1969848.81,
+          "n_contratos": 6,
+          "ultima_data": "2026-04-15"
+        },
+        {
+          "banco": "NBC BANK",
+          "saldo_atual": 27181.09,
+          "saldo_cp": 27181.09,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 234701.87,
+          "n_contratos": 1,
+          "ultima_data": "2025-07-21"
+        },
+        {
+          "banco": "DLL",
+          "saldo_atual": 0.0,
+          "saldo_cp": 0.0,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 64074.28,
+          "n_contratos": 1,
+          "ultima_data": "2026-03-12"
+        },
+        {
+          "banco": "TERCEIROS",
+          "saldo_atual": 0.0,
+          "saldo_cp": 0.0,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 214400.0,
+          "n_contratos": 1,
+          "ultima_data": "2025-12-31"
+        }
+      ],
+      "contratos": [
+        {
+          "conta_id": "7789",
+          "conta_nome": "MUTUO DC MAQUINAS A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 2149247.37,
+          "movimentacao_periodo": 18298286.34,
+          "n_lctos": 174,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2026-04-29"
+        },
+        {
+          "conta_id": "6234",
+          "conta_nome": "MUTUO GLOBALMAC  A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 856551.66,
+          "movimentacao_periodo": 34288747.44,
+          "n_lctos": 332,
+          "primeira_data": "2025-01-10",
+          "ultima_data": "2026-05-04"
+        },
+        {
+          "conta_id": "15298",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO C42632987-9 LP",
+          "banco": "SICREDI",
+          "contrato_id": "C42632987-9",
+          "prazo": "LP",
+          "saldo_atual": 418789.68,
+          "movimentacao_periodo": 55518.64,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "13985",
+          "conta_nome": "BANCO SICREDI CAP GIRO C32631124-2 CP",
+          "banco": "SICREDI",
+          "contrato_id": "C32631124-2",
+          "prazo": "CP",
+          "saldo_atual": 278827.39,
+          "movimentacao_periodo": 933193.18,
+          "n_lctos": 31,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2026-01-20"
+        },
+        {
+          "conta_id": "12084",
+          "conta_nome": "BANCO ITAU CTA GARANTIA TBI 14556-4",
+          "banco": "ITAU",
+          "contrato_id": "14556-4",
+          "prazo": "CP",
+          "saldo_atual": 221000.0,
+          "movimentacao_periodo": 7234000.0,
+          "n_lctos": 57,
+          "primeira_data": "2025-02-17",
+          "ultima_data": "2026-04-27"
+        },
+        {
+          "conta_id": "16550",
+          "conta_nome": "BRADESCO FINANCIAMENTO BNDES/FINAME CCB NR 6161138 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "6161138",
+          "prazo": "CP",
+          "saldo_atual": 162892.56,
+          "movimentacao_periodo": 223526.26,
+          "n_lctos": 10,
+          "primeira_data": "2025-11-17",
+          "ultima_data": "2026-04-15"
+        },
+        {
+          "conta_id": "14672",
+          "conta_nome": "BANCO ITAU CTA GARANTIA TBI 15754-4",
+          "banco": "ITAU",
+          "contrato_id": "15754-4",
+          "prazo": "CP",
+          "saldo_atual": 150770.32,
+          "movimentacao_periodo": 2947683.74,
+          "n_lctos": 67,
+          "primeira_data": "2025-04-23",
+          "ultima_data": "2025-10-06"
+        },
+        {
+          "conta_id": "16843",
+          "conta_nome": "BANCO BRADESCO EMPREST CAP GIRO NR. 17.528.821 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.528.821",
+          "prazo": "CP",
+          "saldo_atual": 104104.14,
+          "movimentacao_periodo": 255847.16,
+          "n_lctos": 4,
+          "primeira_data": "2026-02-06",
+          "ultima_data": "2026-03-12"
+        },
+        {
+          "conta_id": "14280",
+          "conta_nome": "BANCO SICREDI CAP GIRO C32631124-2 LP",
+          "banco": "SICREDI",
+          "contrato_id": "C32631124-2",
+          "prazo": "LP",
+          "saldo_atual": 87953.68,
+          "movimentacao_periodo": 263860.86,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16844",
+          "conta_nome": "BANCO BRADESCO EMPREST CAP GIRO NR. 17.528.821 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.528.821",
+          "prazo": "LP",
+          "saldo_atual": 71458.33,
+          "movimentacao_periodo": 71458.33,
+          "n_lctos": 1,
+          "primeira_data": "2026-02-28",
+          "ultima_data": "2026-02-28"
+        },
+        {
+          "conta_id": "23210",
+          "conta_nome": "BANCO SICREDI CRED BANCARIO C.22631233-6 CP",
+          "banco": "SICREDI",
+          "contrato_id": "22631233-6",
+          "prazo": "CP",
+          "saldo_atual": 70767.07,
+          "movimentacao_periodo": 444679.32,
+          "n_lctos": 28,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2026-01-19"
+        },
+        {
+          "conta_id": "13983",
+          "conta_nome": "BANCO ITAU CAPITAL DE GIRO FGI CONTR 2408266712 CP",
+          "banco": "ITAU",
+          "contrato_id": "2408266712",
+          "prazo": "CP",
+          "saldo_atual": 64259.19,
+          "movimentacao_periodo": 445635.88,
+          "n_lctos": 37,
+          "primeira_data": "2025-01-27",
+          "ultima_data": "2026-04-27"
+        },
+        {
+          "conta_id": "13356",
+          "conta_nome": "BANCO SICREDI CRED BANCARIO C.22631726-5",
+          "banco": "SICREDI",
+          "contrato_id": "22631726-5",
+          "prazo": "CP",
+          "saldo_atual": 60857.49,
+          "movimentacao_periodo": 420750.95,
+          "n_lctos": 33,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2026-01-16"
+        },
+        {
+          "conta_id": "16054",
+          "conta_nome": "BRADESCO EXTERIOR IMP B2I 01172401800",
+          "banco": "BRADESCO",
+          "contrato_id": "01172401800",
+          "prazo": "CP",
+          "saldo_atual": 54438.8,
+          "movimentacao_periodo": 736200.52,
+          "n_lctos": 5,
+          "primeira_data": "2025-04-30",
+          "ultima_data": "2025-10-14"
+        },
+        {
+          "conta_id": "15274",
+          "conta_nome": "BANCO SICREDI EMPRESTIMO CONTRATO C42632987-9 CP",
+          "banco": "SICREDI",
+          "contrato_id": "C42632987-9",
+          "prazo": "CP",
+          "saldo_atual": 49830.77,
+          "movimentacao_periodo": 315866.09,
+          "n_lctos": 27,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2026-01-20"
+        },
+        {
+          "conta_id": "13266",
+          "conta_nome": "BANCO SICREDI EMPRESTIMOS CONTR  C22631406-1",
+          "banco": "SICREDI",
+          "contrato_id": "C22631406-1",
+          "prazo": "CP",
+          "saldo_atual": 39999.92,
+          "movimentacao_periodo": 221681.78,
+          "n_lctos": 29,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2026-01-31"
+        },
+        {
+          "conta_id": "14622",
+          "conta_nome": "BANCO ITAU CAPITAL DE GIRO FGI CONTR 2408266712 LP",
+          "banco": "ITAU",
+          "contrato_id": "2408266712",
+          "prazo": "LP",
+          "saldo_atual": 38095.24,
+          "movimentacao_periodo": 114285.71,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "14108",
+          "conta_nome": "NBC BANCK CCB37380 CAPITAL DE GIRO",
+          "banco": "NBC BANK",
+          "contrato_id": "B37380",
+          "prazo": "CP",
+          "saldo_atual": 27181.09,
+          "movimentacao_periodo": 234701.87,
+          "n_lctos": 14,
+          "primeira_data": "2025-01-20",
+          "ultima_data": "2025-07-21"
+        },
+        {
+          "conta_id": "13531",
+          "conta_nome": "BANCO BRADESCO  FINAMPE 01",
+          "banco": "BRADESCO",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 5256.38,
+          "movimentacao_periodo": 44579.54,
+          "n_lctos": 12,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2025-06-16"
+        },
+        {
+          "conta_id": "103",
+          "conta_nome": "EMPRESTIMOS DE TERCEIROS",
+          "banco": "TERCEIROS",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 214400.0,
+          "n_lctos": 6,
+          "primeira_data": "2025-07-01",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "13267",
+          "conta_nome": "BANCO SICREDI EMPRESTIMOS CONTR C22631406-1 LP",
+          "banco": "SICREDI",
+          "contrato_id": "C22631406-1",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 39999.92,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "13890",
+          "conta_nome": "BANCO SICREDI EMPRESTIMOS CONTR C22631726-5",
+          "banco": "SICREDI",
+          "contrato_id": "C22631726-5",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 81437.31,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16780",
+          "conta_nome": "BANCO ITAÚ C/C SALDO CREDOR",
+          "banco": "ITAU",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 29572.92,
+          "n_lctos": 2,
+          "primeira_data": "2026-01-31",
+          "ultima_data": "2026-02-01"
+        },
+        {
+          "conta_id": "16432",
+          "conta_nome": "BANCO ITAU CTA GARANTIA TBI 5729.15173-7",
+          "banco": "ITAU",
+          "contrato_id": "5729.15173-7",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 113029.74,
+          "n_lctos": 22,
+          "primeira_data": "2025-11-06",
+          "ultima_data": "2026-02-03"
+        },
+        {
+          "conta_id": "16779",
+          "conta_nome": "BANCO SICREDI SALDO CREDOR",
+          "banco": "SICREDI",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 547051.42,
+          "n_lctos": 6,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "conta_id": "35980",
+          "conta_nome": "BANCO ITAU - CREDITO",
+          "banco": "ITAU",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 3981.1,
+          "n_lctos": 2,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-01-01"
+        },
+        {
+          "conta_id": "23212",
+          "conta_nome": "BANCO SICREDI CRED BANCARIO C.22631233-6 LP",
+          "banco": "SICREDI",
+          "contrato_id": "22631233-6",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 81437.31,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "5630",
+          "conta_nome": "BRADESCO S/A -C/C",
+          "banco": "BRADESCO",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 638237.0,
+          "n_lctos": 4,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-02-01"
+        },
+        {
+          "conta_id": "5380",
+          "conta_nome": "BANCO DE LAGE LANDEN -DLL",
+          "banco": "DLL",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 64074.28,
+          "n_lctos": 4,
+          "primeira_data": "2025-05-09",
+          "ultima_data": "2026-03-12"
+        }
+      ],
+      "total_dividas_banco": 1906482.05,
+      "total_intercompany": 3005799.03,
+      "total_consolidado": 4912281.08,
+      "total_cp": 1290185.12,
+      "total_lp": 616296.93,
+      "n_contratos": 27
+    },
+    "4": {
+      "empresa": "DCCOMERCIO",
+      "instituicoes": [
+        {
+          "banco": "BANCO DO BRASIL",
+          "saldo_atual": 2489303.48,
+          "saldo_cp": 2337366.39,
+          "saldo_lp": 151937.09,
+          "movimentacoes_periodo": 9371432.53,
+          "n_contratos": 19,
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "banco": "ITAU",
+          "saldo_atual": 300000.0,
+          "saldo_cp": 300000.0,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 5790769.04,
+          "n_contratos": 2,
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "banco": "BRADESCO",
+          "saldo_atual": 243733.14,
+          "saldo_cp": 130273.93,
+          "saldo_lp": 113459.21,
+          "movimentacoes_periodo": 1046881.32,
+          "n_contratos": 7,
+          "ultima_data": "2026-04-29"
+        },
+        {
+          "banco": "AMERICA TRADING",
+          "saldo_atual": 1900.0,
+          "saldo_cp": 1900.0,
+          "saldo_lp": 0.0,
+          "movimentacoes_periodo": 22600.0,
+          "n_contratos": 1,
+          "ultima_data": "2025-09-24"
+        }
+      ],
+      "contratos": [
+        {
+          "conta_id": "7981",
+          "conta_nome": "MUTUO DC TRACTOR A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 1370800.0,
+          "movimentacao_periodo": 19268286.24,
+          "n_lctos": 237,
+          "primeira_data": "2025-01-08",
+          "ultima_data": "2026-05-04"
+        },
+        {
+          "conta_id": "13496",
+          "conta_nome": "MUTUO GLOBALMAC A PAGAR",
+          "banco": "INTERCOMPANY",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 1261274.9,
+          "movimentacao_periodo": 9227065.1,
+          "n_lctos": 201,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2026-05-04"
+        },
+        {
+          "conta_id": "16730",
+          "conta_nome": "BB CÉD CRED BANCÁRIO NR. 149.706.492",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.492",
+          "prazo": "CP",
+          "saldo_atual": 910226.65,
+          "movimentacao_periodo": 1083375.69,
+          "n_lctos": 6,
+          "primeira_data": "2026-01-27",
+          "ultima_data": "2026-04-20"
+        },
+        {
+          "conta_id": "16130",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.384",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.384",
+          "prazo": "CP",
+          "saldo_atual": 437968.05,
+          "movimentacao_periodo": 1409694.96,
+          "n_lctos": 8,
+          "primeira_data": "2025-06-30",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "13250",
+          "conta_nome": "BANCO ITAU CTA GARANTIA TBI 61912-1",
+          "banco": "ITAU",
+          "contrato_id": "61912-1",
+          "prazo": "CP",
+          "saldo_atual": 300000.0,
+          "movimentacao_periodo": 5652854.66,
+          "n_lctos": 42,
+          "primeira_data": "2025-01-06",
+          "ultima_data": "2025-07-14"
+        },
+        {
+          "conta_id": "15166",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.147 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.147",
+          "prazo": "CP",
+          "saldo_atual": 216704.34,
+          "movimentacao_periodo": 754952.68,
+          "n_lctos": 29,
+          "primeira_data": "2025-01-23",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "15702",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.317 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.317",
+          "prazo": "CP",
+          "saldo_atual": 190267.11,
+          "movimentacao_periodo": 2691304.6,
+          "n_lctos": 32,
+          "primeira_data": "2025-01-29",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "14365",
+          "conta_nome": "BANCO DO BRASIL EMPRESTIMO CONTR  149.705.980 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.705.980",
+          "prazo": "CP",
+          "saldo_atual": 179128.24,
+          "movimentacao_periodo": 356824.65,
+          "n_lctos": 4,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2025-01-29"
+        },
+        {
+          "conta_id": "14664",
+          "conta_nome": "BB GIRO EMPRESA CONTR. 149.706.034 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.034",
+          "prazo": "CP",
+          "saldo_atual": 153568.91,
+          "movimentacao_periodo": 516089.07,
+          "n_lctos": 31,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "14802",
+          "conta_nome": "BB GIRO EMPRESA CONTR. 149.706.086 LP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.086",
+          "prazo": "LP",
+          "saldo_atual": 151937.09,
+          "movimentacao_periodo": 61396.2,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16628",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.487",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.487",
+          "prazo": "CP",
+          "saldo_atual": 116033.25,
+          "movimentacao_periodo": 183966.75,
+          "n_lctos": 5,
+          "primeira_data": "2025-12-30",
+          "ultima_data": "2026-04-15"
+        },
+        {
+          "conta_id": "14705",
+          "conta_nome": "BANCO BRADESCO FINANCIAMENTO CONTR 6116956 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "6116956",
+          "prazo": "LP",
+          "saldo_atual": 80325.87,
+          "movimentacao_periodo": 74799.73,
+          "n_lctos": 2,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "conta_id": "14704",
+          "conta_nome": "BANCO BRADESCO FINANCIAMENTO CONTR 6116956 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "6116956",
+          "prazo": "CP",
+          "saldo_atual": 59746.43,
+          "movimentacao_periodo": 246293.94,
+          "n_lctos": 33,
+          "primeira_data": "2025-01-17",
+          "ultima_data": "2026-04-17"
+        },
+        {
+          "conta_id": "14801",
+          "conta_nome": "BB GIRO EMPRESA CONTR. 149.706.086 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.086",
+          "prazo": "CP",
+          "saldo_atual": 43969.52,
+          "movimentacao_periodo": 491974.73,
+          "n_lctos": 36,
+          "primeira_data": "2025-02-12",
+          "ultima_data": "2026-04-13"
+        },
+        {
+          "conta_id": "16850",
+          "conta_nome": "BANCO BRADESCO CCB  EMPR CAP GIRO NR  17.528.838 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.528.838",
+          "prazo": "CP",
+          "saldo_atual": 43394.93,
+          "movimentacao_periodo": 127005.07,
+          "n_lctos": 4,
+          "primeira_data": "2026-02-06",
+          "ultima_data": "2026-04-06"
+        },
+        {
+          "conta_id": "16851",
+          "conta_nome": "BANCO BRADESCO CCB  EMPR CAP GIRO NR  17.528.838 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "17.528.838",
+          "prazo": "LP",
+          "saldo_atual": 33133.34,
+          "movimentacao_periodo": 33133.34,
+          "n_lctos": 1,
+          "primeira_data": "2026-02-06",
+          "ultima_data": "2026-02-06"
+        },
+        {
+          "conta_id": "14799",
+          "conta_nome": "BB GIRO EMPRESA CONTR. 149.706.087 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.087",
+          "prazo": "CP",
+          "saldo_atual": 31983.88,
+          "movimentacao_periodo": 459058.3,
+          "n_lctos": 20,
+          "primeira_data": "2025-02-12",
+          "ultima_data": "2025-11-12"
+        },
+        {
+          "conta_id": "23730",
+          "conta_nome": "BRADESCO FINANCIAMENTO CONTR 2913492268 CP",
+          "banco": "BRADESCO",
+          "contrato_id": "2913492268",
+          "prazo": "CP",
+          "saldo_atual": 27132.57,
+          "movimentacao_periodo": 186676.65,
+          "n_lctos": 29,
+          "primeira_data": "2025-01-29",
+          "ultima_data": "2026-04-29"
+        },
+        {
+          "conta_id": "14354",
+          "conta_nome": "BANCO DO BRASIL CONTR 149.705.979 CP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.705.979",
+          "prazo": "CP",
+          "saldo_atual": 24552.2,
+          "movimentacao_periodo": 89391.03,
+          "n_lctos": 6,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2025-03-17"
+        },
+        {
+          "conta_id": "14663",
+          "conta_nome": "BB GIRO EMPRESA CONTR. 149.706.035",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.035",
+          "prazo": "CP",
+          "saldo_atual": 20114.41,
+          "movimentacao_periodo": 216560.18,
+          "n_lctos": 16,
+          "primeira_data": "2025-01-15",
+          "ultima_data": "2025-08-15"
+        },
+        {
+          "conta_id": "14720",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.046",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.046",
+          "prazo": "CP",
+          "saldo_atual": 12849.83,
+          "movimentacao_periodo": 155784.33,
+          "n_lctos": 18,
+          "primeira_data": "2025-01-10",
+          "ultima_data": "2025-09-10"
+        },
+        {
+          "conta_id": "7500",
+          "conta_nome": "AMÉRICA TRADING LTDA",
+          "banco": "AMERICA TRADING",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": 1900.0,
+          "movimentacao_periodo": 22600.0,
+          "n_lctos": 8,
+          "primeira_data": "2025-03-24",
+          "ultima_data": "2025-09-24"
+        },
+        {
+          "conta_id": "13394",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.705.822",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.705.822",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 62168.43,
+          "n_lctos": 17,
+          "primeira_data": "2025-01-27",
+          "ultima_data": "2025-12-01"
+        },
+        {
+          "conta_id": "14665",
+          "conta_nome": "14664  BB GIRO EMPRESA CONTR. 149.706.034 LP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "14664",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 110812.43,
+          "n_lctos": 2,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "14623",
+          "conta_nome": "BANCO DO BRASIL EMPRESTIMO CONTR 149.705.980 LP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.705.980",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 127500.0,
+          "n_lctos": 1,
+          "primeira_data": "2025-01-29",
+          "ultima_data": "2025-01-29"
+        },
+        {
+          "conta_id": "15167",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.147 LP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.147",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 210000.0,
+          "n_lctos": 2,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-01-27"
+        },
+        {
+          "conta_id": "15703",
+          "conta_nome": "BB GIRO EMPRESA CONTR.149.706.317 LP",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "149.706.317",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 370000.0,
+          "n_lctos": 2,
+          "primeira_data": "2025-01-29",
+          "ultima_data": "2025-12-31"
+        },
+        {
+          "conta_id": "16780",
+          "conta_nome": "BANCO ITAÚ C/C SALDO CREDOR",
+          "banco": "ITAU",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 137914.38,
+          "n_lctos": 4,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "conta_id": "16849",
+          "conta_nome": "BANCO DO BRASIL SALDO CREDOR C/C",
+          "banco": "BANCO DO BRASIL",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 20578.5,
+          "n_lctos": 4,
+          "primeira_data": "2026-01-31",
+          "ultima_data": "2026-03-01"
+        },
+        {
+          "conta_id": "5630",
+          "conta_nome": "BRADESCO S/A -C/C",
+          "banco": "BRADESCO",
+          "contrato_id": "",
+          "prazo": "CP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 319241.66,
+          "n_lctos": 4,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2026-02-01"
+        },
+        {
+          "conta_id": "23731",
+          "conta_nome": "BRADESCO FINANCIAMENTO CONTR 2913492268 LP",
+          "banco": "BRADESCO",
+          "contrato_id": "2913492268",
+          "prazo": "LP",
+          "saldo_atual": -0.0,
+          "movimentacao_periodo": 59730.93,
+          "n_lctos": 1,
+          "primeira_data": "2025-12-31",
+          "ultima_data": "2025-12-31"
+        }
+      ],
+      "total_dividas_banco": 3034936.62,
+      "total_intercompany": 2632074.9,
+      "total_consolidado": 5667011.52,
+      "total_cp": 2769540.32,
+      "total_lp": 265396.3,
+      "n_contratos": 29
+    }
+  },
+  "por_banco_consolidado": [
+    {
+      "banco": "BRADESCO",
+      "saldo_atual": 4354250.15,
+      "movimentacoes_periodo": 13784144.79,
+      "n_contratos": 28,
+      "n_empresas": 3,
+      "por_empresa": {
+        "1": 3712366.8,
+        "2": 398150.21,
+        "4": 243733.14
+      }
+    },
+    {
+      "banco": "ITAU",
+      "saldo_atual": 3409905.35,
+      "movimentacoes_periodo": 39609316.91,
+      "n_contratos": 22,
+      "n_empresas": 3,
+      "por_empresa": {
+        "1": 2635780.6,
+        "2": 474124.75,
+        "4": 300000.0
+      }
+    },
+    {
+      "banco": "BANCO DO BRASIL",
+      "saldo_atual": 2489303.48,
+      "movimentacoes_periodo": 9371432.53,
+      "n_contratos": 19,
+      "n_empresas": 1,
+      "por_empresa": {
+        "1": 0.0,
+        "2": 0.0,
+        "4": 2489303.48
+      }
+    },
+    {
+      "banco": "SICREDI",
+      "saldo_atual": 1993311.51,
+      "movimentacoes_periodo": 5264243.31,
+      "n_contratos": 17,
+      "n_empresas": 2,
+      "por_empresa": {
+        "1": 986285.51,
+        "2": 1007026.0,
+        "4": 0.0
+      }
+    },
+    {
+      "banco": "SECURITIZADORA",
+      "saldo_atual": 1333190.58,
+      "movimentacoes_periodo": 4110491.62,
+      "n_contratos": 2,
+      "n_empresas": 1,
+      "por_empresa": {
+        "1": 1333190.58,
+        "2": 0.0,
+        "4": 0.0
+      }
+    },
+    {
+      "banco": "TERCEIROS",
+      "saldo_atual": 112302.22,
+      "movimentacoes_periodo": 1255242.78,
+      "n_contratos": 2,
+      "n_empresas": 2,
+      "por_empresa": {
+        "1": 112302.22,
+        "2": 0.0,
+        "4": 0.0
+      }
+    },
+    {
+      "banco": "NBC BANK",
+      "saldo_atual": 27181.09,
+      "movimentacoes_periodo": 234701.87,
+      "n_contratos": 1,
+      "n_empresas": 1,
+      "por_empresa": {
+        "1": 0.0,
+        "2": 27181.09,
+        "4": 0.0
+      }
+    },
+    {
+      "banco": "BANCO GM",
+      "saldo_atual": 21270.34,
+      "movimentacoes_periodo": 102529.29,
+      "n_contratos": 2,
+      "n_empresas": 1,
+      "por_empresa": {
+        "1": 21270.34,
+        "2": 0.0,
+        "4": 0.0
+      }
+    },
+    {
+      "banco": "AMERICA TRADING",
+      "saldo_atual": 1900.0,
+      "movimentacoes_periodo": 22600.0,
+      "n_contratos": 1,
+      "n_empresas": 1,
+      "por_empresa": {
+        "1": 0.0,
+        "2": 0.0,
+        "4": 1900.0
+      }
+    },
+    {
+      "banco": "DLL",
+      "saldo_atual": 0.0,
+      "movimentacoes_periodo": 389977.96,
+      "n_contratos": 2,
+      "n_empresas": 2,
+      "por_empresa": {
+        "1": 0.0,
+        "2": 0.0,
+        "4": 0.0
+      }
+    }
+  ],
+  "movimentacao_mensal": [
+    {
+      "ano_mes": "2025-01",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 1918713.5899999999,
+      "n": 22
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "BRADESCO",
+      "movimentacao": 131260.98,
+      "n": 11
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "DLL",
+      "movimentacao": 79146.5,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "ITAU",
+      "movimentacao": 3412814.3,
+      "n": 17
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-01",
+      "banco": "SICREDI",
+      "movimentacao": 669885.92,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "SICREDI",
+      "movimentacao": 187325.28,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "ITAU",
+      "movimentacao": 1409179.1099999999,
+      "n": 21
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "BRADESCO",
+      "movimentacao": 114469.18,
+      "n": 10
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 214725.87,
+      "n": 16
+    },
+    {
+      "ano_mes": "2025-02",
+      "banco": "DLL",
+      "movimentacao": 21074.04,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "ITAU",
+      "movimentacao": 3297311.24,
+      "n": 36
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "SICREDI",
+      "movimentacao": 186869.46,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "DLL",
+      "movimentacao": 13131.8,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 255955.87,
+      "n": 18
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "AMERICA TRADING",
+      "movimentacao": 3000.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-03",
+      "banco": "BRADESCO",
+      "movimentacao": 109663.87000000001,
+      "n": 10
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 212180.64,
+      "n": 16
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "BANCO GM",
+      "movimentacao": 2808.07,
+      "n": 1
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "BRADESCO",
+      "movimentacao": 530517.71,
+      "n": 12
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "DLL",
+      "movimentacao": 83124.38,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "ITAU",
+      "movimentacao": 3579111.52,
+      "n": 37
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-04",
+      "banco": "SICREDI",
+      "movimentacao": 194717.84,
+      "n": 15
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "TERCEIROS",
+      "movimentacao": 50000.0,
+      "n": 1
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "SICREDI",
+      "movimentacao": 179661.47999999998,
+      "n": 13
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "ITAU",
+      "movimentacao": 4161811.24,
+      "n": 29
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "BRADESCO",
+      "movimentacao": 1187038.94,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "BANCO GM",
+      "movimentacao": 4984.450000000001,
+      "n": 3
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 277740.38,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-05",
+      "banco": "DLL",
+      "movimentacao": 50850.18,
+      "n": 4
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "AMERICA TRADING",
+      "movimentacao": 12000.0,
+      "n": 3
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 899705.04,
+      "n": 17
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "BRADESCO",
+      "movimentacao": 209804.19,
+      "n": 12
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "DLL",
+      "movimentacao": 6885.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "ITAU",
+      "movimentacao": 3326056.25,
+      "n": 47
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.85,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-06",
+      "banco": "SICREDI",
+      "movimentacao": 187783.80000000002,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "DLL",
+      "movimentacao": 13339.8,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "TERCEIROS",
+      "movimentacao": 114400.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "SICREDI",
+      "movimentacao": 188112.41999999998,
+      "n": 14
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "NBC BANK",
+      "movimentacao": 33528.770000000004,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "BRADESCO",
+      "movimentacao": 1989006.44,
+      "n": 11
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 328330.99,
+      "n": 18
+    },
+    {
+      "ano_mes": "2025-07",
+      "banco": "ITAU",
+      "movimentacao": 4925244.66,
+      "n": 44
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "TERCEIROS",
+      "movimentacao": 70000.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 295313.64,
+      "n": 16
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "BRADESCO",
+      "movimentacao": 356579.41,
+      "n": 9
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "ITAU",
+      "movimentacao": 831281.21,
+      "n": 32
+    },
+    {
+      "ano_mes": "2025-08",
+      "banco": "SICREDI",
+      "movimentacao": 188841.28,
+      "n": 15
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "SICREDI",
+      "movimentacao": 186114.71000000002,
+      "n": 17
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "ITAU",
+      "movimentacao": 3344444.27,
+      "n": 44
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "TERCEIROS",
+      "movimentacao": 50000.0,
+      "n": 1
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "DLL",
+      "movimentacao": 14399.28,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "AMERICA TRADING",
+      "movimentacao": 7600.0,
+      "n": 3
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "BRADESCO",
+      "movimentacao": 174517.37,
+      "n": 8
+    },
+    {
+      "ano_mes": "2025-09",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 256988.57,
+      "n": 12
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 350669.91,
+      "n": 11
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "BRADESCO",
+      "movimentacao": 1050612.34,
+      "n": 12
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "DLL",
+      "movimentacao": 20398.92,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "ITAU",
+      "movimentacao": 2312296.8,
+      "n": 24
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "SICREDI",
+      "movimentacao": 190013.4,
+      "n": 15
+    },
+    {
+      "ano_mes": "2025-10",
+      "banco": "TERCEIROS",
+      "movimentacao": 60000.0,
+      "n": 3
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "ITAU",
+      "movimentacao": 977882.7999999999,
+      "n": 29
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "TERCEIROS",
+      "movimentacao": 513895.93,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "SICREDI",
+      "movimentacao": 193571.63,
+      "n": 19
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "DLL",
+      "movimentacao": 36667.4,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "BRADESCO",
+      "movimentacao": 987095.1799999999,
+      "n": 18
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.26,
+      "n": 2
+    },
+    {
+      "ano_mes": "2025-11",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 324703.18000000005,
+      "n": 16
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 1250935.65,
+      "n": 22
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "BANCO GM",
+      "movimentacao": 45173.43000000001,
+      "n": 4
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "BRADESCO",
+      "movimentacao": 4654908.7700000005,
+      "n": 30
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "ITAU",
+      "movimentacao": 2098681.63,
+      "n": 32
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 1107957.23,
+      "n": 3
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "SICREDI",
+      "movimentacao": 1804448.48,
+      "n": 32
+    },
+    {
+      "ano_mes": "2025-12",
+      "banco": "TERCEIROS",
+      "movimentacao": 62811.89,
+      "n": 3
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "SICREDI",
+      "movimentacao": 474913.69,
+      "n": 33
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 329825.1,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "TERCEIROS",
+      "movimentacao": 13292.18,
+      "n": 1
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "ITAU",
+      "movimentacao": 686682.81,
+      "n": 45
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.3100000000004,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 2586048.6,
+      "n": 23
+    },
+    {
+      "ano_mes": "2026-01",
+      "banco": "BRADESCO",
+      "movimentacao": 831199.07,
+      "n": 13
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 59355.69,
+      "n": 7
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.3100000000004,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "BRADESCO",
+      "movimentacao": 1351269.5,
+      "n": 22
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "DLL",
+      "movimentacao": 9277.66,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "ITAU",
+      "movimentacao": 1209291.77,
+      "n": 11
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 1126978.04,
+      "n": 4
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "SICREDI",
+      "movimentacao": 283331.28,
+      "n": 5
+    },
+    {
+      "ano_mes": "2026-02",
+      "banco": "TERCEIROS",
+      "movimentacao": 150000.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "TERCEIROS",
+      "movimentacao": 41000.0,
+      "n": 1
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "SICREDI",
+      "movimentacao": 148652.64,
+      "n": 3
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 236234.63,
+      "n": 3
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "ITAU",
+      "movimentacao": 535761.58,
+      "n": 9
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "BRADESCO",
+      "movimentacao": 65184.32,
+      "n": 16
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "BANCO GM",
+      "movimentacao": 3896.3100000000004,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 72870.9,
+      "n": 9
+    },
+    {
+      "ano_mes": "2026-03",
+      "banco": "DLL",
+      "movimentacao": 24475.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "BANCO DO BRASIL",
+      "movimentacao": 67194.01000000001,
+      "n": 3
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "BANCO GM",
+      "movimentacao": 2808.07,
+      "n": 1
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "BRADESCO",
+      "movimentacao": 41017.52,
+      "n": 8
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "DLL",
+      "movimentacao": 17208.0,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "ITAU",
+      "movimentacao": 3462645.36,
+      "n": 36
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 1196304.3,
+      "n": 5
+    },
+    {
+      "ano_mes": "2026-04",
+      "banco": "TERCEIROS",
+      "movimentacao": 129842.78,
+      "n": 2
+    },
+    {
+      "ano_mes": "2026-05",
+      "banco": "ITAU",
+      "movimentacao": 38820.36,
+      "n": 1
+    },
+    {
+      "ano_mes": "2026-05",
+      "banco": "SECURITIZADORA",
+      "movimentacao": 113192.32,
+      "n": 1
+    }
+  ]
+}

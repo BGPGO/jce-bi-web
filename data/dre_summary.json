@@ -1,0 +1,49 @@
+{
+  "fetched_at": "2026-05-06T22:20:14.856067",
+  "n_rows_full_ledger": 170520,
+  "n_rows_dre": 48575,
+  "by_empresa": {
+    "DCCOMERCIO": {
+      "n": 17059,
+      "total_abs": 251714601.96
+    },
+    "DCTRACTOR": {
+      "n": 57781,
+      "total_abs": 551705302.66
+    },
+    "GLOBALMAC": {
+      "n": 95680,
+      "total_abs": 1174315594.4
+    }
+  },
+  "dre_consolidado_por_tipo": {
+    "CMV": -120321317.3,
+    "DEDUCAO": -12190864.44,
+    "DESPESA_FIN": -9001625.26,
+    "DESPESA_OP": -22045495.46,
+    "PROVISAO_IR": -118433.66,
+    "RECEITA_BRUTA": 119944212.64,
+    "RECEITA_FIN": 1307889.93,
+    "RES_NAO_OP_DESP": -102572.72
+  },
+  "dre_consolidado_total": {
+    "receita_bruta": 119944212.64000002,
+    "deducoes": 12190864.44,
+    "cmv": 120321317.29999998,
+    "despesa_op": 22045495.46,
+    "receita_fin": 1307889.93,
+    "despesa_fin": 9001625.26,
+    "res_nao_op_rec": 0.0,
+    "res_nao_op_desp": 102572.72,
+    "provisao_ir": 118433.66,
+    "receita_liquida": 107753348.20000002,
+    "margem_bruta": -12567969.099999964,
+    "resultado_op": -34613464.559999965,
+    "resultado_fin": -7693735.33,
+    "res_nao_op": -102572.72,
+    "resultado_antes_ir": -42409772.60999996,
+    "lucro_liquido": -42528206.26999996,
+    "margem_liquida": -39.46810654186238,
+    "margem_ebitda_caixa": -32.122866841923305
+  }
+}

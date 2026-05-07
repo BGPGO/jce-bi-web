@@ -1,0 +1,1858 @@
+{
+  "meta": {
+    "periodo": [
+      "2025-01",
+      "2026-04"
+    ],
+    "meses": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "empresas": [
+      "DCCOMERCIO",
+      "DCTRACTOR",
+      "GLOBALMAC"
+    ],
+    "linhas": [
+      "tratores_novos",
+      "tratores_usados",
+      "implementos_novos",
+      "implementos_usados",
+      "pecas",
+      "servicos"
+    ],
+    "gerado_em": "2026-05-06T22:26:05.732468",
+    "lctos_processados": 9157,
+    "total_receita_bruta": 119933654.35
+  },
+  "linhas_def": {
+    "tratores_novos": "Tratores Novos",
+    "tratores_usados": "Tratores Usados",
+    "implementos_novos": "Implementos Novos",
+    "implementos_usados": "Implementos Usados",
+    "pecas": "Peças",
+    "servicos": "Serviços"
+  },
+  "totais_globais": {
+    "tratores_novos": 60017254.36,
+    "tratores_usados": 4172000.0,
+    "implementos_novos": 39583748.65,
+    "implementos_usados": 11000.0,
+    "pecas": 14638874.73,
+    "servicos": 1510776.61
+  },
+  "pct_globais": {
+    "tratores_novos": 50.042,
+    "tratores_usados": 3.4786,
+    "implementos_novos": 33.0047,
+    "implementos_usados": 0.0092,
+    "pecas": 12.2058,
+    "servicos": 1.2597
+  },
+  "por_mes": {
+    "2025-01": {
+      "implementos_novos": 551060.0,
+      "pecas": 291362.89,
+      "servicos": 58736.87,
+      "tratores_novos": 2057486.0,
+      "tratores_usados": 128000.0
+    },
+    "2025-02": {
+      "implementos_novos": 1730714.99,
+      "pecas": 387262.95,
+      "servicos": 49454.68,
+      "tratores_novos": 770000.0,
+      "tratores_usados": 265000.0
+    },
+    "2025-03": {
+      "implementos_novos": 3906460.0,
+      "pecas": 1217014.08,
+      "servicos": 158009.23,
+      "tratores_novos": 5073187.91,
+      "tratores_usados": 693000.0
+    },
+    "2025-04": {
+      "implementos_novos": 1936514.81,
+      "pecas": 438615.51,
+      "servicos": 51939.54,
+      "tratores_novos": 2724170.97
+    },
+    "2025-05": {
+      "implementos_novos": 2453991.52,
+      "pecas": 520086.59,
+      "servicos": 37609.09,
+      "tratores_novos": 1858507.58,
+      "tratores_usados": 205000.0
+    },
+    "2025-06": {
+      "implementos_novos": 6279400.0,
+      "pecas": 1343165.63,
+      "servicos": 120061.12,
+      "tratores_novos": 3592609.24,
+      "tratores_usados": 340000.0
+    },
+    "2025-07": {
+      "implementos_novos": 717932.86,
+      "pecas": 1028918.93,
+      "servicos": 56943.13,
+      "tratores_novos": 852390.0
+    },
+    "2025-08": {
+      "implementos_novos": 1268148.87,
+      "pecas": 556043.04,
+      "servicos": 46043.08,
+      "tratores_novos": 3383690.44,
+      "tratores_usados": 180000.0
+    },
+    "2025-09": {
+      "implementos_novos": 4976704.35,
+      "pecas": 2747974.79,
+      "servicos": 135959.72,
+      "tratores_novos": 7443178.5,
+      "tratores_usados": 1012000.0
+    },
+    "2025-10": {
+      "implementos_novos": 3094420.71,
+      "pecas": 691463.57,
+      "servicos": 98238.62,
+      "tratores_novos": 2787960.58
+    },
+    "2025-11": {
+      "implementos_novos": 658026.52,
+      "pecas": 517634.46,
+      "servicos": 56417.79,
+      "tratores_novos": 3196222.46,
+      "tratores_usados": 58000.0
+    },
+    "2025-12": {
+      "implementos_novos": 10048264.51,
+      "pecas": 3524271.9,
+      "servicos": 453756.35,
+      "tratores_novos": 19194174.42,
+      "tratores_usados": 443000.0
+    },
+    "2026-01": {
+      "implementos_novos": 203838.01,
+      "pecas": 384387.78,
+      "servicos": 43046.91,
+      "tratores_novos": 2242983.16,
+      "tratores_usados": 190000.0
+    },
+    "2026-02": {
+      "implementos_novos": 1112449.0,
+      "pecas": 246430.84,
+      "servicos": 54296.02,
+      "tratores_novos": 1494417.0,
+      "tratores_usados": 168000.0
+    },
+    "2026-03": {
+      "implementos_novos": 432122.5,
+      "pecas": 425041.11,
+      "servicos": 70403.14,
+      "tratores_novos": 2457889.92,
+      "tratores_usados": 490000.0
+    },
+    "2026-04": {
+      "implementos_novos": 213700.0,
+      "implementos_usados": 11000.0,
+      "pecas": 319200.66,
+      "servicos": 19861.32,
+      "tratores_novos": 888386.18
+    }
+  },
+  "por_empresa": {
+    "DCCOMERCIO": {
+      "implementos_novos": 3954560.36,
+      "pecas": 658099.6,
+      "servicos": 164860.73,
+      "tratores_novos": 6955610.48,
+      "tratores_usados": 230000.0
+    },
+    "DCTRACTOR": {
+      "implementos_novos": 1830320.08,
+      "pecas": 4243510.26,
+      "servicos": 538686.78,
+      "tratores_novos": 23458538.38,
+      "tratores_usados": 1161000.0
+    },
+    "GLOBALMAC": {
+      "implementos_novos": 33798868.21,
+      "implementos_usados": 11000.0,
+      "pecas": 9737264.87,
+      "servicos": 807229.1,
+      "tratores_novos": 29603105.5,
+      "tratores_usados": 2781000.0
+    }
+  },
+  "por_empresa_mes": [
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-01",
+      "linha": "implementos_novos",
+      "valor": 10600.0,
+      "pct_total_mes_empresa": 3.54
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-01",
+      "linha": "pecas",
+      "valor": 36818.14,
+      "pct_total_mes_empresa": 12.29
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-01",
+      "linha": "servicos",
+      "valor": 7855.15,
+      "pct_total_mes_empresa": 2.62
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-01",
+      "linha": "tratores_novos",
+      "valor": 244251.0,
+      "pct_total_mes_empresa": 81.55
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-02",
+      "linha": "implementos_novos",
+      "valor": 287387.18,
+      "pct_total_mes_empresa": 51.83
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-02",
+      "linha": "pecas",
+      "valor": 36305.97,
+      "pct_total_mes_empresa": 6.55
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-02",
+      "linha": "servicos",
+      "valor": 8262.3,
+      "pct_total_mes_empresa": 1.49
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-02",
+      "linha": "tratores_novos",
+      "valor": 222500.0,
+      "pct_total_mes_empresa": 40.13
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-03",
+      "linha": "implementos_novos",
+      "valor": 23400.0,
+      "pct_total_mes_empresa": 8.74
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-03",
+      "linha": "pecas",
+      "valor": 34084.13,
+      "pct_total_mes_empresa": 12.73
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-03",
+      "linha": "servicos",
+      "valor": 12235.44,
+      "pct_total_mes_empresa": 4.57
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-03",
+      "linha": "tratores_novos",
+      "valor": 198000.0,
+      "pct_total_mes_empresa": 73.96
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-04",
+      "linha": "implementos_novos",
+      "valor": 97214.81,
+      "pct_total_mes_empresa": 12.21
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-04",
+      "linha": "pecas",
+      "valor": 10433.61,
+      "pct_total_mes_empresa": 1.31
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-04",
+      "linha": "servicos",
+      "valor": 5405.3,
+      "pct_total_mes_empresa": 0.68
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-04",
+      "linha": "tratores_novos",
+      "valor": 683400.0,
+      "pct_total_mes_empresa": 85.81
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-05",
+      "linha": "implementos_novos",
+      "valor": 69190.0,
+      "pct_total_mes_empresa": 29.65
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-05",
+      "linha": "pecas",
+      "valor": 44626.12,
+      "pct_total_mes_empresa": 19.12
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-05",
+      "linha": "servicos",
+      "valor": 4576.0,
+      "pct_total_mes_empresa": 1.96
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-05",
+      "linha": "tratores_usados",
+      "valor": 115000.0,
+      "pct_total_mes_empresa": 49.27
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-06",
+      "linha": "implementos_novos",
+      "valor": 579900.0,
+      "pct_total_mes_empresa": 69.8
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-06",
+      "linha": "pecas",
+      "valor": 16097.45,
+      "pct_total_mes_empresa": 1.94
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-06",
+      "linha": "servicos",
+      "valor": 4513.37,
+      "pct_total_mes_empresa": 0.54
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-06",
+      "linha": "tratores_novos",
+      "valor": 230254.24,
+      "pct_total_mes_empresa": 27.72
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-07",
+      "linha": "implementos_novos",
+      "valor": 311960.0,
+      "pct_total_mes_empresa": 42.42
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-07",
+      "linha": "pecas",
+      "valor": 9531.03,
+      "pct_total_mes_empresa": 1.3
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-07",
+      "linha": "servicos",
+      "valor": 3881.29,
+      "pct_total_mes_empresa": 0.53
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-07",
+      "linha": "tratores_novos",
+      "valor": 410000.0,
+      "pct_total_mes_empresa": 55.75
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-08",
+      "linha": "implementos_novos",
+      "valor": 38000.0,
+      "pct_total_mes_empresa": 5.15
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-08",
+      "linha": "pecas",
+      "valor": 22625.74,
+      "pct_total_mes_empresa": 3.07
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-08",
+      "linha": "servicos",
+      "valor": 4702.62,
+      "pct_total_mes_empresa": 0.64
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-08",
+      "linha": "tratores_novos",
+      "valor": 672500.0,
+      "pct_total_mes_empresa": 91.15
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-09",
+      "linha": "implementos_novos",
+      "valor": 13561.92,
+      "pct_total_mes_empresa": 2.05
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-09",
+      "linha": "pecas",
+      "valor": 25219.44,
+      "pct_total_mes_empresa": 3.81
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-09",
+      "linha": "servicos",
+      "valor": 6955.78,
+      "pct_total_mes_empresa": 1.05
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-09",
+      "linha": "tratores_novos",
+      "valor": 616900.0,
+      "pct_total_mes_empresa": 93.1
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-10",
+      "linha": "implementos_novos",
+      "valor": 268487.48,
+      "pct_total_mes_empresa": 85.32
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-10",
+      "linha": "pecas",
+      "valor": 37268.28,
+      "pct_total_mes_empresa": 11.84
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-10",
+      "linha": "servicos",
+      "valor": 8919.39,
+      "pct_total_mes_empresa": 2.83
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-11",
+      "linha": "implementos_novos",
+      "valor": 220500.0,
+      "pct_total_mes_empresa": 49.8
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-11",
+      "linha": "pecas",
+      "valor": 18337.5,
+      "pct_total_mes_empresa": 4.14
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-11",
+      "linha": "servicos",
+      "valor": 3941.94,
+      "pct_total_mes_empresa": 0.89
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-11",
+      "linha": "tratores_novos",
+      "valor": 200000.0,
+      "pct_total_mes_empresa": 45.17
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-12",
+      "linha": "implementos_novos",
+      "valor": 1961339.97,
+      "pct_total_mes_empresa": 32.85
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-12",
+      "linha": "pecas",
+      "valor": 338697.01,
+      "pct_total_mes_empresa": 5.67
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-12",
+      "linha": "servicos",
+      "valor": 77548.44,
+      "pct_total_mes_empresa": 1.3
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-12",
+      "linha": "tratores_novos",
+      "valor": 3477805.24,
+      "pct_total_mes_empresa": 58.25
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2025-12",
+      "linha": "tratores_usados",
+      "valor": 115000.0,
+      "pct_total_mes_empresa": 1.93
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-01",
+      "linha": "implementos_novos",
+      "valor": 52300.0,
+      "pct_total_mes_empresa": 75.21
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-01",
+      "linha": "pecas",
+      "valor": 15389.21,
+      "pct_total_mes_empresa": 22.13
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-01",
+      "linha": "servicos",
+      "valor": 1852.5,
+      "pct_total_mes_empresa": 2.66
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-02",
+      "linha": "implementos_novos",
+      "valor": 20719.0,
+      "pct_total_mes_empresa": 53.43
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-02",
+      "linha": "pecas",
+      "valor": 8322.04,
+      "pct_total_mes_empresa": 21.46
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-02",
+      "linha": "servicos",
+      "valor": 9735.57,
+      "pct_total_mes_empresa": 25.11
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-03",
+      "linha": "pecas",
+      "valor": 4343.93,
+      "pct_total_mes_empresa": 78.42
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-03",
+      "linha": "servicos",
+      "valor": 1195.64,
+      "pct_total_mes_empresa": 21.58
+    },
+    {
+      "empresa": "DCCOMERCIO",
+      "ano_mes": "2026-04",
+      "linha": "servicos",
+      "valor": 3280.0,
+      "pct_total_mes_empresa": 100.0
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-01",
+      "linha": "implementos_novos",
+      "valor": 172000.0,
+      "pct_total_mes_empresa": 20.76
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-01",
+      "linha": "pecas",
+      "valor": 84901.03,
+      "pct_total_mes_empresa": 10.24
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-01",
+      "linha": "servicos",
+      "valor": 7476.31,
+      "pct_total_mes_empresa": 0.9
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-01",
+      "linha": "tratores_novos",
+      "valor": 564335.0,
+      "pct_total_mes_empresa": 68.1
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-02",
+      "linha": "implementos_novos",
+      "valor": 80327.81,
+      "pct_total_mes_empresa": 14.79
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-02",
+      "linha": "pecas",
+      "valor": 113424.01,
+      "pct_total_mes_empresa": 20.89
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-02",
+      "linha": "servicos",
+      "valor": 13708.09,
+      "pct_total_mes_empresa": 2.52
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-02",
+      "linha": "tratores_novos",
+      "valor": 335500.0,
+      "pct_total_mes_empresa": 61.79
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-03",
+      "linha": "pecas",
+      "valor": 127550.14,
+      "pct_total_mes_empresa": 8.83
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-03",
+      "linha": "servicos",
+      "valor": 17009.59,
+      "pct_total_mes_empresa": 1.18
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-03",
+      "linha": "tratores_novos",
+      "valor": 1300287.91,
+      "pct_total_mes_empresa": 89.99
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-04",
+      "linha": "implementos_novos",
+      "valor": 158200.0,
+      "pct_total_mes_empresa": 10.72
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-04",
+      "linha": "pecas",
+      "valor": 172168.28,
+      "pct_total_mes_empresa": 11.66
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-04",
+      "linha": "servicos",
+      "valor": 22682.65,
+      "pct_total_mes_empresa": 1.54
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-04",
+      "linha": "tratores_novos",
+      "valor": 1123070.97,
+      "pct_total_mes_empresa": 76.08
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-05",
+      "linha": "implementos_novos",
+      "valor": 66801.52,
+      "pct_total_mes_empresa": 4.35
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-05",
+      "linha": "pecas",
+      "valor": 173950.12,
+      "pct_total_mes_empresa": 11.33
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-05",
+      "linha": "servicos",
+      "valor": 20509.51,
+      "pct_total_mes_empresa": 1.34
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-05",
+      "linha": "tratores_novos",
+      "valor": 1183907.58,
+      "pct_total_mes_empresa": 77.12
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-05",
+      "linha": "tratores_usados",
+      "valor": 90000.0,
+      "pct_total_mes_empresa": 5.86
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-06",
+      "linha": "pecas",
+      "valor": 136751.43,
+      "pct_total_mes_empresa": 20.42
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-06",
+      "linha": "servicos",
+      "valor": 19464.0,
+      "pct_total_mes_empresa": 2.91
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-06",
+      "linha": "tratores_novos",
+      "valor": 513591.0,
+      "pct_total_mes_empresa": 76.68
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-07",
+      "linha": "implementos_novos",
+      "valor": 85972.86,
+      "pct_total_mes_empresa": 16.72
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-07",
+      "linha": "pecas",
+      "valor": 151693.53,
+      "pct_total_mes_empresa": 29.49
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-07",
+      "linha": "servicos",
+      "valor": 34244.96,
+      "pct_total_mes_empresa": 6.66
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-07",
+      "linha": "tratores_novos",
+      "valor": 242400.0,
+      "pct_total_mes_empresa": 47.13
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-08",
+      "linha": "implementos_novos",
+      "valor": 120501.52,
+      "pct_total_mes_empresa": 7.25
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-08",
+      "linha": "pecas",
+      "valor": 114921.01,
+      "pct_total_mes_empresa": 6.91
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-08",
+      "linha": "servicos",
+      "valor": 13516.2,
+      "pct_total_mes_empresa": 0.81
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-08",
+      "linha": "tratores_novos",
+      "valor": 1234073.06,
+      "pct_total_mes_empresa": 74.21
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-08",
+      "linha": "tratores_usados",
+      "valor": 180000.0,
+      "pct_total_mes_empresa": 10.82
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-09",
+      "linha": "implementos_novos",
+      "valor": 23695.08,
+      "pct_total_mes_empresa": 2.0
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-09",
+      "linha": "pecas",
+      "valor": 175179.37,
+      "pct_total_mes_empresa": 14.8
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-09",
+      "linha": "servicos",
+      "valor": 10011.64,
+      "pct_total_mes_empresa": 0.85
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-09",
+      "linha": "tratores_novos",
+      "valor": 974488.0,
+      "pct_total_mes_empresa": 82.35
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-10",
+      "linha": "implementos_novos",
+      "valor": 162600.0,
+      "pct_total_mes_empresa": 10.37
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-10",
+      "linha": "pecas",
+      "valor": 216832.89,
+      "pct_total_mes_empresa": 13.82
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-10",
+      "linha": "servicos",
+      "valor": 41116.25,
+      "pct_total_mes_empresa": 2.62
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-10",
+      "linha": "tratores_novos",
+      "valor": 1148000.0,
+      "pct_total_mes_empresa": 73.19
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-11",
+      "linha": "implementos_novos",
+      "valor": 45000.0,
+      "pct_total_mes_empresa": 2.48
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-11",
+      "linha": "pecas",
+      "valor": 188588.14,
+      "pct_total_mes_empresa": 10.39
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-11",
+      "linha": "servicos",
+      "valor": 16546.47,
+      "pct_total_mes_empresa": 0.91
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-11",
+      "linha": "tratores_novos",
+      "valor": 1506725.0,
+      "pct_total_mes_empresa": 83.02
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-11",
+      "linha": "tratores_usados",
+      "valor": 58000.0,
+      "pct_total_mes_empresa": 3.2
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-12",
+      "linha": "implementos_novos",
+      "valor": 915098.79,
+      "pct_total_mes_empresa": 6.29
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-12",
+      "linha": "pecas",
+      "valor": 2060015.91,
+      "pct_total_mes_empresa": 14.16
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-12",
+      "linha": "servicos",
+      "valor": 250030.55,
+      "pct_total_mes_empresa": 1.72
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-12",
+      "linha": "tratores_novos",
+      "valor": 10995578.52,
+      "pct_total_mes_empresa": 75.58
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2025-12",
+      "linha": "tratores_usados",
+      "valor": 328000.0,
+      "pct_total_mes_empresa": 2.25
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-01",
+      "linha": "pecas",
+      "valor": 218582.53,
+      "pct_total_mes_empresa": 13.56
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-01",
+      "linha": "servicos",
+      "valor": 24377.31,
+      "pct_total_mes_empresa": 1.51
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-01",
+      "linha": "tratores_novos",
+      "valor": 1178903.34,
+      "pct_total_mes_empresa": 73.14
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-01",
+      "linha": "tratores_usados",
+      "valor": 190000.0,
+      "pct_total_mes_empresa": 11.79
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-02",
+      "linha": "pecas",
+      "valor": 121404.86,
+      "pct_total_mes_empresa": 14.88
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-02",
+      "linha": "servicos",
+      "valor": 19854.14,
+      "pct_total_mes_empresa": 2.43
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-02",
+      "linha": "tratores_novos",
+      "valor": 674678.0,
+      "pct_total_mes_empresa": 82.69
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-03",
+      "linha": "implementos_novos",
+      "valor": 122.5,
+      "pct_total_mes_empresa": 0.01
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-03",
+      "linha": "pecas",
+      "valor": 187547.01,
+      "pct_total_mes_empresa": 18.5
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-03",
+      "linha": "servicos",
+      "valor": 28009.11,
+      "pct_total_mes_empresa": 2.76
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-03",
+      "linha": "tratores_novos",
+      "valor": 483000.0,
+      "pct_total_mes_empresa": 47.65
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-03",
+      "linha": "tratores_usados",
+      "valor": 315000.0,
+      "pct_total_mes_empresa": 31.07
+    },
+    {
+      "empresa": "DCTRACTOR",
+      "ano_mes": "2026-04",
+      "linha": "servicos",
+      "valor": 130.0,
+      "pct_total_mes_empresa": 100.0
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-01",
+      "linha": "implementos_novos",
+      "valor": 368460.0,
+      "pct_total_mes_empresa": 18.81
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-01",
+      "linha": "pecas",
+      "valor": 169643.72,
+      "pct_total_mes_empresa": 8.66
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-01",
+      "linha": "servicos",
+      "valor": 43405.41,
+      "pct_total_mes_empresa": 2.22
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-01",
+      "linha": "tratores_novos",
+      "valor": 1248900.0,
+      "pct_total_mes_empresa": 63.77
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-01",
+      "linha": "tratores_usados",
+      "valor": 128000.0,
+      "pct_total_mes_empresa": 6.54
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-02",
+      "linha": "implementos_novos",
+      "valor": 1363000.0,
+      "pct_total_mes_empresa": 64.75
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-02",
+      "linha": "pecas",
+      "valor": 237532.97,
+      "pct_total_mes_empresa": 11.28
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-02",
+      "linha": "servicos",
+      "valor": 27484.29,
+      "pct_total_mes_empresa": 1.31
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-02",
+      "linha": "tratores_novos",
+      "valor": 212000.0,
+      "pct_total_mes_empresa": 10.07
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-02",
+      "linha": "tratores_usados",
+      "valor": 265000.0,
+      "pct_total_mes_empresa": 12.59
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-03",
+      "linha": "implementos_novos",
+      "valor": 3883060.0,
+      "pct_total_mes_empresa": 41.6
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-03",
+      "linha": "pecas",
+      "valor": 1055379.81,
+      "pct_total_mes_empresa": 11.31
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-03",
+      "linha": "servicos",
+      "valor": 128764.2,
+      "pct_total_mes_empresa": 1.38
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-03",
+      "linha": "tratores_novos",
+      "valor": 3574900.0,
+      "pct_total_mes_empresa": 38.3
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-03",
+      "linha": "tratores_usados",
+      "valor": 693000.0,
+      "pct_total_mes_empresa": 7.42
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-04",
+      "linha": "implementos_novos",
+      "valor": 1681100.0,
+      "pct_total_mes_empresa": 58.4
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-04",
+      "linha": "pecas",
+      "valor": 256013.62,
+      "pct_total_mes_empresa": 8.89
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-04",
+      "linha": "servicos",
+      "valor": 23851.59,
+      "pct_total_mes_empresa": 0.83
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-04",
+      "linha": "tratores_novos",
+      "valor": 917700.0,
+      "pct_total_mes_empresa": 31.88
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-05",
+      "linha": "implementos_novos",
+      "valor": 2318000.0,
+      "pct_total_mes_empresa": 70.1
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-05",
+      "linha": "pecas",
+      "valor": 301510.35,
+      "pct_total_mes_empresa": 9.12
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-05",
+      "linha": "servicos",
+      "valor": 12523.58,
+      "pct_total_mes_empresa": 0.38
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-05",
+      "linha": "tratores_novos",
+      "valor": 674600.0,
+      "pct_total_mes_empresa": 20.4
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-06",
+      "linha": "implementos_novos",
+      "valor": 5699500.0,
+      "pct_total_mes_empresa": 56.02
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-06",
+      "linha": "pecas",
+      "valor": 1190316.75,
+      "pct_total_mes_empresa": 11.7
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-06",
+      "linha": "servicos",
+      "valor": 96083.75,
+      "pct_total_mes_empresa": 0.94
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-06",
+      "linha": "tratores_novos",
+      "valor": 2848764.0,
+      "pct_total_mes_empresa": 28.0
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-06",
+      "linha": "tratores_usados",
+      "valor": 340000.0,
+      "pct_total_mes_empresa": 3.34
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-07",
+      "linha": "implementos_novos",
+      "valor": 320000.0,
+      "pct_total_mes_empresa": 22.75
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-07",
+      "linha": "pecas",
+      "valor": 867694.37,
+      "pct_total_mes_empresa": 61.69
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-07",
+      "linha": "servicos",
+      "valor": 18816.88,
+      "pct_total_mes_empresa": 1.34
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-07",
+      "linha": "tratores_novos",
+      "valor": 199990.0,
+      "pct_total_mes_empresa": 14.22
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-08",
+      "linha": "implementos_novos",
+      "valor": 1109647.35,
+      "pct_total_mes_empresa": 36.58
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-08",
+      "linha": "pecas",
+      "valor": 418496.29,
+      "pct_total_mes_empresa": 13.8
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-08",
+      "linha": "servicos",
+      "valor": 27824.26,
+      "pct_total_mes_empresa": 0.92
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-08",
+      "linha": "tratores_novos",
+      "valor": 1477117.38,
+      "pct_total_mes_empresa": 48.7
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-09",
+      "linha": "implementos_novos",
+      "valor": 4939447.35,
+      "pct_total_mes_empresa": 34.14
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-09",
+      "linha": "pecas",
+      "valor": 2547575.98,
+      "pct_total_mes_empresa": 17.61
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-09",
+      "linha": "servicos",
+      "valor": 118992.3,
+      "pct_total_mes_empresa": 0.82
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-09",
+      "linha": "tratores_novos",
+      "valor": 5851790.5,
+      "pct_total_mes_empresa": 40.44
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-09",
+      "linha": "tratores_usados",
+      "valor": 1012000.0,
+      "pct_total_mes_empresa": 6.99
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-10",
+      "linha": "implementos_novos",
+      "valor": 2663333.23,
+      "pct_total_mes_empresa": 55.62
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-10",
+      "linha": "pecas",
+      "valor": 437362.4,
+      "pct_total_mes_empresa": 9.13
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-10",
+      "linha": "servicos",
+      "valor": 48202.98,
+      "pct_total_mes_empresa": 1.01
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-10",
+      "linha": "tratores_novos",
+      "valor": 1639960.58,
+      "pct_total_mes_empresa": 34.25
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-11",
+      "linha": "implementos_novos",
+      "valor": 392526.52,
+      "pct_total_mes_empresa": 17.61
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-11",
+      "linha": "pecas",
+      "valor": 310708.82,
+      "pct_total_mes_empresa": 13.94
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-11",
+      "linha": "servicos",
+      "valor": 35929.38,
+      "pct_total_mes_empresa": 1.61
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-11",
+      "linha": "tratores_novos",
+      "valor": 1489497.46,
+      "pct_total_mes_empresa": 66.83
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-12",
+      "linha": "implementos_novos",
+      "valor": 7171825.75,
+      "pct_total_mes_empresa": 54.56
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-12",
+      "linha": "pecas",
+      "valor": 1125558.98,
+      "pct_total_mes_empresa": 8.56
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-12",
+      "linha": "servicos",
+      "valor": 126177.36,
+      "pct_total_mes_empresa": 0.96
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2025-12",
+      "linha": "tratores_novos",
+      "valor": 4720790.66,
+      "pct_total_mes_empresa": 35.91
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-01",
+      "linha": "implementos_novos",
+      "valor": 151538.01,
+      "pct_total_mes_empresa": 10.96
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-01",
+      "linha": "pecas",
+      "valor": 150416.04,
+      "pct_total_mes_empresa": 10.88
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-01",
+      "linha": "servicos",
+      "valor": 16817.1,
+      "pct_total_mes_empresa": 1.22
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-01",
+      "linha": "tratores_novos",
+      "valor": 1064079.82,
+      "pct_total_mes_empresa": 76.95
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-02",
+      "linha": "implementos_novos",
+      "valor": 1091730.0,
+      "pct_total_mes_empresa": 49.16
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-02",
+      "linha": "pecas",
+      "valor": 116703.94,
+      "pct_total_mes_empresa": 5.25
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-02",
+      "linha": "servicos",
+      "valor": 24706.31,
+      "pct_total_mes_empresa": 1.11
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-02",
+      "linha": "tratores_novos",
+      "valor": 819739.0,
+      "pct_total_mes_empresa": 36.91
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-02",
+      "linha": "tratores_usados",
+      "valor": 168000.0,
+      "pct_total_mes_empresa": 7.56
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-03",
+      "linha": "implementos_novos",
+      "valor": 432000.0,
+      "pct_total_mes_empresa": 15.12
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-03",
+      "linha": "pecas",
+      "valor": 233150.17,
+      "pct_total_mes_empresa": 8.16
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-03",
+      "linha": "servicos",
+      "valor": 41198.39,
+      "pct_total_mes_empresa": 1.44
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-03",
+      "linha": "tratores_novos",
+      "valor": 1974889.92,
+      "pct_total_mes_empresa": 69.14
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-03",
+      "linha": "tratores_usados",
+      "valor": 175000.0,
+      "pct_total_mes_empresa": 6.13
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-04",
+      "linha": "implementos_novos",
+      "valor": 213700.0,
+      "pct_total_mes_empresa": 14.75
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-04",
+      "linha": "implementos_usados",
+      "valor": 11000.0,
+      "pct_total_mes_empresa": 0.76
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-04",
+      "linha": "pecas",
+      "valor": 319200.66,
+      "pct_total_mes_empresa": 22.03
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-04",
+      "linha": "servicos",
+      "valor": 16451.32,
+      "pct_total_mes_empresa": 1.14
+    },
+    {
+      "empresa": "GLOBALMAC",
+      "ano_mes": "2026-04",
+      "linha": "tratores_novos",
+      "valor": 888386.18,
+      "pct_total_mes_empresa": 61.32
+    }
+  ],
+  "marcas_tratores_novos": {
+    "global": [
+      {
+        "marca": "LS MTRON",
+        "valor": 51288661.88,
+        "pct": 85.46
+      },
+      {
+        "marca": "ANTONIO CARRARO",
+        "valor": 3563000.0,
+        "pct": 5.94
+      },
+      {
+        "marca": "YANMAR",
+        "valor": 3392610.48,
+        "pct": 5.65
+      },
+      {
+        "marca": "YTO",
+        "valor": 1772982.0,
+        "pct": 2.95
+      }
+    ],
+    "por_mes": {
+      "2025-01": {
+        "LS MTRON": 1710235.0,
+        "YANMAR": 244251.0,
+        "YTO": 103000.0
+      },
+      "2025-02": {
+        "ANTONIO CARRARO": 222500.0,
+        "LS MTRON": 547500.0
+      },
+      "2025-03": {
+        "LS MTRON": 4875187.91,
+        "YANMAR": 198000.0
+      },
+      "2025-04": {
+        "ANTONIO CARRARO": 263600.0,
+        "LS MTRON": 1795770.97,
+        "YANMAR": 419800.0,
+        "YTO": 245000.0
+      },
+      "2025-05": {
+        "LS MTRON": 1708507.58,
+        "YTO": 150000.0
+      },
+      "2025-06": {
+        "LS MTRON": 3218764.0,
+        "YANMAR": 230254.24,
+        "YTO": 143591.0
+      },
+      "2025-07": {
+        "ANTONIO CARRARO": 255000.0,
+        "LS MTRON": 364990.0,
+        "YANMAR": 155000.0,
+        "YTO": 77400.0
+      },
+      "2025-08": {
+        "ANTONIO CARRARO": 512500.0,
+        "LS MTRON": 2711190.44,
+        "YANMAR": 160000.0
+      },
+      "2025-09": {
+        "ANTONIO CARRARO": 527900.0,
+        "LS MTRON": 6756278.5,
+        "YANMAR": 89000.0,
+        "YTO": 70000.0
+      },
+      "2025-10": {
+        "LS MTRON": 2787960.58
+      },
+      "2025-11": {
+        "LS MTRON": 2996222.46,
+        "YANMAR": 200000.0
+      },
+      "2025-12": {
+        "ANTONIO CARRARO": 1781500.0,
+        "LS MTRON": 14927378.18,
+        "YANMAR": 1696305.24,
+        "YTO": 788991.0
+      },
+      "2026-01": {
+        "LS MTRON": 2047983.16,
+        "YTO": 195000.0
+      },
+      "2026-02": {
+        "LS MTRON": 1494417.0
+      },
+      "2026-03": {
+        "LS MTRON": 2457889.92
+      },
+      "2026-04": {
+        "LS MTRON": 888386.18
+      }
+    },
+    "por_empresa": {
+      "DCCOMERCIO": {
+        "ANTONIO CARRARO": 3563000.0,
+        "YANMAR": 3392610.48
+      },
+      "DCTRACTOR": {
+        "LS MTRON": 21685556.38,
+        "YTO": 1772982.0
+      },
+      "GLOBALMAC": {
+        "LS MTRON": 29603105.5
+      }
+    }
+  },
+  "marcas_implementos_novos": {
+    "global": [
+      {
+        "marca": "KUHN",
+        "valor": 22152524.12,
+        "pct": 55.96
+      },
+      {
+        "marca": "MP AGRO",
+        "valor": 7519932.0,
+        "pct": 19.0
+      },
+      {
+        "marca": "BALDAN",
+        "valor": 2764000.0,
+        "pct": 6.98
+      },
+      {
+        "marca": "SAO JOSE",
+        "valor": 2576785.79,
+        "pct": 6.51
+      },
+      {
+        "marca": "TATU",
+        "valor": 1324100.0,
+        "pct": 3.35
+      },
+      {
+        "marca": "OUTROS",
+        "valor": 1252100.0,
+        "pct": 3.16
+      },
+      {
+        "marca": "PICCIN",
+        "valor": 929600.0,
+        "pct": 2.35
+      },
+      {
+        "marca": "MARISPAN",
+        "valor": 496857.74,
+        "pct": 1.26
+      },
+      {
+        "marca": "MEC-RUL",
+        "valor": 187649.0,
+        "pct": 0.47
+      },
+      {
+        "marca": "RODIMAQ",
+        "valor": 162000.0,
+        "pct": 0.41
+      },
+      {
+        "marca": "VENCE TUDO",
+        "valor": 105000.0,
+        "pct": 0.27
+      },
+      {
+        "marca": "IMPLEMENTOS JAN",
+        "valor": 100400.0,
+        "pct": 0.25
+      },
+      {
+        "marca": "MAQTRON",
+        "valor": 12800.0,
+        "pct": 0.03
+      }
+    ],
+    "por_mes": {
+      "2025-01": {
+        "KUHN": 341000.0,
+        "MEC-RUL": 25100.0,
+        "OUTROS": 180000.0,
+        "SAO JOSE": 4960.0
+      },
+      "2025-02": {
+        "KUHN": 1245500.0,
+        "SAO JOSE": 485214.99
+      },
+      "2025-03": {
+        "IMPLEMENTOS JAN": 77000.0,
+        "KUHN": 3451000.0,
+        "MEC-RUL": 14500.0,
+        "OUTROS": 180000.0,
+        "SAO JOSE": 183960.0
+      },
+      "2025-04": {
+        "KUHN": 1638000.0,
+        "MEC-RUL": 25800.0,
+        "SAO JOSE": 272714.81
+      },
+      "2025-05": {
+        "KUHN": 2163000.0,
+        "SAO JOSE": 72991.52,
+        "TATU": 218000.0
+      },
+      "2025-06": {
+        "KUHN": 3585000.0,
+        "MEC-RUL": 15000.0,
+        "MP AGRO": 1158000.0,
+        "OUTROS": 370900.0,
+        "PICCIN": 555000.0,
+        "SAO JOSE": 377500.0,
+        "TATU": 218000.0
+      },
+      "2025-07": {
+        "KUHN": 704000.0,
+        "SAO JOSE": 13932.86
+      },
+      "2025-08": {
+        "KUHN": 1130000.0,
+        "MARISPAN": 68247.35,
+        "SAO JOSE": 69901.52
+      },
+      "2025-09": {
+        "KUHN": 4542495.08,
+        "MARISPAN": 31547.35,
+        "OUTROS": 60000.0,
+        "SAO JOSE": 56661.92,
+        "TATU": 286000.0
+      },
+      "2025-10": {
+        "KUHN": 738235.23,
+        "MARISPAN": 405.0,
+        "MEC-RUL": 18700.0,
+        "MP AGRO": 2025483.0,
+        "PICCIN": 30500.0,
+        "SAO JOSE": 176097.48,
+        "TATU": 105000.0
+      },
+      "2025-11": {
+        "KUHN": 205600.0,
+        "MARISPAN": 179776.52,
+        "OUTROS": 45150.0,
+        "PICCIN": 52300.0,
+        "SAO JOSE": 5000.0,
+        "TATU": 170200.0
+      },
+      "2025-12": {
+        "BALDAN": 1700000.0,
+        "IMPLEMENTOS JAN": 23400.0,
+        "KUHN": 1881030.31,
+        "MARISPAN": 216881.52,
+        "MEC-RUL": 40100.0,
+        "MP AGRO": 4336449.0,
+        "OUTROS": 416050.0,
+        "PICCIN": 291800.0,
+        "SAO JOSE": 762353.68,
+        "TATU": 275200.0,
+        "VENCE TUDO": 105000.0
+      },
+      "2026-01": {
+        "KUHN": 95541.0,
+        "MAQTRON": 12800.0,
+        "SAO JOSE": 95497.01
+      },
+      "2026-02": {
+        "BALDAN": 1064000.0,
+        "MEC-RUL": 48449.0
+      },
+      "2026-03": {
+        "KUHN": 432122.5
+      },
+      "2026-04": {
+        "RODIMAQ": 162000.0,
+        "TATU": 51700.0
+      }
+    },
+    "por_empresa": {
+      "DCCOMERCIO": {
+        "IMPLEMENTOS JAN": 46800.0,
+        "KUHN": 765200.0,
+        "MAQTRON": 12800.0,
+        "MARISPAN": 182000.0,
+        "MEC-RUL": 100919.0,
+        "OUTROS": 741800.0,
+        "PICCIN": 479000.0,
+        "SAO JOSE": 1438041.36,
+        "TATU": 188000.0
+      },
+      "DCTRACTOR": {
+        "KUHN": 1591712.66,
+        "MARISPAN": 163400.0,
+        "SAO JOSE": 75207.42
+      },
+      "GLOBALMAC": {
+        "BALDAN": 2764000.0,
+        "IMPLEMENTOS JAN": 53600.0,
+        "KUHN": 19795611.46,
+        "MARISPAN": 151457.74,
+        "MEC-RUL": 86730.0,
+        "MP AGRO": 7519932.0,
+        "OUTROS": 510300.0,
+        "PICCIN": 450600.0,
+        "RODIMAQ": 162000.0,
+        "SAO JOSE": 1063537.01,
+        "TATU": 1136100.0,
+        "VENCE TUDO": 105000.0
+      }
+    }
+  }
+}

@@ -17,13 +17,35 @@ const path = require('node:path');
 const esbuild = require('esbuild');
 
 const ROOT = __dirname;
-const SOURCES = [
-  'components.jsx',
-  'pages-1.jsx',
-  'pages-2.jsx',
-  'pages-3.jsx',
-  'pages-4.jsx',
-];
+
+// Lê bi.config.js pra decidir quais .jsx de pages incluir.
+// Pages a fontes:
+//   pages-1.jsx → overview, indicators, receita, despesa
+//   pages-2.jsx → fluxo, tesouraria, comparativo, relatorio
+//   pages-3.jsx → faturamento_produto, curva_abc, marketing, valuation
+//   pages-4.jsx → hierarquia, detalhado, profunda_cliente, crm
+const PAGES_BY_FILE = {
+  'pages-1.jsx': ['overview', 'indicators', 'receita', 'receita_linha', 'despesa', 'indicadores_contabeis'],
+  'pages-2.jsx': ['fluxo', 'tesouraria', 'endividamento', 'comparativo', 'relatorio'],
+  'pages-3.jsx': ['faturamento_produto', 'curva_abc', 'marketing', 'valuation'],
+  'pages-4.jsx': ['hierarquia', 'detalhado', 'profunda_cliente', 'crm'],
+  'pages-extras-jce.jsx': ['estoque', 'ponto_equilibrio', 'rentabilidade', 'benchmarks'],
+};
+let activePages = ['overview', 'receita', 'despesa', 'fluxo', 'comparativo'];
+try {
+  const cfg = require(path.join(ROOT, 'bi.config.js'));
+  activePages = [...(cfg.pages.geral || []), ...(cfg.pages.outros || [])];
+  console.log(`  pages ativas: ${activePages.join(', ')}`);
+} catch (e) {
+  console.warn('  bi.config.js não encontrado, usando pages default');
+}
+// Inclui um arquivo de pages só se ao menos uma das páginas dele estiver ativa.
+const SOURCES = ['components.jsx'].concat(
+  Object.entries(PAGES_BY_FILE)
+    .filter(([file, ids]) => ids.some(id => activePages.includes(id)))
+    .map(([file]) => file)
+);
+console.log(`  bundling: ${SOURCES.join(', ')}`);
 
 (async () => {
   // Cada .jsx redeclara `const { useState } = React;` no topo (era pra Babel-
@@ -48,19 +70,26 @@ const SOURCES = [
     overview: '01 Visão geral',
     indicators: '02 Indicadores',
     receita: '03 Receita',
+    receita_linha: '03b Receita por Linha',
     despesa: '04 Despesa',
     fluxo: '05 Fluxo de caixa',
     tesouraria: '06 Tesouraria',
-    comparativo: '07 Comparativo',
-    relatorio: '08 Relatório IA',
-    faturamento_produto: '09 Faturamento por Produto',
-    curva_abc: '10 Curva ABC',
-    marketing: '11 Marketing ADS',
-    valuation: '12 Valuation',
-    hierarquia: '13 Hierarquia ADS',
-    detalhado: '14 Detalhado',
-    profunda_cliente: '15 Profunda Cliente',
-    crm: '16 CRM',
+    endividamento: '07 Endividamento Bancário',
+    comparativo: '08 Comparativo',
+    relatorio: '09 Relatório IA',
+    indicadores_contabeis: '10 Indicadores Contábeis (dado indisponível)',
+    faturamento_produto: '10 Faturamento por Produto',
+    curva_abc: '11 Curva ABC',
+    marketing: '12 Marketing ADS',
+    valuation: '13 Valuation',
+    hierarquia: '14 Hierarquia ADS',
+    detalhado: '15 Detalhado',
+    profunda_cliente: '16 Profunda Cliente',
+    crm: '17 CRM',
+    estoque: '18 Estoque & Capital de Giro',
+    ponto_equilibrio: '19 Pontos de Equilíbrio & Alavancagem',
+    rentabilidade: '20 Retorno & Rentabilidade',
+    benchmarks: '21 Benchmarks vs Cliente',
   };
   function App() {
     var p = useState('overview'); var page = p[0], setPage = p[1];
@@ -76,13 +105,24 @@ const SOURCES = [
     var drilldown = dd[0], setDrilldown = dd[1];
     // Year selector: padrao = ano corrente (window.REF_YEAR)
     var ys = useState(function () {
-      try { var y = parseInt(localStorage.getItem('bi.year'), 10); return y > 1900 ? y : (window.REF_YEAR || new Date().getFullYear()); } catch (e) { return window.REF_YEAR || new Date().getFullYear(); }
+      // Default = 0 (Todos os anos) — mostra R$ 120M consolidado em vez de só 5 meses
+      try {
+        var raw = localStorage.getItem('bi.year');
+        if (raw === null) return 0;
+        var y = parseInt(raw, 10);
+        return (y === 0 || y > 1900) ? y : 0;
+      } catch (e) { return 0; }
     });
     var year = ys[0], setYear = ys[1];
     var ms = useState(function () {
       try { var m = parseInt(localStorage.getItem('bi.month'), 10); return (m >= 0 && m <= 12) ? m : 0; } catch (e) { return 0; }
     });
     var month = ms[0], setMonth = ms[1];
+    // Filtro Empresa (cascade global). '0' = consolidado.
+    var es = useState(function () {
+      try { return localStorage.getItem('bi.empresa') || '0'; } catch (e) { return '0'; }
+    });
+    var empresa = es[0], setEmpresa = es[1];
 
     // BI export multi-tela: array de page-ids ou null. Quando setado, renderiza
     // todas as telas em sequencia + chama window.print() depois do layout pintar.
@@ -151,23 +191,33 @@ const SOURCES = [
       return function () { cancelled = true; };
     }, [printPages]);
 
+    // window.BIT é a "fonte global" usada por componentes que não recebem B via prop
+    // (OverviewBars, MonthlyBars title, etc) e por hooks internos que leem fmt/fmtK.
+    // PRECISA recompor em qualquer mudança de filtro — antes só escutava statusFilter
+    // e passava só 1 arg pro _makeBit (que tem signature de 5 args), deixando empresa/
+    // year/month/drilldown sempre defaults → barras ficavam com escala antiga.
     useEffect(function () {
       try { localStorage.setItem('bi.statusFilter', statusFilter); } catch (e) {}
       if (typeof window._makeBit === 'function') {
-        window.BIT = window._makeBit(statusFilter);
+        window.BIT = window._makeBit(statusFilter, empresa, year, month, drilldown);
       }
-      setDrilldown(null);
-    }, [statusFilter]);
+    }, [statusFilter, empresa, year, month, drilldown]);
 
+    // statusFilter/year/month/empresa devem limpar drilldown (mas não disparar nessa
+    // useEffect — pra evitar loop com a recomposição acima).
+    useEffect(function () { setDrilldown(null); }, [statusFilter]);
     useEffect(function () {
       try { localStorage.setItem('bi.year', String(year)); } catch (e) {}
       setDrilldown(null);
     }, [year]);
-
     useEffect(function () {
       try { localStorage.setItem('bi.month', String(month)); } catch (e) {}
       setDrilldown(null);
     }, [month]);
+    useEffect(function () {
+      try { localStorage.setItem('bi.empresa', String(empresa)); } catch (e) {}
+      setDrilldown(null);
+    }, [empresa]);
 
     var handleSetPage = function (newPage) {
       setPage(newPage);
@@ -175,24 +225,32 @@ const SOURCES = [
       setDrilldown(null);
     };
 
-    var PAGE_COMPS = {
-      overview: PageOverview,
-      indicators: PageIndicators,
-      receita: PageReceita,
-      despesa: PageDespesa,
-      fluxo: PageFluxo,
-      tesouraria: PageTesouraria,
-      comparativo: PageComparativo,
-      relatorio: PageRelatorio,
-      faturamento_produto: PageFaturamentoProduto,
-      curva_abc: PageCurvaABC,
-      marketing: PageMarketing,
-      valuation: PageValuation,
-      hierarquia: PageHierarquia,
-      detalhado: PageDetalhado,
-      profunda_cliente: PageProfundaCliente,
-      crm: PageCRM,
-    };
+    // PAGE_COMPS só inclui componentes que existem no bundle (build-jsx só
+    // empacota arquivos pages-X.jsx das pages ativas em bi.config.js).
+    var PAGE_COMPS = {};
+    if (typeof PageOverview            !== 'undefined') PAGE_COMPS.overview            = PageOverview;
+    if (typeof PageIndicators          !== 'undefined') PAGE_COMPS.indicators          = PageIndicators;
+    if (typeof PageReceita             !== 'undefined') PAGE_COMPS.receita             = PageReceita;
+    if (typeof PageReceitaLinha        !== 'undefined') PAGE_COMPS.receita_linha       = PageReceitaLinha;
+    if (typeof PageDespesa             !== 'undefined') PAGE_COMPS.despesa             = PageDespesa;
+    if (typeof PageFluxo               !== 'undefined') PAGE_COMPS.fluxo               = PageFluxo;
+    if (typeof PageTesouraria          !== 'undefined') PAGE_COMPS.tesouraria          = PageTesouraria;
+    if (typeof PageEndividamento       !== 'undefined') PAGE_COMPS.endividamento       = PageEndividamento;
+    if (typeof PageComparativo         !== 'undefined') PAGE_COMPS.comparativo         = PageComparativo;
+    if (typeof PageRelatorio           !== 'undefined') PAGE_COMPS.relatorio           = PageRelatorio;
+    if (typeof PageFaturamentoProduto  !== 'undefined') PAGE_COMPS.faturamento_produto = PageFaturamentoProduto;
+    if (typeof PageCurvaABC            !== 'undefined') PAGE_COMPS.curva_abc           = PageCurvaABC;
+    if (typeof PageMarketing           !== 'undefined') PAGE_COMPS.marketing           = PageMarketing;
+    if (typeof PageValuation           !== 'undefined') PAGE_COMPS.valuation           = PageValuation;
+    if (typeof PageHierarquia          !== 'undefined') PAGE_COMPS.hierarquia          = PageHierarquia;
+    if (typeof PageDetalhado           !== 'undefined') PAGE_COMPS.detalhado           = PageDetalhado;
+    if (typeof PageProfundaCliente     !== 'undefined') PAGE_COMPS.profunda_cliente    = PageProfundaCliente;
+    if (typeof PageCRM                 !== 'undefined') PAGE_COMPS.crm                 = PageCRM;
+    if (typeof PageIndicadoresContabeis !== 'undefined') PAGE_COMPS.indicadores_contabeis = PageIndicadoresContabeis;
+    if (typeof PageEstoque             !== 'undefined') PAGE_COMPS.estoque             = PageEstoque;
+    if (typeof PagePontoEquilibrio     !== 'undefined') PAGE_COMPS.ponto_equilibrio   = PagePontoEquilibrio;
+    if (typeof PageRentabilidade       !== 'undefined') PAGE_COMPS.rentabilidade      = PageRentabilidade;
+    if (typeof PageBenchmarks          !== 'undefined') PAGE_COMPS.benchmarks         = PageBenchmarks;
     var PageComp = PAGE_COMPS[page];
 
     var commonProps = {
@@ -204,6 +262,8 @@ const SOURCES = [
       setYear: setYear,
       month: month,
       setMonth: setMonth,
+      empresa: empresa,
+      setEmpresa: setEmpresa,
       drilldown: drilldown,
       setDrilldown: setDrilldown,
     };
@@ -246,6 +306,8 @@ const SOURCES = [
             setYear={setYear}
             month={month}
             setMonth={setMonth}
+            empresa={empresa}
+            setEmpresa={setEmpresa}
           />
           <PageComp {...commonProps} />
         </div>

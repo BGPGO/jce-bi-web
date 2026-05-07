@@ -5,11 +5,160 @@ const { useState, useMemo, useEffect } = React;
 // concatenado (build-jsx.cjs). Reutilizado aqui pra ajustar height/showLabels dos
 // TrendCharts em mobile.
 
-const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+// ====== OPEX_BUCKETS: agrupa sint_nome do plano de contas em 4 buckets ======
+// Source: data/bi_data.json -> top_despesa_por_empresa (sint_nome, valor, empresa)
+// Agregação consolidada em 16 meses (não tem quebra mensal por sint_nome).
+const OPEX_BUCKETS = [
+  {
+    key: "PESSOAL",
+    label: "Pessoal",
+    color: "#22d3ee",
+    sints: ["REMUNERACAO", "ENCARGOS SOCIAIS", "BENEFICIOS", "GASTOS COM PESSOAL"],
+  },
+  {
+    key: "MARKETING",
+    label: "Marketing & Vendas",
+    color: "#a78bfa",
+    sints: ["DESPESAS COM MARKETING", "DESPESAS GERAIS DE VENDAS"],
+  },
+  {
+    key: "ADMINISTRATIVO",
+    label: "Administrativo",
+    color: "#f59e0b",
+    sints: ["DESPESAS GERAIS ADMINISTRATIVAS", "IMPOSTOS E TAXAS DIVERSAS", "PROVISOES"],
+  },
+  {
+    key: "OUTRAS",
+    label: "Outras",
+    color: "#ef4444",
+    sints: [
+      "DESPESAS COM VIAGENS",
+      "DESPESAS FINANCEIRAS",
+      "(-)OUTRAS DESPESAS OPERACIONAIS",
+      "(+)OUTRAS RECEITAS OPERACIONAIS",
+    ],
+  },
+];
+const SINT_TO_BUCKET = (() => {
+  const m = {};
+  for (const b of OPEX_BUCKETS) for (const s of b.sints) m[s] = b.key;
+  return m;
+})();
+
+// Computa breakdown opex a partir de window.BI_DATA.top_despesa_por_empresa
+function computeOpexBreakdown(empresa) {
+  const td = (window.BI_DATA && window.BI_DATA.top_despesa_por_empresa) || [];
+  const filtered = (empresa && empresa !== "0")
+    ? td.filter(r => String(r.empresa) === String(empresa))
+    : td;
+  const buckets = {};
+  for (const b of OPEX_BUCKETS) buckets[b.key] = { ...b, total: 0, items: [] };
+  buckets.NAO_MAPEADO = { key: "NAO_MAPEADO", label: "Não classificado", color: "#6b7686", total: 0, items: [] };
+  for (const r of filtered) {
+    const key = SINT_TO_BUCKET[r.sint_nome] || "NAO_MAPEADO";
+    buckets[key].total += r.valor;
+    const exist = buckets[key].items.find(i => i.sint === r.sint_nome);
+    if (exist) exist.valor += r.valor;
+    else buckets[key].items.push({ sint: r.sint_nome, valor: r.valor });
+  }
+  // Ordena items por valor desc dentro de cada bucket
+  for (const k of Object.keys(buckets)) buckets[k].items.sort((a, b) => b.valor - a.valor);
+  const total = Object.values(buckets).reduce((s, b) => s + b.total, 0);
+  // Lista ordenada (4 buckets fixos + nao mapeado se houver)
+  const ordered = OPEX_BUCKETS.map(b => buckets[b.key]);
+  if (buckets.NAO_MAPEADO.total > 0) ordered.push(buckets.NAO_MAPEADO);
+  return { total, buckets: ordered };
+}
+
+// ====== OpexBreakdown: 4 cards (pessoal/mkt/admin/outras) com drill em sint_nome ======
+const OpexBreakdown = ({ empresa, fmt }) => {
+  const [expanded, setExpanded] = useState(null);
+  const { total, buckets } = useMemo(() => computeOpexBreakdown(empresa), [empresa]);
+  if (!total) {
+    return <div className="status-line" style={{ padding: 18 }}>Sem dados de Opex para os filtros selecionados.</div>;
+  }
+  const fmtMoney = fmt || (n => "R$ " + Math.round(n).toLocaleString("pt-BR"));
+  return (
+    <div>
+      <div className="status-line" style={{ marginBottom: 10, fontSize: 11 }}>
+        Total Opex (consolidado 16 meses, todas as empresas selecionadas): <b style={{ color: "var(--red)" }}>{fmtMoney(total)}</b>
+        {" · "}clique em um bucket para detalhar por sint_nome
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
+        {buckets.map(b => {
+          const pct = total > 0 ? (b.total / total) * 100 : 0;
+          const isOpen = expanded === b.key;
+          return (
+            <div
+              key={b.key}
+              className="indicator-card"
+              style={{
+                cursor: "pointer",
+                padding: 12,
+                borderColor: isOpen ? b.color : undefined,
+                boxShadow: isOpen ? `0 0 0 1px ${b.color}` : undefined,
+              }}
+              onClick={() => setExpanded(isOpen ? null : b.key)}
+            >
+              <div className="kpi-label" style={{ fontSize: 10, color: b.color, fontWeight: 700, letterSpacing: "0.08em" }}>
+                {b.label.toUpperCase()}
+              </div>
+              <div style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: 17, color: "var(--text)" }}>
+                {fmtMoney(b.total)}
+              </div>
+              <div style={{ fontSize: 11, color: "var(--mute)", marginTop: 2 }}>
+                {pct.toFixed(1).replace(".", ",")}% do Opex
+              </div>
+              <div className="m-bar" style={{ marginTop: 8 }}>
+                <div style={{ width: `${Math.min(100, pct)}%`, background: b.color }} />
+              </div>
+              <div style={{ fontSize: 10, color: "var(--fg-3)", marginTop: 6 }}>
+                {b.items.length} {b.items.length === 1 ? "categoria" : "categorias"} {isOpen ? "▾" : "▸"}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {expanded && (() => {
+        const b = buckets.find(x => x.key === expanded);
+        if (!b || b.items.length === 0) return null;
+        return (
+          <div className="card" style={{ marginTop: 10, background: "rgba(8,14,18,0.4)", padding: 12 }}>
+            <div className="card-title-row" style={{ marginBottom: 8 }}>
+              <h2 className="card-title" style={{ fontSize: 12, color: b.color }}>{b.label} · detalhamento</h2>
+              <span className="chip" style={{ fontSize: 10 }}>{b.items.length} sint_nome</span>
+            </div>
+            <table className="t" style={{ fontSize: 11 }}>
+              <thead>
+                <tr>
+                  <th>Conta sintética (sint_nome)</th>
+                  <th className="num">Valor</th>
+                  <th className="num">% bucket</th>
+                  <th className="num">% Opex</th>
+                </tr>
+              </thead>
+              <tbody>
+                {b.items.map(it => (
+                  <tr key={it.sint}>
+                    <td>{it.sint}</td>
+                    <td className="num red">{fmtMoney(it.valor)}</td>
+                    <td className="num">{b.total > 0 ? ((it.valor / b.total) * 100).toFixed(1).replace(".", ",") : "0,0"}%</td>
+                    <td className="num">{((it.valor / total) * 100).toFixed(1).replace(".", ",")}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      })()}
+    </div>
+  );
+};
+
+const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month, empresa }) => {
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, empresa), [statusFilter, drilldown, year, month, empresa]);
   const isMobile = useIsMobile();
   const [view, setView] = useState("horizontal");
-  const [range, setRange] = useState("12M");
   const months6 = B.MONTHS_FULL.slice(0, 6);
   const refYear = (B.META && B.META.ref_year) || new Date().getFullYear();
   const handleMonthHeader = (i) => {
@@ -21,12 +170,51 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
   const activeMonthIdx = (drilldown && drilldown.type === "mes")
     ? parseInt(drilldown.value.slice(5, 7), 10) - 1 : -1;
 
+  // ====== Saldo inicial vs atual (do Razão) ======
+  const SALDOS_INFO = useMemo(() => {
+    const S = (typeof window !== "undefined" && window.SALDOS) || null;
+    if (!S || !S.contas) return null;
+    let contas = S.contas;
+    if (empresa && empresa !== "0") contas = contas.filter(c => String(c.empresa) === String(empresa));
+    const totalAtual = contas.reduce((s, c) => s + (c.saldo_atual || 0), 0);
+    const totalAnterior = contas.reduce((s, c) => s + (c.saldo_anterior || 0), 0);
+    const variacao = totalAtual - totalAnterior;
+    const bancos = contas
+      .filter(c => c.saldo_atual !== 0)
+      .map(c => ({ nome: c.conta_nome, sint: c.sintetica_nome, saldoAtual: c.saldo_atual, empresa: c.empresa_label }))
+      .sort((a, b) => b.saldoAtual - a.saldoAtual);
+    return { totalAtual, totalAnterior, variacao, bancos, fetchedAt: S.fetched_at };
+  }, [empresa]);
+
+  // ====== Opex breakdown (dado consolidado 16m) ======
+  const OPEX_DATA = useMemo(() => computeOpexBreakdown(empresa), [empresa]);
+
+  // ====== Waterfall: saldo inicial → entradas → CMV → opex → desp fin → saldo final ======
+  const waterfallData = useMemo(() => {
+    const saldoInicial = (SALDOS_INFO && SALDOS_INFO.totalAnterior) || 0;
+    const receitas = B.RECEITA_LIQUIDA || B.TOTAL_RECEITA || 0;
+    const cmv = B.CMV || 0;
+    const opex = OPEX_DATA.total || 0;
+    const despFin = B.DESPESA_FIN || 0;
+    const recFin = B.RECEITA_FIN || 0;
+    const saldoFinal = saldoInicial + receitas + recFin - cmv - opex - despFin;
+    return [
+      { label: "Saldo inicial", value: saldoInicial, kind: "start" },
+      { label: "+ Receitas", value: receitas, kind: "in" },
+      { label: "+ Rec. Fin", value: recFin, kind: "in" },
+      { label: "− CMV", value: cmv, kind: "out" },
+      { label: "− Opex", value: opex, kind: "out" },
+      { label: "− Desp. Fin", value: despFin, kind: "out" },
+      { label: "Saldo projetado", value: saldoFinal, kind: "end" },
+    ];
+  }, [SALDOS_INFO, B, OPEX_DATA]);
+
   return (
     <div className="page">
       <div className="page-title">
         <div>
           <h1>Fluxo de Caixa</h1>
-          <div className="status-line">Análise horizontal/vertical e saldos por mês</div>
+          <div className="status-line">Caixa · Entradas · Opex (4 buckets) · Saídas · Saldo projetado</div>
         </div>
         <div className="actions">
         </div>
@@ -34,15 +222,50 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
 
       <DrilldownBadge drilldown={drilldown} onClear={() => setDrilldown(null)} />
 
+      {/* ====== BLOCO CAIXA: saldo inicial vs atual + variação ====== */}
+      {SALDOS_INFO && (
+        <div className="row row-3" style={{ marginBottom: 14 }}>
+          <div className="indicator-card">
+            <div className="kpi-label">Saldo inicial (anterior)</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: 20, color: "var(--cyan)" }}>
+              {B.fmt(SALDOS_INFO.totalAnterior)}
+            </div>
+            <div style={{ fontSize: 11, color: "var(--mute)", marginTop: 4 }}>
+              Saldo no início do período (saldo_anterior do Razão)
+            </div>
+          </div>
+          <div className="indicator-card">
+            <div className="kpi-label">Saldo atual</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: 20, color: SALDOS_INFO.totalAtual >= 0 ? "var(--green)" : "var(--red)" }}>
+              {B.fmt(SALDOS_INFO.totalAtual)}
+            </div>
+            <div style={{ fontSize: 11, color: "var(--mute)", marginTop: 4 }}>
+              {SALDOS_INFO.fetchedAt ? "Atualizado " + (SALDOS_INFO.fetchedAt || "").slice(0, 10).split("-").reverse().join("/") : "—"}
+              {" · "}{SALDOS_INFO.bancos.length} contas com saldo
+            </div>
+          </div>
+          <div className={"indicator-card" + (SALDOS_INFO.variacao < 0 ? " red" : "")}>
+            <div className="kpi-label">Variação no período</div>
+            <div style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: 20, color: SALDOS_INFO.variacao >= 0 ? "var(--green)" : "var(--red)" }}>
+              {SALDOS_INFO.variacao >= 0 ? "+" : ""}{B.fmt(SALDOS_INFO.variacao)}
+            </div>
+            <div style={{ fontSize: 11, color: "var(--mute)", marginTop: 4 }}>
+              {SALDOS_INFO.totalAnterior > 0 ? `${((SALDOS_INFO.variacao / SALDOS_INFO.totalAnterior) * 100).toFixed(1).replace(".", ",")}% vs inicial` : "—"}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ====== BLOCO ENTRADAS / SAÍDAS / NETO ====== */}
       <div className="metric-strip">
         <div className="metric">
-          <div className="m-label">Receita total</div>
+          <div className="m-label">Entradas (Receita Líquida)</div>
           <div className="m-value">{B.fmt(B.TOTAL_RECEITA)}</div>
           <div className="m-pct">100%</div>
           <div className="m-bar"><div style={{ width: `100%` }} /></div>
         </div>
         <div className="metric">
-          <div className="m-label">Despesa total</div>
+          <div className="m-label">Saídas (CMV + Opex)</div>
           <div className="m-value">{B.fmt(B.TOTAL_DESPESA)}</div>
           <div className="m-pct">{B.TOTAL_RECEITA > 0 ? `${((B.TOTAL_DESPESA / B.TOTAL_RECEITA) * 100).toFixed(2).replace(".",",")}%` : "—"}</div>
           <div className="m-bar red"><div style={{ width: `${B.TOTAL_RECEITA > 0 ? Math.min(100, (B.TOTAL_DESPESA / B.TOTAL_RECEITA) * 100) : 0}%` }} /></div>
@@ -61,7 +284,29 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
         </div>
       </div>
 
-      <div className="row" style={{ gridTemplateColumns: "minmax(220px, 1fr) minmax(0, 4fr)" }}>
+      {/* ====== BLOCO WATERFALL: caixa inicial → entradas → saídas → caixa final ====== */}
+      <div className="card" style={{ marginTop: 14 }}>
+        <div className="card-title-row">
+          <h2 className="card-title">Caixa: inicial → entradas → saídas → projetado</h2>
+          <span className="chip">Regime competência (DRE)</span>
+        </div>
+        <div className="status-line" style={{ marginBottom: 8, fontSize: 11 }}>
+          Saldo inicial do Razão + Receita Líquida + Receita Fin − CMV − Opex (4 buckets) − Despesa Financeira = saldo projetado.
+          Não é o saldo bancário em tempo real (esse está no bloco Caixa acima).
+        </div>
+        <Waterfall data={waterfallData} height={isMobile ? 240 : 300} formatFn={B.fmtK} />
+      </div>
+
+      {/* ====== BLOCO OPEX BREAKDOWN: 4 buckets + drill em sint_nome ====== */}
+      <div className="card" style={{ marginTop: 14 }}>
+        <div className="card-title-row">
+          <h2 className="card-title">Despesas Operacionais (Opex) por bucket</h2>
+          <span className="chip red">Total: {B.fmt(OPEX_DATA.total)}</span>
+        </div>
+        <OpexBreakdown empresa={empresa} fmt={B.fmt} />
+      </div>
+
+      <div className="row" style={{ gridTemplateColumns: "minmax(220px, 1fr) minmax(0, 4fr)", marginTop: 14 }}>
         <div className="card">
           <h2 className="card-title">Valor líquido por mês</h2>
           <DivergingBars values={B.VALOR_LIQ_SERIES} labels={B.MONTHS.map(m => m.charAt(0).toUpperCase() + m.slice(1))} />
@@ -248,14 +493,20 @@ const PageFluxo = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown
   );
 };
 
-const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, drilldown, setDrilldown, year, month, empresa }) => {
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, empresa), [statusFilter, drilldown, year, month, empresa]);
   const isMobile = useIsMobile();
   const SEG = window.BIT_SEGMENTS || {};
+  // CR/CP REAIS (rotina 7093) — fonte primária pra "a receber" e "a pagar"
+  const crCp = useMemo(() => (window.getCrCp ? window.getCrCp(empresa) : null), [empresa]);
   const recebido = (SEG.realizado && SEG.realizado.KPIS && SEG.realizado.KPIS.TOTAL_RECEITA) || 0;
-  const aReceber = (SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_RECEITA) || 0;
+  const aReceber = crCp ? crCp.totais.a_receber_total
+                        : ((SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_RECEITA) || 0);
   const pago = (SEG.realizado && SEG.realizado.KPIS && SEG.realizado.KPIS.TOTAL_DESPESA) || 0;
-  const aPagar = (SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_DESPESA) || 0;
+  const aPagar = crCp ? crCp.totais.a_pagar_total
+                      : ((SEG.a_pagar_receber && SEG.a_pagar_receber.KPIS && SEG.a_pagar_receber.KPIS.TOTAL_DESPESA) || 0);
+  const aReceberVencido = crCp ? crCp.totais.a_receber_vencido : 0;
+  const aPagarVencido = crCp ? crCp.totais.a_pagar_vencido : 0;
   const recDiaSeg = (SEG.realizado && SEG.realizado.RECEITA_DIA) || B.RECEITA_DIA;
   const pagoDiaSeg = (SEG.realizado && SEG.realizado.DESPESA_DIA) || B.DESPESA_DIA;
   const aReceberDiaSeg = (SEG.a_pagar_receber && SEG.a_pagar_receber.RECEITA_DIA) || B.RECEITA_DIA;
@@ -263,7 +514,29 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
 
   const saldosMes = (SEG.tudo && SEG.tudo.SALDOS_MES) || B.SALDOS_MES;
   // Cumulativo (running balance): cada mês = saldo atual após acumular movimentos
-  const SALDOS_REAIS = (window.BIT_EXTRAS && window.BIT_EXTRAS.saldos) || null;
+  // JCE: lê window.SALDOS (saldos_razao.json) — adapta pro shape SALDOS_REAIS do template.
+  // Template espera: { last: { total, data }, bancos: [{ nome, saldoAtual, ... }], saldoBaseInicial }
+  const SALDOS_REAIS = useMemo(() => {
+    const S = (typeof window !== 'undefined' && window.SALDOS) || null;
+    if (!S || !S.contas || S.contas.length === 0) return null;
+    let contas = S.contas;
+    if (empresa && empresa !== '0') contas = contas.filter(c => String(c.empresa) === String(empresa));
+    const totalAtual = contas.reduce((s, c) => s + (c.saldo_atual || 0), 0);
+    const totalAnterior = contas.reduce((s, c) => s + (c.saldo_anterior || 0), 0);
+    return {
+      last: {
+        total: totalAtual,
+        data: S.fetched_at || new Date().toISOString(),
+      },
+      saldoBaseInicial: totalAnterior,
+      bancos: contas.filter(c => c.saldo_atual !== 0).map(c => ({
+        nome: c.conta_nome,
+        empresa: c.empresa_label,
+        saldoAtual: c.saldo_atual || 0,
+        sintetica: c.sintetica_nome || '',
+      })),
+    };
+  }, [empresa]);
   // Saldo inicial do ano: usa o saldo real mais antigo da planilha (se disponível) menos os movimentos até o mês desse saldo.
   // Sem isso, parte de 0 e mostra apenas o efeito dos movimentos.
   const saldoInicial = (function() {
@@ -413,33 +686,79 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
         </div>
       </div>
 
-      {/* Saldo real (planilha de saldos) + projeção futura */}
+      {/* Saldo real (do Razão) + projeção futura via CR/CP (rotina 7093) */}
       {(function() {
-        const SALDOS = (window.BIT_EXTRAS && window.BIT_EXTRAS.saldos) || null;
-        if (!SALDOS || !SALDOS.last) return null;
-        const last = SALDOS.last;
-        const contas = Object.entries(last.contas).sort((a, b) => b[1] - a[1]);
-        // Projeção: saldo último + ∑(a receber) − ∑(a pagar) acumulado por mês.
-        // Usa BIT_SEGMENTS.a_pagar_receber pra somar ainda-pendente por mês futuro.
-        const seg = (window.BIT_SEGMENTS || {}).a_pagar_receber || { MONTH_DATA: [] };
-        const lastDate = new Date(last.data);
-        const lastMonthIdx = lastDate.getMonth();
-        const proj = [];
-        let saldo = last.total;
-        for (let i = lastMonthIdx + 1; i < 12; i++) {
-          const md = seg.MONTH_DATA[i] || { receita: 0, despesa: 0 };
-          saldo += (md.receita || 0) - (md.despesa || 0);
-          proj.push({ m: B.MONTHS_FULL[i] || `M${i+1}`, saldo });
+        if (!SALDOS_REAIS || !SALDOS_REAIS.last) return null;
+        const last = SALDOS_REAIS.last;
+        const contas = (SALDOS_REAIS.bancos || []).map(b => [b.nome, b.saldoAtual]).sort((a, b) => b[1] - a[1]);
+
+        // Projeção: caixa atual + (a receber - a pagar) distribuído por bucket de aging.
+        // Usa data/cr_cp.json (rotina 7093) pra ter números reais. Buckets:
+        // - "agora" (vencidos):    impacto imediato (já era pra ter caído)
+        // - "30 dias" (a vencer 0-30 + vencido 0-30 que ainda pode entrar)
+        // - "60 dias" (vencido 31-60)
+        // - "90+ dias" (vencido 61+)
+        // Modelo simplificado: assume vencidos + a_vencer entram nos próximos N meses
+        // proporcionalmente ao bucket.
+        let projItems = [];
+        let usingCrCp = false;
+        if (crCp && crCp.aging_receber && crCp.aging_pagar) {
+          usingCrCp = true;
+          const agR = crCp.aging_receber;
+          const agP = crCp.aging_pagar;
+          // Buckets monetários (sem N_*)
+          const recPorMes = [
+            agR['0-30'] || 0,                         // mês +1: títulos vencidos 0-30 (cobrança imediata)
+            (agR['a_vencer'] || 0) * 0.5 + (agR['31-60'] || 0),    // mês +2: a_vencer parcial + vencidos 31-60
+            (agR['a_vencer'] || 0) * 0.3 + (agR['61-90'] || 0),    // mês +3: a_vencer parcial + vencidos 61-90
+            (agR['a_vencer'] || 0) * 0.2 + (agR['90+'] || 0) * 0.5,// mês +4: resto a_vencer + 50% vencidos 90+
+            (agR['90+'] || 0) * 0.5,                  // mês +5: 50% restante vencidos 90+
+            0,
+          ];
+          const pagPorMes = [
+            agP['0-30'] || 0,
+            (agP['a_vencer'] || 0) * 0.5 + (agP['31-60'] || 0),
+            (agP['a_vencer'] || 0) * 0.3 + (agP['61-90'] || 0),
+            (agP['a_vencer'] || 0) * 0.2 + (agP['90+'] || 0) * 0.5,
+            (agP['90+'] || 0) * 0.5,
+            0,
+          ];
+          let saldo = last.total;
+          for (let i = 0; i < 6; i++) {
+            saldo += recPorMes[i] - pagPorMes[i];
+            projItems.push({
+              m: `+${i+1} mês${i === 0 ? '' : 'es'}`,
+              saldo,
+              entrada: recPorMes[i],
+              saida: pagPorMes[i],
+            });
+          }
+        } else {
+          // Fallback: usa BIT_SEGMENTS.a_pagar_receber.MONTH_DATA (modelo antigo)
+          const seg = (window.BIT_SEGMENTS || {}).a_pagar_receber || { MONTH_DATA: [] };
+          const lastDate = new Date(last.data);
+          const lastMonthIdx = lastDate.getMonth();
+          let saldo = last.total;
+          for (let i = lastMonthIdx + 1; i < 12; i++) {
+            const md = seg.MONTH_DATA[i] || { receita: 0, despesa: 0 };
+            saldo += (md.receita || 0) - (md.despesa || 0);
+            projItems.push({ m: B.MONTHS_FULL[i] || `M${i+1}`, saldo, entrada: md.receita || 0, saida: md.despesa || 0 });
+          }
         }
-        const series = [last.total, ...proj.map(p => p.saldo)];
-        const labels = ['Hoje', ...proj.map(p => p.m.slice(0,3))];
+        const series = [last.total, ...projItems.map(p => p.saldo)];
+        const labels = ['Hoje', ...projItems.map(p => p.m.slice(0, 6))];
         const minProj = Math.min(...series);
         const maxProj = Math.max(...series);
         return (
           <div className="card" style={{ marginBottom: 14 }}>
             <div className="card-title-row">
-              <h2 className="card-title">Saldo atual e projeção</h2>
-              <span className="chip cyan">Última atualização: {last.data.split('-').reverse().join('/')}</span>
+              <h2 className="card-title">Saldo atual e projeção (caixa + recebíveis − pagáveis)</h2>
+              <div style={{ display: 'flex', gap: 6 }}>
+                <span className="chip cyan">Saldo: {last.data.split('-').reverse().join('/')}</span>
+                {usingCrCp && (
+                  <span className="chip green">CR/CP: rotina 7093 · {crCp.totais.n_titulos_receber + crCp.totais.n_titulos_pagar} títulos</span>
+                )}
+              </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12, marginBottom: 18 }}>
               {contas.map(([nome, v]) => (
@@ -452,15 +771,58 @@ const PageTesouraria = ({ filters, setFilters, onOpenFilters, statusFilter, dril
                 <div className="kpi-label" style={{ fontSize: 10 }}>Total</div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 18, color: 'var(--cyan)' }}>{B.fmt(last.total)}</div>
               </div>
+              {usingCrCp && (
+                <>
+                  <div className="indicator-card" style={{ padding: 12, background: 'rgba(34,197,94,0.08)' }}>
+                    <div className="kpi-label" style={{ fontSize: 10 }}>(+) A receber total</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 16, color: 'var(--green)' }}>{B.fmt(aReceber)}</div>
+                    {aReceberVencido > 0 && (<div style={{ fontSize: 10, color: 'var(--red)' }}>{B.fmt(aReceberVencido)} vencido</div>)}
+                  </div>
+                  <div className="indicator-card" style={{ padding: 12, background: 'rgba(239,68,68,0.08)' }}>
+                    <div className="kpi-label" style={{ fontSize: 10 }}>(−) A pagar total</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 16, color: 'var(--red)' }}>{B.fmt(aPagar)}</div>
+                    {aPagarVencido > 0 && (<div style={{ fontSize: 10, color: 'var(--red)' }}>{B.fmt(aPagarVencido)} vencido</div>)}
+                  </div>
+                  <div className="indicator-card" style={{ padding: 12, background: (aReceber - aPagar) >= 0 ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)' }}>
+                    <div className="kpi-label" style={{ fontSize: 10 }}>Saldo líquido projetado</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: 18, color: (last.total + aReceber - aPagar) >= 0 ? 'var(--green)' : 'var(--red)' }}>{B.fmt(last.total + aReceber - aPagar)}</div>
+                  </div>
+                </>
+              )}
             </div>
             <div style={{ marginTop: 8 }}>
-              <div className="kpi-label" style={{ marginBottom: 6 }}>Projeção mensal (saldo + a receber − a pagar)</div>
+              <div className="kpi-label" style={{ marginBottom: 6 }}>
+                Projeção 6 meses · saldo atual + recebíveis (por bucket de aging) − pagáveis (por bucket de aging)
+              </div>
               <TrendChart values={series} labels={labels} color="var(--cyan)" height={isMobile ? 160 : 200} showPoints={true} showLabels={!isMobile} gradientId="ts-proj" />
-              <div style={{ display: 'flex', gap: 24, marginTop: 8, fontSize: 11, color: 'var(--mute)' }}>
+              <div style={{ display: 'flex', gap: 24, marginTop: 8, fontSize: 11, color: 'var(--mute)', flexWrap: 'wrap' }}>
                 <span>Mínima projetada: <b style={{ color: minProj >= 0 ? 'var(--green)' : 'var(--red)' }}>{B.fmt(minProj)}</b></span>
                 <span>Máxima projetada: <b style={{ color: 'var(--green)' }}>{B.fmt(maxProj)}</b></span>
-                <span>Final do ano: <b style={{ color: series[series.length-1] >= 0 ? 'var(--green)' : 'var(--red)' }}>{B.fmt(series[series.length-1])}</b></span>
+                <span>Final do horizonte: <b style={{ color: series[series.length-1] >= 0 ? 'var(--green)' : 'var(--red)' }}>{B.fmt(series[series.length-1])}</b></span>
               </div>
+              {usingCrCp && (
+                <div style={{ marginTop: 12, fontSize: 11, color: 'var(--mute)' }}>
+                  <b>Fluxo mensal estimado:</b>
+                  <div className="t-scroll" style={{ marginTop: 4 }}>
+                    <table className="t" style={{ fontSize: 11 }}>
+                      <thead>
+                        <tr><th>Mês</th><th className="num">A receber</th><th className="num">A pagar</th><th className="num">Líquido</th><th className="num">Saldo acum.</th></tr>
+                      </thead>
+                      <tbody>
+                        {projItems.map((p, i) => (
+                          <tr key={i}>
+                            <td>{p.m}</td>
+                            <td className="num green">{B.fmt(p.entrada)}</td>
+                            <td className="num red">{B.fmt(p.saida)}</td>
+                            <td className="num" style={{ color: (p.entrada - p.saida) >= 0 ? 'var(--green)' : 'var(--red)' }}>{B.fmt(p.entrada - p.saida)}</td>
+                            <td className="num" style={{ color: p.saldo >= 0 ? 'var(--cyan)' : 'var(--red)', fontWeight: 600 }}>{B.fmt(p.saldo)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         );
@@ -635,8 +997,351 @@ const SaldoProjetadoChart = ({ pontos, saldoInicial }) => {
   );
 };
 
-const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month }) => {
-  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month), [statusFilter, drilldown, year, month]);
+// =============================================================================
+// PageEndividamento — Endividamento bancario por instituicao (Itau, Sicredi,
+// Bradesco, BB...) por empresa. Cliente pediu na secao 2.5 do Ajustes BI Global:
+//   - Separar emprestimo banco vs fornecedor (estavam em CP misturados)
+//   - Drill por banco
+//   - Saldo, movimentacao do periodo, ultima data
+//
+// Fonte: data/endividamento.json gerado por parse-endividamento.py a partir
+// das sintéticas 2.01.01 / 2.01.02 / 2.01.05 / 2.03.01 do Razao Solution.
+// =============================================================================
+const PageEndividamento = ({ empresa, year, month }) => {
+  const ENDIV = (typeof window !== 'undefined' && window.ENDIVIDAMENTO) || null;
+  const fmt = (window.BIT && window.BIT.fmt) || (n => 'R$ ' + Number(n || 0).toFixed(2));
+  const fmtK = (window.BIT && window.BIT.fmtK) || (n => 'R$ ' + Number(n || 0).toFixed(0));
+  const isMobile = useIsMobile();
+  const [bancoSelected, setBancoSelected] = useState(null);
+
+  // Sem dado: mostra mensagem de fallback
+  if (!ENDIV || !ENDIV.por_banco_consolidado || ENDIV.por_banco_consolidado.length === 0) {
+    return (
+      <div className="page">
+        <div className="page-title">
+          <div>
+            <h1>Endividamento Bancário</h1>
+            <div className="status-line">Saldo de empréstimos por instituição financeira</div>
+          </div>
+        </div>
+        <div className="card" style={{ marginTop: 16, border: "1px solid rgba(251, 191, 36, 0.3)", background: "rgba(251, 191, 36, 0.05)" }}>
+          <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+            <div style={{ fontSize: 24, lineHeight: 1 }}>⚠</div>
+            <div>
+              <div style={{ fontWeight: 700, marginBottom: 4 }}>Dado indisponível</div>
+              <div style={{ fontSize: 13, color: "var(--fg-2)", lineHeight: 1.5 }}>
+                Não foi possível extrair o saldo de empréstimos bancários do Razão atual.
+                Para habilitar esta tela, rode <code>python parse-endividamento.py</code> com o
+                Razão completo extraído (sintéticas 2.01.01 EMPRESTIMOS, 2.01.02 BENS FINANCIADOS,
+                2.01.05 DUPLICATAS DESCONTADAS, 2.03.01 OBRIGAÇÕES A LONGO PRAZO).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Filtra por empresa (consolidado se '0')
+  const isConsolidado = !empresa || empresa === '0';
+  const bancos = (function() {
+    if (isConsolidado) {
+      return ENDIV.por_banco_consolidado.map(b => ({
+        banco: b.banco,
+        saldo_atual: b.saldo_atual,
+        n_contratos: b.n_contratos,
+        n_empresas: b.n_empresas,
+        movimentacoes_periodo: b.movimentacoes_periodo,
+        por_empresa: b.por_empresa || {},
+      })).filter(b => b.saldo_atual > 0).sort((a, b) => b.saldo_atual - a.saldo_atual);
+    }
+    const e = ENDIV.por_empresa[empresa];
+    if (!e) return [];
+    return (e.instituicoes || []).filter(b => b.saldo_atual > 0);
+  })();
+
+  const totalDivida = bancos.reduce((s, b) => s + (b.saldo_atual || 0), 0);
+  const totalCP = isConsolidado
+    ? Object.values(ENDIV.por_empresa).reduce((s, e) => s + (e.total_cp || 0), 0)
+    : (ENDIV.por_empresa[empresa] || {}).total_cp || 0;
+  const totalLP = isConsolidado
+    ? Object.values(ENDIV.por_empresa).reduce((s, e) => s + (e.total_lp || 0), 0)
+    : (ENDIV.por_empresa[empresa] || {}).total_lp || 0;
+  const totalIntercompany = isConsolidado
+    ? Object.values(ENDIV.por_empresa).reduce((s, e) => s + (e.total_intercompany || 0), 0)
+    : (ENDIV.por_empresa[empresa] || {}).total_intercompany || 0;
+  const nContratos = isConsolidado
+    ? Object.values(ENDIV.por_empresa).reduce((s, e) => s + (e.n_contratos || 0), 0)
+    : (ENDIV.por_empresa[empresa] || {}).n_contratos || 0;
+
+  // Cores por banco (parecido com paleta do BI)
+  const BANK_COLORS = {
+    'BRADESCO':         '#ef4444',
+    'ITAU':             '#f59e0b',
+    'BANCO DO BRASIL':  '#facc15',
+    'SICREDI':          '#22c55e',
+    'SICOOB':           '#16a34a',
+    'SANTANDER':        '#dc2626',
+    'CAIXA ECONOMICA':  '#2563eb',
+    'BNDES':            '#8b5cf6',
+    'FINAME':           '#a78bfa',
+    'BANCO GM':         '#06b6d4',
+    'DLL':              '#0891b2',
+    'SECURITIZADORA':   '#64748b',
+    'NBC BANK':         '#475569',
+    'AMERICA TRADING':  '#94a3b8',
+    'TERCEIROS':        '#6b7280',
+    'OUTROS':           '#9ca3af',
+    'NAO IDENTIFICADO': '#71717a',
+  };
+  const colorFor = (b) => BANK_COLORS[b] || '#6b7280';
+
+  // Donut segments
+  const donutSegs = bancos.slice(0, 10).map(b => ({
+    name: b.banco,
+    value: b.saldo_atual,
+    color: colorFor(b.banco),
+  }));
+
+  const empresasList = (window.EMPRESAS || []);
+
+  // Detalhe do banco selecionado: lista de contratos
+  const contratosSelected = (function() {
+    if (!bancoSelected) return [];
+    if (isConsolidado) {
+      const all = [];
+      Object.values(ENDIV.por_empresa).forEach(e => {
+        (e.contratos || []).forEach(c => {
+          if (c.banco === bancoSelected) all.push({ ...c, empresa: e.empresa });
+        });
+      });
+      return all.sort((a, b) => b.saldo_atual - a.saldo_atual);
+    } else {
+      const e = ENDIV.por_empresa[empresa];
+      if (!e) return [];
+      return (e.contratos || []).filter(c => c.banco === bancoSelected);
+    }
+  })();
+
+  // Cronograma: movimentacao mensal (filtra banco selecionado se houver)
+  const cronograma = (function() {
+    const movs = ENDIV.movimentacao_mensal || [];
+    let filtered = movs;
+    if (bancoSelected) filtered = movs.filter(m => m.banco === bancoSelected);
+    const map = new Map();
+    for (const m of filtered) {
+      if (!map.has(m.ano_mes)) map.set(m.ano_mes, 0);
+      map.set(m.ano_mes, map.get(m.ano_mes) + (m.movimentacao || 0));
+    }
+    return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([mes, val]) => ({ mes, val }));
+  })();
+  const cronoMax = Math.max(...cronograma.map(c => c.val), 0);
+
+  return (
+    <div className="page">
+      <div className="page-title">
+        <div>
+          <h1>Endividamento Bancário</h1>
+          <div className="status-line">
+            <span className="live-dot" /> Saldo atual de empréstimos por instituição
+            {' · '}
+            {isConsolidado ? 'consolidado 3 empresas' : (ENDIV.por_empresa[empresa] || {}).empresa || ''}
+          </div>
+        </div>
+      </div>
+
+      <div className="row row-4">
+        <KpiTile label="Dívida bancária total" value={(totalDivida / 1e6).toFixed(2).replace('.', ',')} unit="M" tone="red" nonMonetary />
+        <KpiTile label="Curto Prazo (CP)"      value={(totalCP / 1e6).toFixed(2).replace('.', ',')}     unit="M" tone="amber" nonMonetary />
+        <KpiTile label="Longo Prazo (LP)"      value={(totalLP / 1e6).toFixed(2).replace('.', ',')}     unit="M" tone="cyan" nonMonetary />
+        <KpiTile label="Mútuo intercompany"    value={(totalIntercompany / 1e6).toFixed(2).replace('.', ',')} unit="M" tone="default" nonMonetary />
+      </div>
+
+      {bancoSelected && (
+        <div className="card" style={{ marginBottom: 12, padding: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(34, 211, 238, 0.05)', border: '1px solid rgba(34, 211, 238, 0.2)' }}>
+          <div>
+            <span style={{ fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--fg-2)' }}>filtro ativo: </span>
+            <b style={{ color: colorFor(bancoSelected) }}>{bancoSelected}</b>
+            <span style={{ marginLeft: 12, fontSize: 12, color: 'var(--fg-2)' }}>({contratosSelected.length} contratos)</span>
+          </div>
+          <button onClick={() => setBancoSelected(null)} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: 'var(--fg)', padding: '4px 10px', borderRadius: 6, cursor: 'pointer', fontSize: 12 }}>
+            Limpar
+          </button>
+        </div>
+      )}
+
+      <div className="row row-1-1">
+        <div className="card">
+          <div className="card-title-row">
+            <h2 className="card-title">Distribuição por banco</h2>
+            <span className="chip">{bancos.length} instituições · {nContratos} contratos</span>
+          </div>
+          <div style={{ display: "flex", gap: 24, alignItems: "center", flexWrap: "wrap", marginTop: 8 }}>
+            <Donut segments={donutSegs} size={isMobile ? 160 : 200} thickness={26} />
+            <div style={{ flex: 1, minWidth: 220 }}>
+              {bancos.slice(0, 10).map((b, i) => {
+                const pct = totalDivida > 0 ? (b.saldo_atual / totalDivida) * 100 : 0;
+                const isSel = bancoSelected === b.banco;
+                return (
+                  <div
+                    key={b.banco}
+                    onClick={() => setBancoSelected(isSel ? null : b.banco)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 8, padding: '6px 4px',
+                      cursor: 'pointer', opacity: bancoSelected && !isSel ? 0.5 : 1,
+                      borderRadius: 4, background: isSel ? 'rgba(255,255,255,0.04)' : 'transparent',
+                    }}
+                  >
+                    <div style={{ width: 10, height: 10, borderRadius: 2, background: colorFor(b.banco) }} />
+                    <div style={{ flex: 1, fontSize: 13 }}>{b.banco}</div>
+                    <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--fg-2)' }}>{pct.toFixed(1)}%</div>
+                    <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, minWidth: 100, textAlign: 'right' }}>{fmt(b.saldo_atual)}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-title-row">
+            <h2 className="card-title">Banco × Empresa{!isConsolidado ? ' (filtro empresa ativo)' : ''}</h2>
+          </div>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                  <th style={{ textAlign: 'left', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Banco</th>
+                  {isConsolidado && empresasList.map(e => (
+                    <th key={e.codigo} style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>{e.label}</th>
+                  ))}
+                  <th style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Total</th>
+                  <th style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Mov. Período</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bancos.map(b => (
+                  <tr
+                    key={b.banco}
+                    onClick={() => setBancoSelected(bancoSelected === b.banco ? null : b.banco)}
+                    style={{ cursor: 'pointer', borderBottom: '1px solid rgba(255,255,255,0.05)', background: bancoSelected === b.banco ? 'rgba(34,211,238,0.06)' : 'transparent' }}
+                  >
+                    <td style={{ padding: '6px 8px' }}>
+                      <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: colorFor(b.banco), marginRight: 6, verticalAlign: 'middle' }} />
+                      {b.banco}
+                    </td>
+                    {isConsolidado && empresasList.map(e => (
+                      <td key={e.codigo} style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', color: ((b.por_empresa || {})[e.codigo] || 0) > 0 ? 'var(--fg)' : 'var(--mute)' }}>
+                        {((b.por_empresa || {})[e.codigo] || 0) > 0 ? fmtK(b.por_empresa[e.codigo]) : '—'}
+                      </td>
+                    ))}
+                    <td style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 600 }}>{fmt(b.saldo_atual)}</td>
+                    <td style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--fg-2)', fontSize: 11 }}>{fmtK(b.movimentacoes_periodo || 0)}</td>
+                  </tr>
+                ))}
+                <tr style={{ borderTop: '2px solid rgba(255,255,255,0.15)', fontWeight: 700 }}>
+                  <td style={{ padding: '8px' }}>TOTAL</td>
+                  {isConsolidado && empresasList.map(e => {
+                    const total = bancos.reduce((s, b) => s + ((b.por_empresa || {})[e.codigo] || 0), 0);
+                    return <td key={e.codigo} style={{ textAlign: 'right', padding: '8px', fontFamily: 'JetBrains Mono, monospace' }}>{fmtK(total)}</td>;
+                  })}
+                  <td style={{ textAlign: 'right', padding: '8px', fontFamily: 'JetBrains Mono, monospace' }}>{fmt(totalDivida)}</td>
+                  <td style={{ textAlign: 'right', padding: '8px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--fg-2)' }}>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {cronograma.length > 0 && (
+        <div className="card">
+          <div className="card-title-row">
+            <h2 className="card-title">
+              Movimentação mensal{bancoSelected ? ` — ${bancoSelected}` : ' (todos os bancos)'}
+            </h2>
+            <span className="chip" style={{ fontSize: 10 }}>
+              soma de débitos+créditos no Razão · {cronograma.length} meses
+            </span>
+          </div>
+          <div style={{ display: 'flex', gap: 4, alignItems: 'flex-end', height: 140, marginTop: 12, padding: '0 4px', overflowX: 'auto' }}>
+            {cronograma.map(c => {
+              const h = cronoMax > 0 ? (c.val / cronoMax) * 100 : 0;
+              return (
+                <div key={c.mes} style={{ flex: '1 1 30px', minWidth: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                  <div style={{ fontSize: 9, color: 'var(--fg-2)', whiteSpace: 'nowrap' }}>{fmtK(c.val)}</div>
+                  <div style={{
+                    width: '100%',
+                    height: `${h}%`,
+                    minHeight: 2,
+                    background: bancoSelected ? colorFor(bancoSelected) : 'var(--cyan)',
+                    borderRadius: '2px 2px 0 0',
+                  }} title={`${c.mes}: ${fmt(c.val)}`} />
+                  <div style={{ fontSize: 9, color: 'var(--fg-2)', whiteSpace: 'nowrap' }}>{c.mes.slice(2)}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {bancoSelected && contratosSelected.length > 0 && (
+        <div className="card">
+          <div className="card-title-row">
+            <h2 className="card-title">Contratos / contas — {bancoSelected}</h2>
+            <span className="chip">{contratosSelected.length}</span>
+          </div>
+          <div style={{ overflowX: 'auto', marginTop: 8 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                  <th style={{ textAlign: 'left', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Conta / Contrato</th>
+                  {isConsolidado && (<th style={{ textAlign: 'left', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Empresa</th>)}
+                  <th style={{ textAlign: 'center', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Prazo</th>
+                  <th style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Saldo Atual</th>
+                  <th style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Mov. Período</th>
+                  <th style={{ textAlign: 'right', padding: '6px 8px', color: 'var(--fg-2)', fontWeight: 500 }}>Última data</th>
+                </tr>
+              </thead>
+              <tbody>
+                {contratosSelected.map((c, i) => (
+                  <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                    <td style={{ padding: '6px 8px', maxWidth: 320, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={c.conta_nome}>
+                      {c.conta_nome}
+                    </td>
+                    {isConsolidado && (<td style={{ padding: '6px 8px', color: 'var(--fg-2)' }}>{c.empresa}</td>)}
+                    <td style={{ textAlign: 'center', padding: '6px 8px' }}>
+                      <span className="chip" style={{ fontSize: 10, padding: '2px 8px', background: c.prazo === 'LP' ? 'rgba(34,211,238,0.12)' : 'rgba(245,158,11,0.12)', color: c.prazo === 'LP' ? 'var(--cyan)' : '#fcd34d' }}>
+                        {c.prazo}
+                      </span>
+                    </td>
+                    <td style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 600 }}>{fmt(c.saldo_atual)}</td>
+                    <td style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--fg-2)', fontSize: 11 }}>{fmtK(c.movimentacao_periodo)}</td>
+                    <td style={{ textAlign: 'right', padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--fg-2)', fontSize: 11 }}>{c.ultima_data || '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      <div className="card" style={{ marginTop: 16, padding: 12, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ fontSize: 11, color: 'var(--fg-2)', lineHeight: 1.5 }}>
+          <b>Fonte:</b> {ENDIV.fonte}
+          <br />
+          <b>Atualizado:</b> {ENDIV.fetched_at ? new Date(ENDIV.fetched_at).toLocaleString('pt-BR') : '—'}
+          {' · '}
+          Saldo de cada conta = último saldo do Razão (em CP, último d_c). Mútuo intercompany
+          (DC TRACTOR / GLOBALMAC / DC MAQUINAS) está separado do total bancário.
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month, empresa }) => {
+  const B = useMemo(() => window.getBit(statusFilter, drilldown, year, month, empresa), [statusFilter, drilldown, year, month, empresa]);
   const refYear = window.REF_YEAR || new Date().getFullYear();
   const fmt = (B && B.fmt) || (n => `R$ ${n.toFixed(2)}`);
   const fmtPct = (B && B.fmtPct) || (n => `${n.toFixed(1)}%`);
@@ -872,7 +1577,7 @@ const PageComparativo = ({ statusFilter, drilldown, setDrilldown, year, month })
 // ===== PageRelatorio =====
 // Carrega report.json (gerado offline por generate-report.cjs) e renderiza
 // um relatorio executivo imprimivel (Ctrl+P -> Save as PDF).
-const PageRelatorio = ({ year, statusFilter }) => {
+const PageRelatorio = ({ year, statusFilter, empresa }) => {
   const refYear = window.REF_YEAR || new Date().getFullYear();
   // Hooks de dados — DEVEM ficar antes de qualquer early return pra não violar
   // a ordem dos hooks. Os useMemo dependem de periodYear/periodMonth declarados abaixo
@@ -893,12 +1598,12 @@ const PageRelatorio = ({ year, statusFilter }) => {
   // Cards reativos ao período (year + month) — antes usavam window.BIT global YTD
   // Mantidos no topo (regra dos hooks) — não chamar dentro de early returns
   const B = useMemo(
-    () => window.getBit('realizado', null, periodYear, periodMonth),
-    [periodYear, periodMonth]
+    () => window.getBit('realizado', null, periodYear, periodMonth, empresa),
+    [periodYear, periodMonth, empresa]
   );
   const Bprev = useMemo(
-    () => window.getBit('a_pagar_receber', null, periodYear, periodMonth),
-    [periodYear, periodMonth]
+    () => window.getBit('a_pagar_receber', null, periodYear, periodMonth, empresa),
+    [periodYear, periodMonth, empresa]
   );
 
   // resolve o nome do arquivo conforme periodo
@@ -1049,7 +1754,7 @@ const PageRelatorio = ({ year, statusFilter }) => {
         <div className="card">
           <h2 className="card-title">Gerar agora</h2>
           <p style={{ color: "var(--fg-2)", lineHeight: 1.6, marginTop: 12 }}>
-            Abra o terminal na pasta <code style={{ background: "var(--surface-2)", padding: "2px 6px", borderRadius: 4 }}><cliente>-bi-web</code> e rode:
+            Abra o terminal na pasta <code style={{ background: "var(--surface-2)", padding: "2px 6px", borderRadius: 4 }}>{'<cliente>-bi-web'}</code> e rode:
           </p>
           <pre style={{ background: "var(--surface-2)", padding: 12, borderRadius: 8, marginTop: 12, fontSize: 13, color: "var(--cyan)" }}>
             {cmd}
@@ -1224,4 +1929,4 @@ node generate-report.cjs --force
   );
 };
 
-Object.assign(window, { PageFluxo, PageTesouraria, PageComparativo, PageRelatorio });
+Object.assign(window, { PageFluxo, PageTesouraria, PageEndividamento, PageComparativo, PageRelatorio });

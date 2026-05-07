@@ -1,0 +1,1690 @@
+{
+  "GLOBALMAC": {
+    "moeda": "BRL",
+    "periodo": "JAN-FEV 2026",
+    "disponivel": 769944.32,
+    "clientes": 8138135.05,
+    "cartoes_cheques": -46810.92,
+    "outros_creditos_cp": 11825945.21,
+    "estoques": 9838535.65,
+    "despesas_antecipadas": 14579.58,
+    "ativo_circulante": 30540328.89,
+    "realizavel_lp": 0.0,
+    "investimentos": 103907.32,
+    "imobilizado_bruto": 3951182.42,
+    "depreciacao_acumulada": -2530053.89,
+    "imobilizado_liquido": 1421128.53,
+    "intangivel": 19331.7,
+    "ativo_nao_circulante": 1544367.55,
+    "ativo_total": 32084696.44,
+    "emprestimos_financiamentos_pc": 6054530.6,
+    "fornecedores": 13635501.3,
+    "adiantamento_clientes": 861758.16,
+    "duplicatas_descontadas": 1659221.83,
+    "obrigacoes_trabalhistas": 117824.16,
+    "obrigacoes_fiscais": 27795.79,
+    "outras_obrigacoes_pc": 0.0,
+    "parcelamentos_pc": 964.16,
+    "provisoes_pc": 31041.43,
+    "passivo_circulante": 22388637.43,
+    "emprestimos_financiamentos_pnc": 4168984.21,
+    "passivo_nao_circulante": 4168984.21,
+    "capital_social": 2100000.0,
+    "reservas_lucros": 3445660.61,
+    "resultados_acumulados": -28064.39,
+    "lucro_periodo": 9704.73,
+    "patrimonio_liquido": 5527300.95,
+    "passivo_pl_total": 32084922.59,
+    "receita_bruta": 3603730.22,
+    "deducoes_receita": 1234413.06,
+    "receita_liquida": 2369317.16,
+    "cmv": 1507520.14,
+    "lucro_bruto": 861797.02,
+    "despesas_operacionais": 852092.29,
+    "resultado_financeiro": 0.0,
+    "lucro_liquido_periodo": 9704.73,
+    "_check_diff_ativo_vs_passivo": -226.15,
+    "grupos": {
+      "1.01.01.01": {
+        "name": "CAIXA",
+        "saldo_d_signed": 12700.92,
+        "n_contas": 10
+      },
+      "1.01.01.02": {
+        "name": "BANCOS",
+        "saldo_d_signed": 100390.83,
+        "n_contas": 28
+      },
+      "1.01.01.04": {
+        "name": "APLICAÇÕES FINANCEIRAS DE LIQUIDEZ IMEDIATA",
+        "saldo_d_signed": 656852.57,
+        "n_contas": 31
+      },
+      "1.01.02.01": {
+        "name": "DUPLICATAS A RECEBER",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.02.01.01": {
+        "name": "CLIENTES",
+        "saldo_d_signed": 8138135.05,
+        "n_contas": 6697
+      },
+      "1.01.02.01.02": {
+        "name": "(-) ESTIMATIVA DE PERDA C/CRED. DE LIQ. DUVIDOSA- EPCLD",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.02.02": {
+        "name": "CHEQUES A RECEBER",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.02.03": {
+        "name": "CARTÕES DE CRÉDITOS A RECEBER",
+        "saldo_d_signed": -46810.92,
+        "n_contas": 2
+      },
+      "1.01.03.01": {
+        "name": "ADIANTAMENTOS",
+        "saldo_d_signed": 2116405.05,
+        "n_contas": 10
+      },
+      "1.01.03.02": {
+        "name": "CRÉDITOS DE PESSOAS LIGADAS (PF/PJ)",
+        "saldo_d_signed": 2333675.52,
+        "n_contas": 16
+      },
+      "1.01.03.03": {
+        "name": "DEPOSITOS JUDICIAL",
+        "saldo_d_signed": 1189764.28,
+        "n_contas": 1
+      },
+      "1.01.03.04": {
+        "name": "DEVEDORES A RECEBER",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.03.30": {
+        "name": "IMPOSTOS A RECUPERAR",
+        "saldo_d_signed": 6182296.02,
+        "n_contas": 26
+      },
+      "1.01.06.01": {
+        "name": "ESTOQUE ANTERIOR",
+        "saldo_d_signed": 0.0,
+        "n_contas": 6
+      },
+      "1.01.06.02.01": {
+        "name": "TRATORES NOVOS",
+        "saldo_d_signed": 1170640.77,
+        "n_contas": 10
+      },
+      "1.01.06.02.02": {
+        "name": "TRATORES USADOS",
+        "saldo_d_signed": 321883.52,
+        "n_contas": 4
+      },
+      "1.01.06.02.03": {
+        "name": "PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 25136.52,
+        "n_contas": 1
+      },
+      "1.01.06.02.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 10601.77,
+        "n_contas": 1
+      },
+      "1.01.06.03.01": {
+        "name": "IMPLEMENTOS NOVOS",
+        "saldo_d_signed": 2471101.07,
+        "n_contas": 58
+      },
+      "1.01.06.03.02": {
+        "name": "IMPLEMENTOS USADOS",
+        "saldo_d_signed": 43500.0,
+        "n_contas": 1
+      },
+      "1.01.06.03.03": {
+        "name": "MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.06.04.01": {
+        "name": "PEÇAS ORIGINAIS DE TRATORES",
+        "saldo_d_signed": 1273829.59,
+        "n_contas": 10
+      },
+      "1.01.06.04.02": {
+        "name": "PEÇAS ORIGINAIS DE IMPLEMENTOS",
+        "saldo_d_signed": 961191.4,
+        "n_contas": 44
+      },
+      "1.01.06.04.03": {
+        "name": "PEÇAS ORIGINAIS DE  MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.04": {
+        "name": "PEÇAS ORIGINAIS DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.05": {
+        "name": "PEÇAS ORIGINAIS DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.06": {
+        "name": "PEÇAS ORIGINAIS JACTO",
+        "saldo_d_signed": 338.73,
+        "n_contas": 3
+      },
+      "1.01.06.05.01": {
+        "name": "PEÇAS PARALELAS DE  TRATORES",
+        "saldo_d_signed": 145813.76,
+        "n_contas": 4
+      },
+      "1.01.06.05.02": {
+        "name": "PEÇAS PARALELAS DE IMPLEMENTOS",
+        "saldo_d_signed": 252528.63,
+        "n_contas": 19
+      },
+      "1.01.06.05.04": {
+        "name": "PEÇAS PARALELAS DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.05.05": {
+        "name": "PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.06.01": {
+        "name": "OLEOS, GRAXAS E ADITIVOS E LUBRIFICANTES",
+        "saldo_d_signed": 131051.26,
+        "n_contas": 11
+      },
+      "1.01.06.06.02": {
+        "name": "PNEUS E CAMARAS",
+        "saldo_d_signed": 129317.63,
+        "n_contas": 5
+      },
+      "1.01.06.06.03": {
+        "name": "OUTROS PRODUTOS",
+        "saldo_d_signed": 34307.56,
+        "n_contas": 2
+      },
+      "1.01.06.07.01": {
+        "name": "TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.06.07.02": {
+        "name": "IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.06.07.03": {
+        "name": "ESTOQUES  COM  OUTROS MATERIAIS",
+        "saldo_d_signed": 17548.97,
+        "n_contas": 2
+      },
+      "1.01.08.01": {
+        "name": "ESTOQUE DE TERCEIROS EM PODER DA EMPRESA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.08.02": {
+        "name": "ESTOQUE DE DEMONSTRAÇÃO MERC.PRÓPRIA",
+        "saldo_d_signed": 2437827.87,
+        "n_contas": 4
+      },
+      "1.01.08.03": {
+        "name": "BENS REMETIDOS PARA CONSERTO",
+        "saldo_d_signed": 411916.6,
+        "n_contas": 1
+      },
+      "1.01.08.04": {
+        "name": "ESTOQUES - IMPORTAÇÕES EM ANDAMENTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.05": {
+        "name": "BENS REMETIDOS VASILHAME OU SACARIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.06": {
+        "name": "(-) MERCADORIA DE ENTREGA FUTURA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.07": {
+        "name": " MERCADORIA DE ENTREGA FUTURA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.04.01": {
+        "name": "DESPESAS ANTECIPADAS",
+        "saldo_d_signed": 14579.58,
+        "n_contas": 3
+      },
+      "1.05.01.01": {
+        "name": "CRÉDITOS COM PESSOAS LIGADAS (FISICA E JURIDICA)",
+        "saldo_d_signed": 0.0,
+        "n_contas": 4
+      },
+      "1.05.03.01": {
+        "name": "INVESTIMENTOS",
+        "saldo_d_signed": 103907.32,
+        "n_contas": 7
+      },
+      "1.05.03.02": {
+        "name": "BENS E DIREITOS EM USO",
+        "saldo_d_signed": 3116723.5,
+        "n_contas": 11
+      },
+      "1.05.03.07": {
+        "name": "CONSORCIOS",
+        "saldo_d_signed": 834458.92,
+        "n_contas": 1
+      },
+      "1.05.03.08": {
+        "name": "BENS RESERVADOS PARA COMODADO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.05.03.10": {
+        "name": "DEPRECIACOES, AMORTIZACOES E EXAUSTAO ACUMULADA",
+        "saldo_d_signed": -2530053.89,
+        "n_contas": 10
+      },
+      "1.05.05.11": {
+        "name": "BENS INTANGÍVEL",
+        "saldo_d_signed": 19331.7,
+        "n_contas": 1
+      },
+      "1.80.01": {
+        "name": "CONTAS TEMPORARIAS",
+        "saldo_d_signed": 3804.34,
+        "n_contas": 11
+      },
+      "2.01.01": {
+        "name": "EMPRESTIMOS E FINANCIAMENTOS",
+        "saldo_d_signed": -6054530.6,
+        "n_contas": 90
+      },
+      "2.01.02": {
+        "name": "BENS FINANCIADOS- CRÉDITO BANCÁRIO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "2.01.03.01": {
+        "name": "FORNECEDORES",
+        "saldo_d_signed": -13635501.3,
+        "n_contas": 3714
+      },
+      "2.01.04": {
+        "name": "ADIANTAMENTO DE CLIENTES",
+        "saldo_d_signed": -861758.16,
+        "n_contas": 6
+      },
+      "2.01.05": {
+        "name": "DUPLICATAS DESCONTADAS",
+        "saldo_d_signed": -1659221.83,
+        "n_contas": 2
+      },
+      "2.01.10": {
+        "name": "OBRIGACOES TRABALHISTAS E SOCIAIS",
+        "saldo_d_signed": -117824.16,
+        "n_contas": 10
+      },
+      "2.01.15": {
+        "name": "OBRIGACOES FISCAIS/TRIBUTARIAS",
+        "saldo_d_signed": -27795.79,
+        "n_contas": 25
+      },
+      "2.01.20": {
+        "name": "OUTRAS OBRIGACOES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 17
+      },
+      "2.01.45": {
+        "name": "PARCELAMENTOS DE OBRIGACOES SOCIAIS/FISCAIS/TRIBUTARIA",
+        "saldo_d_signed": -964.16,
+        "n_contas": 5
+      },
+      "2.01.70": {
+        "name": "PROVISOES",
+        "saldo_d_signed": -31041.43,
+        "n_contas": 4
+      },
+      "2.03.01": {
+        "name": "OBRIGACOES A LONGO PRAZO",
+        "saldo_d_signed": -4168984.21,
+        "n_contas": 43
+      },
+      "2.03.02": {
+        "name": "OUTRAS OBRIGACOES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "2.05.05": {
+        "name": "CONTAS DE COMPENSAÇÃO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "2.07.01.01": {
+        "name": "CAPITAL SOCIAL REALIZADO",
+        "saldo_d_signed": -2100000.0,
+        "n_contas": 1
+      },
+      "2.07.03.10": {
+        "name": "RESERVAS DE LUCROS",
+        "saldo_d_signed": -3445660.61,
+        "n_contas": 4
+      },
+      "2.07.05.01": {
+        "name": "RESULTADOS ACUMULADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 4
+      },
+      "2.07.05.02": {
+        "name": "AJUSTE EXERCÍCIOS ANTERIORES",
+        "saldo_d_signed": 28064.39,
+        "n_contas": 1
+      },
+      "3.01.03.01.01": {
+        "name": "VENDA TRATORES NOVOS",
+        "saldo_d_signed": -1883818.82,
+        "n_contas": 9
+      },
+      "3.01.03.01.02": {
+        "name": "VENDA TRATORES USADOS",
+        "saldo_d_signed": -168000.0,
+        "n_contas": 3
+      },
+      "3.01.03.01.03": {
+        "name": "VENDA PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.01.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.02.01": {
+        "name": "IMPLEMENTOS NOVOS",
+        "saldo_d_signed": -1243268.01,
+        "n_contas": 55
+      },
+      "3.01.03.02.02": {
+        "name": "IMPLEMENTOS USADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.02.03": {
+        "name": "VENDAS MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.01.03.03.01": {
+        "name": "VENDA PEÇAS ORIGINAIS TRATORES",
+        "saldo_d_signed": -112222.19,
+        "n_contas": 11
+      },
+      "3.01.03.03.02": {
+        "name": "VENDA PEÇAS ORIGINAIS  IMPLEMENTOS",
+        "saldo_d_signed": -73178.47,
+        "n_contas": 40
+      },
+      "3.01.03.03.03": {
+        "name": "VENDA PEÇAS ORIGINAIS  MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.04": {
+        "name": "VENDA PEÇAS ORIGINAIS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.05": {
+        "name": "VENDA PEÇAS ORIGINAIS DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.06": {
+        "name": "VENDAS  PEÇAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.01.03.04.01": {
+        "name": "VENDA PEÇAS PARALELAS TRATORES",
+        "saldo_d_signed": -7855.2,
+        "n_contas": 4
+      },
+      "3.01.03.04.02": {
+        "name": "VENDA PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": -12331.93,
+        "n_contas": 17
+      },
+      "3.01.03.04.04": {
+        "name": "VENDA PEÇAS PARALELAS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.04.05": {
+        "name": "VENDA PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.05.01": {
+        "name": "OLEOS E GRAXAS",
+        "saldo_d_signed": -46416.95,
+        "n_contas": 11
+      },
+      "3.01.03.05.02": {
+        "name": "PNEUS E CAMARAS",
+        "saldo_d_signed": -11700.0,
+        "n_contas": 5
+      },
+      "3.01.03.05.03": {
+        "name": "PRODUTOS BUFFALO",
+        "saldo_d_signed": -3413.45,
+        "n_contas": 2
+      },
+      "3.01.03.06.02": {
+        "name": "IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.06.03": {
+        "name": "VENDAS COM OUTROS MATERIAIS",
+        "saldo_d_signed": -1.79,
+        "n_contas": 2
+      },
+      "3.01.03.07": {
+        "name": "(-)IMPOSTOS FATURADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.01.04.01": {
+        "name": "MAO DE OBRA TRATORES CLIENTES",
+        "saldo_d_signed": -29195.39,
+        "n_contas": 3
+      },
+      "3.01.04.02": {
+        "name": "MÃO DE OBRA IMPLEMENTOS CLIENTES",
+        "saldo_d_signed": -2798.4,
+        "n_contas": 1
+      },
+      "3.01.04.03": {
+        "name": "MÃO DE OBRA TRATORES DE GARANTIA",
+        "saldo_d_signed": -1476.0,
+        "n_contas": 2
+      },
+      "3.01.04.04": {
+        "name": "MÃO DE OBRA IMPLEMENTOS GARANTIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.04.06": {
+        "name": "MÃO DE OBRA IMPLEMENTOS INTERNOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.04.09": {
+        "name": "SERVIÇOS DE TERCEIROS",
+        "saldo_d_signed": -8053.62,
+        "n_contas": 2
+      },
+      "3.02.01": {
+        "name": "DEVOLUCOES DE VENDAS DE PRODUTOS",
+        "saldo_d_signed": 851470.3,
+        "n_contas": 1
+      },
+      "3.02.02": {
+        "name": "IMPOSTOS INCIDENTES SOBRE VENDAS/SERVICOS",
+        "saldo_d_signed": 382942.76,
+        "n_contas": 14
+      },
+      "3.03.01": {
+        "name": "CUSTOS DOS PRODUTOS VENDIDOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.02.01": {
+        "name": "CUSTOS DOS TRATORES NOVOS",
+        "saldo_d_signed": 1569195.8,
+        "n_contas": 10
+      },
+      "3.03.02.02": {
+        "name": "TRATORES USADOS",
+        "saldo_d_signed": 145000.0,
+        "n_contas": 4
+      },
+      "3.03.02.03": {
+        "name": "CUSTO PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.02.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.03.01": {
+        "name": "CUSTOS IMPLEMENTOS NOVOS",
+        "saldo_d_signed": 152063.29,
+        "n_contas": 57
+      },
+      "3.03.03.02": {
+        "name": "CUSTOS IMPLEMENTOS USADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.03.03": {
+        "name": "CUSTOS MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.04.01": {
+        "name": "CUSTOS PEÇAS ORIGINAIS TRATORES",
+        "saldo_d_signed": 48734.97,
+        "n_contas": 10
+      },
+      "3.03.04.02": {
+        "name": "CUSTOS PEÇAS ORIGINAIS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": 43151.83,
+        "n_contas": 41
+      },
+      "3.03.04.03": {
+        "name": "CUSTOS PEÇAS ORIGINAIS MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.04": {
+        "name": "CUSTOS PEÇAS ORIGINAIS  DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.05": {
+        "name": "CUSTOS PEÇAS ORIGINAIS  DE  VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.06": {
+        "name": "CUSTOS PEÇAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.05.01": {
+        "name": "CUSTOS PEÇAS PARALELAS TRATORES",
+        "saldo_d_signed": 3104.14,
+        "n_contas": 4
+      },
+      "3.03.05.02": {
+        "name": "CUSTOS PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": 5144.48,
+        "n_contas": 17
+      },
+      "3.03.05.04": {
+        "name": "CUSTOS PEÇAS PARALELAS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.05.05": {
+        "name": "CUSTOS PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.06.01": {
+        "name": "CUSTO OLEOS E GRAXAS",
+        "saldo_d_signed": 28695.98,
+        "n_contas": 12
+      },
+      "3.03.06.02": {
+        "name": "CUSTO PNEUS E CAMARAS",
+        "saldo_d_signed": 8685.55,
+        "n_contas": 5
+      },
+      "3.03.06.03": {
+        "name": "MERCADORIAS DE TERCEIROS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.06.04": {
+        "name": "PRODUTOS BUFFALO",
+        "saldo_d_signed": 1829.04,
+        "n_contas": 2
+      },
+      "3.03.07.03": {
+        "name": "CUSTO MÃO DE OBRA TRATORES GARANTIA",
+        "saldo_d_signed": -273503.67,
+        "n_contas": 3
+      },
+      "3.03.07.04": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS GARANTIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.07.05": {
+        "name": "CUSTO MÃO DE OBRA TRATORES INTERNO",
+        "saldo_d_signed": 7014.8,
+        "n_contas": 3
+      },
+      "3.03.07.06": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS INTERNOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.07.07": {
+        "name": "CUSTO MÃO DE OBRA TRATORES DE TERCEIROS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.07.08": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS TERCEIROS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.07.09": {
+        "name": "CUSTO SERVIÇOS TERCEIROS",
+        "saldo_d_signed": 550.0,
+        "n_contas": 2
+      },
+      "3.03.08.01": {
+        "name": "CUSTOS TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.08.02": {
+        "name": "CUSTOS IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.08.03": {
+        "name": "CUSTO COM OUTROS MATERIAIS",
+        "saldo_d_signed": 60.61,
+        "n_contas": 3
+      },
+      "3.03.10": {
+        "name": "DEVOLUÇÃO DE COMPRAS",
+        "saldo_d_signed": -43579.74,
+        "n_contas": 1
+      },
+      "3.03.11": {
+        "name": "AJUSTE DE ESTOQUE",
+        "saldo_d_signed": -193408.69,
+        "n_contas": 2
+      },
+      "3.03.12": {
+        "name": "FRETE S/COMPRAS",
+        "saldo_d_signed": 4781.75,
+        "n_contas": 1
+      },
+      "3.03.13": {
+        "name": "CUSTOS COM IMPORTAÇÃO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.14": {
+        "name": "CUSTOS COM TRANSP.RODOVIARIO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.15": {
+        "name": "CUSTOS E SERVIÇOS DE EXPORTAÇÃO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.04.01.01": {
+        "name": "GASTOS COM PESSOAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 6
+      },
+      "3.04.01.02": {
+        "name": "ENCARGOS SOCIAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.03": {
+        "name": "BENEFICIOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.04": {
+        "name": "PROVISOES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.05": {
+        "name": "DESPESAS GERAIS DE VENDAS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 16
+      },
+      "3.04.02.01.01": {
+        "name": "REMUNERACAO",
+        "saldo_d_signed": 162133.21,
+        "n_contas": 21
+      },
+      "3.04.02.01.02": {
+        "name": "ENCARGOS SOCIAIS",
+        "saldo_d_signed": 45282.77,
+        "n_contas": 2
+      },
+      "3.04.02.01.03": {
+        "name": "BENEFICIOS",
+        "saldo_d_signed": 13530.41,
+        "n_contas": 4
+      },
+      "3.04.02.01.04": {
+        "name": "PROVISOES",
+        "saldo_d_signed": 2910.35,
+        "n_contas": 4
+      },
+      "3.04.02.02": {
+        "name": "DESPESAS COM VIAGENS",
+        "saldo_d_signed": 45759.39,
+        "n_contas": 11
+      },
+      "3.04.02.03": {
+        "name": "DESPESAS GERAIS ADMINISTRATIVAS",
+        "saldo_d_signed": 337104.89,
+        "n_contas": 63
+      },
+      "3.04.05.01": {
+        "name": "RECEITAS FINANCEIRAS",
+        "saldo_d_signed": -43216.25,
+        "n_contas": 4
+      },
+      "3.04.05.02": {
+        "name": "DESPESAS FINANCEIRAS",
+        "saldo_d_signed": 280926.81,
+        "n_contas": 15
+      },
+      "3.04.06.01": {
+        "name": "IMPOSTOS E TAXAS DIVERSAS",
+        "saldo_d_signed": 13241.85,
+        "n_contas": 7
+      },
+      "3.04.07": {
+        "name": "(+)OUTRAS RECEITAS OPERACIONAIS",
+        "saldo_d_signed": -6394.37,
+        "n_contas": 8
+      },
+      "3.04.08": {
+        "name": "(-)OUTRAS DESPESAS OPERACIONAIS",
+        "saldo_d_signed": 1077.95,
+        "n_contas": 10
+      },
+      "3.06.01": {
+        "name": "RECEITAS NAO OPERACIONAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.06.02": {
+        "name": "DESPESAS NAO OPERACIONAIS",
+        "saldo_d_signed": -264.72,
+        "n_contas": 3
+      },
+      "3.09.01": {
+        "name": "PROVISAO PARA IRPJ E CSLL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.20.01": {
+        "name": "AJUSTES PLANO DE CONTAS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 9
+      }
+    },
+    "_n_contas": 11619
+  },
+  "DC_TRACTOR": {
+    "moeda": "BRL",
+    "periodo": "JAN-FEV 2026",
+    "disponivel": 8418.78,
+    "clientes": 2361633.78,
+    "cartoes_cheques": 63401.68,
+    "outros_creditos_cp": 4549867.13,
+    "estoques": 3189917.99,
+    "despesas_antecipadas": 13270.39,
+    "ativo_circulante": 10186509.75,
+    "realizavel_lp": 0.0,
+    "investimentos": 0.0,
+    "imobilizado_bruto": 2105141.6,
+    "depreciacao_acumulada": -723309.89,
+    "imobilizado_liquido": 1381831.71,
+    "intangivel": 0.0,
+    "ativo_nao_circulante": 1381831.71,
+    "ativo_total": 11568341.46,
+    "emprestimos_financiamentos_pc": 2985685.8,
+    "fornecedores": 6359665.68,
+    "adiantamento_clientes": 31413.2,
+    "duplicatas_descontadas": 0.0,
+    "obrigacoes_trabalhistas": 72648.97,
+    "obrigacoes_fiscais": 48674.04,
+    "outras_obrigacoes_pc": 4675.0,
+    "parcelamentos_pc": 0.0,
+    "provisoes_pc": 20149.22,
+    "passivo_circulante": 9522911.91,
+    "emprestimos_financiamentos_pnc": 725091.99,
+    "passivo_nao_circulante": 725091.99,
+    "capital_social": 100000.0,
+    "reservas_lucros": 1125365.42,
+    "resultados_acumulados": 80657.25,
+    "lucro_periodo": 14314.89,
+    "patrimonio_liquido": 1320337.56,
+    "passivo_pl_total": 11568341.46,
+    "receita_bruta": 2426686.37,
+    "deducoes_receita": 436078.75,
+    "receita_liquida": 1990607.62,
+    "cmv": 1446930.04,
+    "lucro_bruto": 543677.58,
+    "despesas_operacionais": 529362.69,
+    "resultado_financeiro": 0.0,
+    "lucro_liquido_periodo": 14314.89,
+    "_check_diff_ativo_vs_passivo": 0.0,
+    "grupos": {
+      "1.01.01.01": {
+        "name": "CAIXA",
+        "saldo_d_signed": 5330.66,
+        "n_contas": 10
+      },
+      "1.01.01.02": {
+        "name": "BANCOS",
+        "saldo_d_signed": 3088.12,
+        "n_contas": 28
+      },
+      "1.01.01.04": {
+        "name": "APLICAÇÕES FINANCEIRAS DE LIQUIDEZ IMEDIATA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 31
+      },
+      "1.01.02.01": {
+        "name": "DUPLICATAS A RECEBER",
+        "saldo_d_signed": 1720.0,
+        "n_contas": 3
+      },
+      "1.01.02.01.01": {
+        "name": "CLIENTES",
+        "saldo_d_signed": 2333544.87,
+        "n_contas": 6697
+      },
+      "1.01.02.01.02": {
+        "name": "(-) ESTIMATIVA DE PERDA C/CRED. DE LIQ. DUVIDOSA- EPCLD",
+        "saldo_d_signed": 26368.91,
+        "n_contas": 1
+      },
+      "1.01.02.02": {
+        "name": "CHEQUES A RECEBER",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.02.03": {
+        "name": "CARTÕES DE CRÉDITOS A RECEBER",
+        "saldo_d_signed": 63401.68,
+        "n_contas": 2
+      },
+      "1.01.03.01": {
+        "name": "ADIANTAMENTOS",
+        "saldo_d_signed": 543079.63,
+        "n_contas": 10
+      },
+      "1.01.03.02": {
+        "name": "CRÉDITOS DE PESSOAS LIGADAS (PF/PJ)",
+        "saldo_d_signed": 661163.43,
+        "n_contas": 16
+      },
+      "1.01.03.03": {
+        "name": "DEPOSITOS JUDICIAL",
+        "saldo_d_signed": 273718.03,
+        "n_contas": 1
+      },
+      "1.01.03.04": {
+        "name": "DEVEDORES A RECEBER",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.03.30": {
+        "name": "IMPOSTOS A RECUPERAR",
+        "saldo_d_signed": 3071235.32,
+        "n_contas": 26
+      },
+      "1.01.06.01": {
+        "name": "ESTOQUE ANTERIOR",
+        "saldo_d_signed": 0.0,
+        "n_contas": 6
+      },
+      "1.01.06.02.01": {
+        "name": "TRATORES NOVOS",
+        "saldo_d_signed": 801965.4,
+        "n_contas": 10
+      },
+      "1.01.06.02.02": {
+        "name": "TRATORES USADOS",
+        "saldo_d_signed": 170000.0,
+        "n_contas": 4
+      },
+      "1.01.06.02.03": {
+        "name": "PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 6963.21,
+        "n_contas": 1
+      },
+      "1.01.06.02.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.03.01": {
+        "name": "IMPLEMENTOS NOVOS",
+        "saldo_d_signed": 548975.69,
+        "n_contas": 58
+      },
+      "1.01.06.03.02": {
+        "name": "IMPLEMENTOS USADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.03.03": {
+        "name": "MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.06.04.01": {
+        "name": "PEÇAS ORIGINAIS DE TRATORES",
+        "saldo_d_signed": 856724.73,
+        "n_contas": 10
+      },
+      "1.01.06.04.02": {
+        "name": "PEÇAS ORIGINAIS DE IMPLEMENTOS",
+        "saldo_d_signed": 279792.06,
+        "n_contas": 44
+      },
+      "1.01.06.04.03": {
+        "name": "PEÇAS ORIGINAIS DE  MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.04": {
+        "name": "PEÇAS ORIGINAIS DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.05": {
+        "name": "PEÇAS ORIGINAIS DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.04.06": {
+        "name": "PEÇAS ORIGINAIS JACTO",
+        "saldo_d_signed": 7457.2,
+        "n_contas": 3
+      },
+      "1.01.06.05.01": {
+        "name": "PEÇAS PARALELAS DE  TRATORES",
+        "saldo_d_signed": 149945.27,
+        "n_contas": 4
+      },
+      "1.01.06.05.02": {
+        "name": "PEÇAS PARALELAS DE IMPLEMENTOS",
+        "saldo_d_signed": 91573.79,
+        "n_contas": 19
+      },
+      "1.01.06.05.04": {
+        "name": "PEÇAS PARALELAS DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.05.05": {
+        "name": "PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.06.06.01": {
+        "name": "OLEOS, GRAXAS E ADITIVOS E LUBRIFICANTES",
+        "saldo_d_signed": 112297.13,
+        "n_contas": 11
+      },
+      "1.01.06.06.02": {
+        "name": "PNEUS E CAMARAS",
+        "saldo_d_signed": 47854.3,
+        "n_contas": 5
+      },
+      "1.01.06.06.03": {
+        "name": "OUTROS PRODUTOS",
+        "saldo_d_signed": 49473.44,
+        "n_contas": 2
+      },
+      "1.01.06.07.01": {
+        "name": "TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "1.01.06.07.02": {
+        "name": "IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.06.07.03": {
+        "name": "ESTOQUES  COM  OUTROS MATERIAIS",
+        "saldo_d_signed": 283.6,
+        "n_contas": 2
+      },
+      "1.01.08.01": {
+        "name": "ESTOQUE DE TERCEIROS EM PODER DA EMPRESA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "1.01.08.02": {
+        "name": "ESTOQUE DE DEMONSTRAÇÃO MERC.PRÓPRIA",
+        "saldo_d_signed": 527.66,
+        "n_contas": 4
+      },
+      "1.01.08.03": {
+        "name": "BENS REMETIDOS PARA CONSERTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.04": {
+        "name": "ESTOQUES - IMPORTAÇÕES EM ANDAMENTO",
+        "saldo_d_signed": 66084.51,
+        "n_contas": 1
+      },
+      "1.01.08.05": {
+        "name": "BENS REMETIDOS VASILHAME OU SACARIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.06": {
+        "name": "(-) MERCADORIA DE ENTREGA FUTURA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.01.08.07": {
+        "name": " MERCADORIA DE ENTREGA FUTURA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.04.01": {
+        "name": "DESPESAS ANTECIPADAS",
+        "saldo_d_signed": 13270.39,
+        "n_contas": 3
+      },
+      "1.05.01.01": {
+        "name": "CRÉDITOS COM PESSOAS LIGADAS (FISICA E JURIDICA)",
+        "saldo_d_signed": 0.0,
+        "n_contas": 4
+      },
+      "1.05.03.01": {
+        "name": "INVESTIMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 7
+      },
+      "1.05.03.02": {
+        "name": "BENS E DIREITOS EM USO",
+        "saldo_d_signed": 1346833.21,
+        "n_contas": 11
+      },
+      "1.05.03.07": {
+        "name": "CONSORCIOS",
+        "saldo_d_signed": 638865.33,
+        "n_contas": 1
+      },
+      "1.05.03.08": {
+        "name": "BENS RESERVADOS PARA COMODADO",
+        "saldo_d_signed": 119443.06,
+        "n_contas": 2
+      },
+      "1.05.03.10": {
+        "name": "DEPRECIACOES, AMORTIZACOES E EXAUSTAO ACUMULADA",
+        "saldo_d_signed": -723309.89,
+        "n_contas": 10
+      },
+      "1.05.05.11": {
+        "name": "BENS INTANGÍVEL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "1.80.01": {
+        "name": "CONTAS TEMPORARIAS",
+        "saldo_d_signed": 670.72,
+        "n_contas": 11
+      },
+      "2.01.01": {
+        "name": "EMPRESTIMOS E FINANCIAMENTOS",
+        "saldo_d_signed": -2985685.8,
+        "n_contas": 90
+      },
+      "2.01.02": {
+        "name": "BENS FINANCIADOS- CRÉDITO BANCÁRIO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "2.01.03.01": {
+        "name": "FORNECEDORES",
+        "saldo_d_signed": -6359665.68,
+        "n_contas": 3714
+      },
+      "2.01.04": {
+        "name": "ADIANTAMENTO DE CLIENTES",
+        "saldo_d_signed": -31413.2,
+        "n_contas": 6
+      },
+      "2.01.05": {
+        "name": "DUPLICATAS DESCONTADAS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "2.01.10": {
+        "name": "OBRIGACOES TRABALHISTAS E SOCIAIS",
+        "saldo_d_signed": -72648.97,
+        "n_contas": 10
+      },
+      "2.01.15": {
+        "name": "OBRIGACOES FISCAIS/TRIBUTARIAS",
+        "saldo_d_signed": -48674.04,
+        "n_contas": 25
+      },
+      "2.01.20": {
+        "name": "OUTRAS OBRIGACOES",
+        "saldo_d_signed": -4675.0,
+        "n_contas": 17
+      },
+      "2.01.45": {
+        "name": "PARCELAMENTOS DE OBRIGACOES SOCIAIS/FISCAIS/TRIBUTARIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 5
+      },
+      "2.01.70": {
+        "name": "PROVISOES",
+        "saldo_d_signed": -20149.22,
+        "n_contas": 4
+      },
+      "2.03.01": {
+        "name": "OBRIGACOES A LONGO PRAZO",
+        "saldo_d_signed": -616296.93,
+        "n_contas": 43
+      },
+      "2.03.02": {
+        "name": "OUTRAS OBRIGACOES",
+        "saldo_d_signed": -108795.06,
+        "n_contas": 2
+      },
+      "2.05.05": {
+        "name": "CONTAS DE COMPENSAÇÃO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "2.07.01.01": {
+        "name": "CAPITAL SOCIAL REALIZADO",
+        "saldo_d_signed": -100000.0,
+        "n_contas": 1
+      },
+      "2.07.03.10": {
+        "name": "RESERVAS DE LUCROS",
+        "saldo_d_signed": -1125365.42,
+        "n_contas": 4
+      },
+      "2.07.05.01": {
+        "name": "RESULTADOS ACUMULADOS",
+        "saldo_d_signed": -6255.33,
+        "n_contas": 4
+      },
+      "2.07.05.02": {
+        "name": "AJUSTE EXERCÍCIOS ANTERIORES",
+        "saldo_d_signed": -74401.92,
+        "n_contas": 1
+      },
+      "3.01.03.01.01": {
+        "name": "VENDA TRATORES NOVOS",
+        "saldo_d_signed": -1853581.34,
+        "n_contas": 9
+      },
+      "3.01.03.01.02": {
+        "name": "VENDA TRATORES USADOS",
+        "saldo_d_signed": -190000.0,
+        "n_contas": 3
+      },
+      "3.01.03.01.03": {
+        "name": "VENDA PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.01.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.02.01": {
+        "name": "IMPLEMENTOS NOVOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 55
+      },
+      "3.01.03.02.02": {
+        "name": "IMPLEMENTOS USADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.02.03": {
+        "name": "VENDAS MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.01.03.03.01": {
+        "name": "VENDA PEÇAS ORIGINAIS TRATORES",
+        "saldo_d_signed": -230453.34,
+        "n_contas": 11
+      },
+      "3.01.03.03.02": {
+        "name": "VENDA PEÇAS ORIGINAIS  IMPLEMENTOS",
+        "saldo_d_signed": -11978.45,
+        "n_contas": 40
+      },
+      "3.01.03.03.03": {
+        "name": "VENDA PEÇAS ORIGINAIS  MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.04": {
+        "name": "VENDA PEÇAS ORIGINAIS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.05": {
+        "name": "VENDA PEÇAS ORIGINAIS DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.03.06": {
+        "name": "VENDAS  PEÇAS JACTO",
+        "saldo_d_signed": -3550.0,
+        "n_contas": 3
+      },
+      "3.01.03.04.01": {
+        "name": "VENDA PEÇAS PARALELAS TRATORES",
+        "saldo_d_signed": -9888.6,
+        "n_contas": 4
+      },
+      "3.01.03.04.02": {
+        "name": "VENDA PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": -5019.26,
+        "n_contas": 17
+      },
+      "3.01.03.04.04": {
+        "name": "VENDA PEÇAS PARALELAS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.04.05": {
+        "name": "VENDA PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.05.01": {
+        "name": "OLEOS E GRAXAS",
+        "saldo_d_signed": -61827.74,
+        "n_contas": 11
+      },
+      "3.01.03.05.02": {
+        "name": "PNEUS E CAMARAS",
+        "saldo_d_signed": -3400.0,
+        "n_contas": 5
+      },
+      "3.01.03.05.03": {
+        "name": "PRODUTOS BUFFALO",
+        "saldo_d_signed": -13870.0,
+        "n_contas": 2
+      },
+      "3.01.03.06.02": {
+        "name": "IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.03.06.03": {
+        "name": "VENDAS COM OUTROS MATERIAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.01.03.07": {
+        "name": "(-)IMPOSTOS FATURADOS",
+        "saldo_d_signed": 1113.81,
+        "n_contas": 2
+      },
+      "3.01.04.01": {
+        "name": "MAO DE OBRA TRATORES CLIENTES",
+        "saldo_d_signed": -35680.57,
+        "n_contas": 3
+      },
+      "3.01.04.02": {
+        "name": "MÃO DE OBRA IMPLEMENTOS CLIENTES",
+        "saldo_d_signed": -502.87,
+        "n_contas": 1
+      },
+      "3.01.04.03": {
+        "name": "MÃO DE OBRA TRATORES DE GARANTIA",
+        "saldo_d_signed": -1698.0,
+        "n_contas": 2
+      },
+      "3.01.04.04": {
+        "name": "MÃO DE OBRA IMPLEMENTOS GARANTIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.04.06": {
+        "name": "MÃO DE OBRA IMPLEMENTOS INTERNOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.01.04.09": {
+        "name": "SERVIÇOS DE TERCEIROS",
+        "saldo_d_signed": -6350.01,
+        "n_contas": 2
+      },
+      "3.02.01": {
+        "name": "DEVOLUCOES DE VENDAS DE PRODUTOS",
+        "saldo_d_signed": 281346.46,
+        "n_contas": 1
+      },
+      "3.02.02": {
+        "name": "IMPOSTOS INCIDENTES SOBRE VENDAS/SERVICOS",
+        "saldo_d_signed": 154732.29,
+        "n_contas": 14
+      },
+      "3.03.01": {
+        "name": "CUSTOS DOS PRODUTOS VENDIDOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.02.01": {
+        "name": "CUSTOS DOS TRATORES NOVOS",
+        "saldo_d_signed": 1139521.0,
+        "n_contas": 10
+      },
+      "3.03.02.02": {
+        "name": "TRATORES USADOS",
+        "saldo_d_signed": 188000.0,
+        "n_contas": 4
+      },
+      "3.03.02.03": {
+        "name": "CUSTO PNEUS E CAMARAS COMERCIAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.02.04": {
+        "name": "ACESSÓRIO PARA TRATORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.03.01": {
+        "name": "CUSTOS IMPLEMENTOS NOVOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 57
+      },
+      "3.03.03.02": {
+        "name": "CUSTOS IMPLEMENTOS USADOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.03.03": {
+        "name": "CUSTOS MAQUINAS AGRICOLAS JACTO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.04.01": {
+        "name": "CUSTOS PEÇAS ORIGINAIS TRATORES",
+        "saldo_d_signed": 109625.06,
+        "n_contas": 10
+      },
+      "3.03.04.02": {
+        "name": "CUSTOS PEÇAS ORIGINAIS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": 4950.29,
+        "n_contas": 41
+      },
+      "3.03.04.03": {
+        "name": "CUSTOS PEÇAS ORIGINAIS MOTORES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.04": {
+        "name": "CUSTOS PEÇAS ORIGINAIS  DE CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.05": {
+        "name": "CUSTOS PEÇAS ORIGINAIS  DE  VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.04.06": {
+        "name": "CUSTOS PEÇAS JACTO",
+        "saldo_d_signed": 1771.87,
+        "n_contas": 3
+      },
+      "3.03.05.01": {
+        "name": "CUSTOS PEÇAS PARALELAS TRATORES",
+        "saldo_d_signed": 5024.58,
+        "n_contas": 4
+      },
+      "3.03.05.02": {
+        "name": "CUSTOS PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+        "saldo_d_signed": 2806.22,
+        "n_contas": 17
+      },
+      "3.03.05.04": {
+        "name": "CUSTOS PEÇAS PARALELAS CAMINHÕES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.05.05": {
+        "name": "CUSTOS PEÇAS PARALELAS  DE VEÍCULOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.06.01": {
+        "name": "CUSTO OLEOS E GRAXAS",
+        "saldo_d_signed": 38903.84,
+        "n_contas": 12
+      },
+      "3.03.06.02": {
+        "name": "CUSTO PNEUS E CAMARAS",
+        "saldo_d_signed": 2000.0,
+        "n_contas": 5
+      },
+      "3.03.06.03": {
+        "name": "MERCADORIAS DE TERCEIROS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.06.04": {
+        "name": "PRODUTOS BUFFALO",
+        "saldo_d_signed": 7934.27,
+        "n_contas": 2
+      },
+      "3.03.07.03": {
+        "name": "CUSTO MÃO DE OBRA TRATORES GARANTIA",
+        "saldo_d_signed": 12320.66,
+        "n_contas": 3
+      },
+      "3.03.07.04": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS GARANTIA",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.07.05": {
+        "name": "CUSTO MÃO DE OBRA TRATORES INTERNO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.07.06": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS INTERNOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.07.07": {
+        "name": "CUSTO MÃO DE OBRA TRATORES DE TERCEIROS",
+        "saldo_d_signed": 296.98,
+        "n_contas": 2
+      },
+      "3.03.07.08": {
+        "name": "CUSTO MÃO DE OBRA IMPLEMENTOS TERCEIROS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.03.07.09": {
+        "name": "CUSTO SERVIÇOS TERCEIROS",
+        "saldo_d_signed": 540.0,
+        "n_contas": 2
+      },
+      "3.03.08.01": {
+        "name": "CUSTOS TRATORES",
+        "saldo_d_signed": 100.0,
+        "n_contas": 1
+      },
+      "3.03.08.02": {
+        "name": "CUSTOS IMPLEMENTOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.03.08.03": {
+        "name": "CUSTO COM OUTROS MATERIAIS",
+        "saldo_d_signed": 3408.21,
+        "n_contas": 3
+      },
+      "3.03.10": {
+        "name": "DEVOLUÇÃO DE COMPRAS",
+        "saldo_d_signed": 17.16,
+        "n_contas": 1
+      },
+      "3.03.11": {
+        "name": "AJUSTE DE ESTOQUE",
+        "saldo_d_signed": -75005.02,
+        "n_contas": 2
+      },
+      "3.03.12": {
+        "name": "FRETE S/COMPRAS",
+        "saldo_d_signed": 3403.14,
+        "n_contas": 1
+      },
+      "3.03.13": {
+        "name": "CUSTOS COM IMPORTAÇÃO",
+        "saldo_d_signed": 1311.78,
+        "n_contas": 3
+      },
+      "3.03.14": {
+        "name": "CUSTOS COM TRANSP.RODOVIARIO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.03.15": {
+        "name": "CUSTOS E SERVIÇOS DE EXPORTAÇÃO",
+        "saldo_d_signed": 0.0,
+        "n_contas": 1
+      },
+      "3.04.01.01": {
+        "name": "GASTOS COM PESSOAL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 6
+      },
+      "3.04.01.02": {
+        "name": "ENCARGOS SOCIAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.03": {
+        "name": "BENEFICIOS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.04": {
+        "name": "PROVISOES",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.04.01.05": {
+        "name": "DESPESAS GERAIS DE VENDAS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 16
+      },
+      "3.04.02.01.01": {
+        "name": "REMUNERACAO",
+        "saldo_d_signed": 110011.94,
+        "n_contas": 21
+      },
+      "3.04.02.01.02": {
+        "name": "ENCARGOS SOCIAIS",
+        "saldo_d_signed": 44807.04,
+        "n_contas": 2
+      },
+      "3.04.02.01.03": {
+        "name": "BENEFICIOS",
+        "saldo_d_signed": 13262.19,
+        "n_contas": 4
+      },
+      "3.04.02.01.04": {
+        "name": "PROVISOES",
+        "saldo_d_signed": -6584.42,
+        "n_contas": 4
+      },
+      "3.04.02.02": {
+        "name": "DESPESAS COM VIAGENS",
+        "saldo_d_signed": 76583.38,
+        "n_contas": 11
+      },
+      "3.04.02.03": {
+        "name": "DESPESAS GERAIS ADMINISTRATIVAS",
+        "saldo_d_signed": 145237.36,
+        "n_contas": 63
+      },
+      "3.04.05.01": {
+        "name": "RECEITAS FINANCEIRAS",
+        "saldo_d_signed": -1906.01,
+        "n_contas": 4
+      },
+      "3.04.05.02": {
+        "name": "DESPESAS FINANCEIRAS",
+        "saldo_d_signed": 157653.25,
+        "n_contas": 15
+      },
+      "3.04.06.01": {
+        "name": "IMPOSTOS E TAXAS DIVERSAS",
+        "saldo_d_signed": 2140.75,
+        "n_contas": 7
+      },
+      "3.04.07": {
+        "name": "(+)OUTRAS RECEITAS OPERACIONAIS",
+        "saldo_d_signed": -11641.91,
+        "n_contas": 8
+      },
+      "3.04.08": {
+        "name": "(-)OUTRAS DESPESAS OPERACIONAIS",
+        "saldo_d_signed": -200.88,
+        "n_contas": 10
+      },
+      "3.06.01": {
+        "name": "RECEITAS NAO OPERACIONAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.06.02": {
+        "name": "DESPESAS NAO OPERACIONAIS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 3
+      },
+      "3.09.01": {
+        "name": "PROVISAO PARA IRPJ E CSLL",
+        "saldo_d_signed": 0.0,
+        "n_contas": 2
+      },
+      "3.20.01": {
+        "name": "AJUSTES PLANO DE CONTAS",
+        "saldo_d_signed": 0.0,
+        "n_contas": 9
+      }
+    },
+    "_n_contas": 11619
+  }
+}

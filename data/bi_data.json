@@ -1,0 +1,4537 @@
+{
+  "fetched_at": "2026-05-06T22:20:15.082745",
+  "ref_year": 2026,
+  "available_years": [
+    2026,
+    2025
+  ],
+  "available_months": [
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05"
+  ],
+  "empresas": [
+    {
+      "codigo": "1",
+      "label": "GLOBALMAC",
+      "razao_social": "GLOBAL MAC COM. E SERV. DE MÁQ. E TRATORES LTDA"
+    },
+    {
+      "codigo": "2",
+      "label": "DCTRACTOR",
+      "razao_social": "DC TRACTOR COM. E SERV. DE MÁQ. E TRATORES LTDA"
+    },
+    {
+      "codigo": "4",
+      "label": "DCCOMERCIO",
+      "razao_social": "DC COMERCIO DE MAQUINAS LTDA"
+    }
+  ],
+  "dre_consolidado": {
+    "receita_bruta": 119944212.64000002,
+    "deducoes": 12190864.44,
+    "cmv": 120321317.29999998,
+    "despesa_op": 22045495.46,
+    "receita_fin": 1307889.93,
+    "despesa_fin": 9001625.26,
+    "res_nao_op_rec": 0.0,
+    "res_nao_op_desp": 102572.72,
+    "provisao_ir": 118433.66,
+    "receita_liquida": 107753348.20000002,
+    "margem_bruta": -12567969.099999964,
+    "resultado_op": -34613464.559999965,
+    "resultado_fin": -7693735.33,
+    "res_nao_op": -102572.72,
+    "resultado_antes_ir": -42409772.60999996,
+    "lucro_liquido": -42528206.26999996,
+    "margem_liquida": -39.46810654186238,
+    "margem_ebitda_caixa": -32.122866841923305
+  },
+  "month_totals": [
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "receita_bruta": 1958409.1300000001,
+      "deducoes": 64019.020000000004,
+      "cmv": 1754440.3199999998,
+      "despesa_op": 404797.27,
+      "receita_fin": 2947.87,
+      "despesa_fin": 147478.87,
+      "provisao_ir": 0.0,
+      "n_lctos": 1076.0,
+      "receita_liquida": 1894390.11,
+      "margem_bruta": 139949.79000000027,
+      "resultado_op": -264847.47999999975,
+      "resultado_fin": -144531.0,
+      "lucro_liquido": -409378.47999999975
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "receita_bruta": 2105184.57,
+      "deducoes": 125750.99,
+      "cmv": 3335759.12,
+      "despesa_op": 347672.83999999997,
+      "receita_fin": 1560.0,
+      "despesa_fin": 90645.37,
+      "provisao_ir": 0.0,
+      "n_lctos": 1379.0,
+      "receita_liquida": 1979433.5799999998,
+      "margem_bruta": -1356325.5400000003,
+      "resultado_op": -1703998.3800000004,
+      "resultado_fin": -89085.37,
+      "lucro_liquido": -1793083.7500000005
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "receita_bruta": 9336779.459999999,
+      "deducoes": 1019211.71,
+      "cmv": 10185296.58,
+      "despesa_op": 1449720.97,
+      "receita_fin": 19629.85,
+      "despesa_fin": 376399.7,
+      "provisao_ir": 64902.18,
+      "n_lctos": 1951.0,
+      "receita_liquida": 8317567.749999999,
+      "margem_bruta": -1867728.830000001,
+      "resultado_op": -3317449.8000000007,
+      "resultado_fin": -356769.85000000003,
+      "lucro_liquido": -3739121.830000001
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "receita_bruta": 2878665.21,
+      "deducoes": 98436.86000000002,
+      "cmv": 4532879.26,
+      "despesa_op": 397462.81000000006,
+      "receita_fin": 13072.61,
+      "despesa_fin": 160010.49000000002,
+      "provisao_ir": 0.0,
+      "n_lctos": 1461.0,
+      "receita_liquida": 2780228.35,
+      "margem_bruta": -1752650.9099999997,
+      "resultado_op": -2150113.7199999997,
+      "resultado_fin": -146937.88,
+      "lucro_liquido": -2297051.5999999996
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "receita_bruta": 3306801.6999999997,
+      "deducoes": 122777.26,
+      "cmv": 2652002.26,
+      "despesa_op": 449344.4,
+      "receita_fin": 5353.29,
+      "despesa_fin": 111739.58999999998,
+      "provisao_ir": 0.0,
+      "n_lctos": 1474.0,
+      "receita_liquida": 3184024.44,
+      "margem_bruta": 532022.1800000002,
+      "resultado_op": 82677.78000000014,
+      "resultado_fin": -106386.29999999999,
+      "lucro_liquido": -23708.519999999844
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "receita_bruta": 10175411.33,
+      "deducoes": 503037.08,
+      "cmv": 10357969.48,
+      "despesa_op": 1688725.5299999998,
+      "receita_fin": 114995.42000000001,
+      "despesa_fin": 436062.62000000005,
+      "provisao_ir": 0.0,
+      "n_lctos": 1676.0,
+      "receita_liquida": 9672374.25,
+      "margem_bruta": -685595.2300000004,
+      "resultado_op": -2374320.7600000002,
+      "resultado_fin": -321067.20000000007,
+      "lucro_liquido": -2695387.9600000004
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "receita_bruta": 1407010.3900000001,
+      "deducoes": 222821.40999999997,
+      "cmv": 1257851.9,
+      "despesa_op": 455060.23000000004,
+      "receita_fin": 157801.82,
+      "despesa_fin": 230997.62,
+      "provisao_ir": 0.0,
+      "n_lctos": 1914.0,
+      "receita_liquida": 1184188.9800000002,
+      "margem_bruta": -73662.91999999969,
+      "resultado_op": -528723.1499999997,
+      "resultado_fin": -73195.79999999999,
+      "lucro_liquido": -601918.9499999997
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "receita_bruta": 3033721.68,
+      "deducoes": 157434.86,
+      "cmv": 2508818.42,
+      "despesa_op": 469908.94,
+      "receita_fin": 73298.82999999999,
+      "despesa_fin": 174658.04,
+      "provisao_ir": 0.0,
+      "n_lctos": 1765.0,
+      "receita_liquida": 2876286.8200000003,
+      "margem_bruta": 367468.4000000004,
+      "resultado_op": -102440.53999999963,
+      "resultado_fin": -101359.21000000002,
+      "lucro_liquido": -203799.74999999965
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "receita_bruta": 14471117.149999999,
+      "deducoes": 624583.39,
+      "cmv": 12492809.56,
+      "despesa_op": 1797304.0499999998,
+      "receita_fin": 246847.25000000006,
+      "despesa_fin": 797190.92,
+      "provisao_ir": 49580.74,
+      "n_lctos": 2526.0,
+      "receita_liquida": 13846533.759999998,
+      "margem_bruta": 1353724.1999999974,
+      "resultado_op": -443579.8500000024,
+      "resultado_fin": -550343.6699999999,
+      "lucro_liquido": -1043504.2600000023
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "receita_bruta": 4789213.430000002,
+      "deducoes": 1169486.4500000002,
+      "cmv": 6767089.37,
+      "despesa_op": 542848.62,
+      "receita_fin": 1938.32,
+      "despesa_fin": 190211.15999999997,
+      "provisao_ir": 0.0,
+      "n_lctos": 2523.0,
+      "receita_liquida": 3619726.9800000014,
+      "margem_bruta": -3147362.3899999987,
+      "resultado_op": -3690211.009999999,
+      "resultado_fin": -188272.83999999997,
+      "lucro_liquido": -3878483.8499999987
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "receita_bruta": 2228859.52,
+      "deducoes": 260328.22999999998,
+      "cmv": 2100512.17,
+      "despesa_op": 441545.5,
+      "receita_fin": 1209.3899999999999,
+      "despesa_fin": 289517.56000000006,
+      "provisao_ir": 0.0,
+      "n_lctos": 2028.0,
+      "receita_liquida": 1968531.29,
+      "margem_bruta": -131980.8799999999,
+      "resultado_op": -573526.3799999999,
+      "resultado_fin": -288308.17000000004,
+      "lucro_liquido": -861834.5499999999
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "receita_bruta": 13144904.33,
+      "deducoes": 2246582.2800000003,
+      "cmv": 10973778.919999998,
+      "despesa_op": 1716877.9,
+      "receita_fin": 335596.99,
+      "despesa_fin": 921907.9000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 1418.0,
+      "receita_liquida": 10898322.05,
+      "margem_bruta": -75456.86999999732,
+      "resultado_op": -1792334.7699999972,
+      "resultado_fin": -586310.9100000001,
+      "lucro_liquido": -2378645.6799999974
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "receita_bruta": 1382850.97,
+      "deducoes": 372292.45999999996,
+      "cmv": 1625467.7099999997,
+      "despesa_op": 353701.21,
+      "receita_fin": 11891.34,
+      "despesa_fin": 207194.40999999997,
+      "provisao_ir": 0.0,
+      "n_lctos": 1518.0,
+      "receita_liquida": 1010558.51,
+      "margem_bruta": -614909.1999999997,
+      "resultado_op": -968610.4099999997,
+      "resultado_fin": -195303.06999999998,
+      "lucro_liquido": -1163913.4799999997
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "receita_bruta": 2220879.25,
+      "deducoes": 1050754.3399999999,
+      "cmv": 2967977.79,
+      "despesa_op": 316509.27999999997,
+      "receita_fin": 34760.26,
+      "despesa_fin": 102332.38,
+      "provisao_ir": 0.0,
+      "n_lctos": 1778.0,
+      "receita_liquida": 1170124.9100000001,
+      "margem_bruta": -1797852.88,
+      "resultado_op": -2114362.1599999997,
+      "resultado_fin": -67572.12,
+      "lucro_liquido": -2181934.28
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "receita_bruta": 2856238.4800000004,
+      "deducoes": 1274759.38,
+      "cmv": 3792826.75,
+      "despesa_op": 359443.43000000005,
+      "receita_fin": 5568.33,
+      "despesa_fin": 206565.08,
+      "provisao_ir": 0.0,
+      "n_lctos": 1386.0,
+      "receita_liquida": 1581479.1000000006,
+      "margem_bruta": -2211347.6499999994,
+      "resultado_op": -2570791.0799999996,
+      "resultado_fin": -200996.75,
+      "lucro_liquido": -2771787.8299999996
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "receita_bruta": 1448738.1600000001,
+      "deducoes": 138884.87,
+      "cmv": 3438467.4799999995,
+      "despesa_op": 286959.91000000003,
+      "receita_fin": 1092.06,
+      "despesa_fin": 75232.40000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 1442.0,
+      "receita_liquida": 1309853.29,
+      "margem_bruta": -2128614.1899999995,
+      "resultado_op": -2415574.0999999996,
+      "resultado_fin": -74140.34000000001,
+      "lucro_liquido": -2489714.4399999995
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-05",
+      "receita_bruta": 0.0,
+      "deducoes": 0.0,
+      "cmv": 0.0,
+      "despesa_op": 20583.89,
+      "receita_fin": 0.01,
+      "despesa_fin": 303.29,
+      "provisao_ir": 0.0,
+      "n_lctos": 10.0,
+      "receita_liquida": 0.0,
+      "margem_bruta": 0.0,
+      "resultado_op": -20583.89,
+      "resultado_fin": -303.28000000000003,
+      "lucro_liquido": -20887.17
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "receita_bruta": 829119.97,
+      "deducoes": 30454.159999999996,
+      "cmv": 658992.8400000001,
+      "despesa_op": 205497.18999999997,
+      "receita_fin": 498.40999999999997,
+      "despesa_fin": 57282.17,
+      "provisao_ir": 0.0,
+      "n_lctos": 740.0,
+      "receita_liquida": 798665.8099999999,
+      "margem_bruta": 139672.96999999986,
+      "resultado_op": -65824.22000000012,
+      "resultado_fin": -56783.759999999995,
+      "lucro_liquido": -122607.98000000011
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "receita_bruta": 542959.91,
+      "deducoes": 40896.950000000004,
+      "cmv": 516598.72,
+      "despesa_op": 196569.62,
+      "receita_fin": 451.44,
+      "despesa_fin": 56355.0,
+      "provisao_ir": 0.0,
+      "n_lctos": 864.0,
+      "receita_liquida": 502062.96,
+      "margem_bruta": -14535.759999999951,
+      "resultado_op": -211105.37999999995,
+      "resultado_fin": -55903.56,
+      "lucro_liquido": -267008.93999999994
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "receita_bruta": 1444847.6399999997,
+      "deducoes": 62084.67,
+      "cmv": 1259685.4000000001,
+      "despesa_op": 264932.32999999996,
+      "receita_fin": 757.56,
+      "despesa_fin": 66270.63999999998,
+      "provisao_ir": 0.0,
+      "n_lctos": 922.0,
+      "receita_liquida": 1382762.9699999997,
+      "margem_bruta": 123077.5699999996,
+      "resultado_op": -141854.76000000036,
+      "resultado_fin": -65513.07999999999,
+      "lucro_liquido": -207367.84000000035
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "receita_bruta": 1476121.8999999997,
+      "deducoes": 91144.14,
+      "cmv": 1133561.4,
+      "despesa_op": 247673.09999999998,
+      "receita_fin": 504.2199999999999,
+      "despesa_fin": 59638.61,
+      "provisao_ir": 0.0,
+      "n_lctos": 990.0,
+      "receita_liquida": 1384977.7599999998,
+      "margem_bruta": 251416.35999999987,
+      "resultado_op": 3743.259999999893,
+      "resultado_fin": -59134.39,
+      "lucro_liquido": -55391.13000000011
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "receita_bruta": 1535168.73,
+      "deducoes": 99382.3,
+      "cmv": 2077511.8299999996,
+      "despesa_op": 310935.98,
+      "receita_fin": 65.08000000000001,
+      "despesa_fin": 129407.06,
+      "provisao_ir": 0.0,
+      "n_lctos": 963.0,
+      "receita_liquida": 1435786.43,
+      "margem_bruta": -641725.3999999997,
+      "resultado_op": -952661.3799999997,
+      "resultado_fin": -129341.98,
+      "lucro_liquido": -1082003.3599999996
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "receita_bruta": 669875.4,
+      "deducoes": 68156.03,
+      "cmv": 595991.39,
+      "despesa_op": 192592.06,
+      "receita_fin": 1456.6899999999998,
+      "despesa_fin": 63366.32000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 975.0,
+      "receita_liquida": 601719.37,
+      "margem_bruta": 5727.979999999981,
+      "resultado_op": -186864.08000000002,
+      "resultado_fin": -61909.630000000005,
+      "lucro_liquido": -248773.71000000002
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "receita_bruta": 514311.35,
+      "deducoes": 34672.189999999995,
+      "cmv": 610341.25,
+      "despesa_op": 312736.42000000004,
+      "receita_fin": 1479.6899999999998,
+      "despesa_fin": 67511.77,
+      "provisao_ir": 0.0,
+      "n_lctos": 1046.0,
+      "receita_liquida": 479639.16,
+      "margem_bruta": -130702.09000000003,
+      "resultado_op": -443438.51000000007,
+      "resultado_fin": -66032.08,
+      "lucro_liquido": -509470.5900000001
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "receita_bruta": 1663011.79,
+      "deducoes": 93682.90999999999,
+      "cmv": 1278251.77,
+      "despesa_op": 290943.11,
+      "receita_fin": 1188.8899999999999,
+      "despesa_fin": 68260.94,
+      "provisao_ir": 0.0,
+      "n_lctos": 1054.0,
+      "receita_liquida": 1569328.8800000001,
+      "margem_bruta": 291077.1100000001,
+      "resultado_op": 134.00000000011642,
+      "resultado_fin": -67072.05,
+      "lucro_liquido": -66938.04999999989
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "receita_bruta": 1183609.4399999997,
+      "deducoes": 42581.36,
+      "cmv": 894204.9099999999,
+      "despesa_op": 236350.07,
+      "receita_fin": 2912.1800000000003,
+      "despesa_fin": 83312.29000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 1193.0,
+      "receita_liquida": 1141028.0799999996,
+      "margem_bruta": 246823.1699999997,
+      "resultado_op": 10473.099999999686,
+      "resultado_fin": -80400.11000000002,
+      "lucro_liquido": -69927.01000000033
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "receita_bruta": 1569072.0299999998,
+      "deducoes": 93553.92000000001,
+      "cmv": 1412928.8599999999,
+      "despesa_op": 319809.99999999994,
+      "receita_fin": 185.11999999999995,
+      "despesa_fin": 126027.11000000002,
+      "provisao_ir": 0.0,
+      "n_lctos": 1499.0,
+      "receita_liquida": 1475518.1099999999,
+      "margem_bruta": 62589.25,
+      "resultado_op": -257220.74999999994,
+      "resultado_fin": -125841.99000000002,
+      "lucro_liquido": -383062.74
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "receita_bruta": 1814891.97,
+      "deducoes": 62963.54000000001,
+      "cmv": 1405281.48,
+      "despesa_op": 337826.49,
+      "receita_fin": 664.55,
+      "despesa_fin": 91944.51999999999,
+      "provisao_ir": 0.0,
+      "n_lctos": 1240.0,
+      "receita_liquida": 1751928.43,
+      "margem_bruta": 346646.94999999995,
+      "resultado_op": 8820.459999999963,
+      "resultado_fin": -91279.96999999999,
+      "lucro_liquido": -82459.51000000002
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "receita_bruta": 14550169.530000001,
+      "deducoes": 818131.5900000002,
+      "cmv": 12458413.550000003,
+      "despesa_op": 3464262.41,
+      "receita_fin": 15016.77,
+      "despesa_fin": 1070489.15,
+      "provisao_ir": 3950.74,
+      "n_lctos": 1261.0,
+      "receita_liquida": 13732037.940000001,
+      "margem_bruta": 1273624.3899999987,
+      "resultado_op": -2190638.0200000014,
+      "resultado_fin": -1055472.38,
+      "lucro_liquido": -3250061.1400000015
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "receita_bruta": 1612976.9900000002,
+      "deducoes": 376299.5800000001,
+      "cmv": 1798337.7400000002,
+      "despesa_op": 343500.21,
+      "receita_fin": 1672.06,
+      "despesa_fin": 90787.29000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 1362.0,
+      "receita_liquida": 1236677.4100000001,
+      "margem_bruta": -561660.3300000001,
+      "resultado_op": -905160.54,
+      "resultado_fin": -89115.23000000001,
+      "lucro_liquido": -994275.77
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "receita_bruta": 815936.9999999999,
+      "deducoes": 330831.81,
+      "cmv": 1230587.06,
+      "despesa_op": 211642.59999999998,
+      "receita_fin": 233.98999999999998,
+      "despesa_fin": 71257.60000000002,
+      "provisao_ir": 0.0,
+      "n_lctos": 1042.0,
+      "receita_liquida": 485105.1899999999,
+      "margem_bruta": -745481.8700000001,
+      "resultado_op": -957124.4700000001,
+      "resultado_fin": -71023.61000000002,
+      "lucro_liquido": -1028148.0800000001
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "receita_bruta": 1014093.0599999999,
+      "deducoes": 93513.69,
+      "cmv": 900168.7999999999,
+      "despesa_op": 288167.06,
+      "receita_fin": 259.78999999999996,
+      "despesa_fin": 56075.03999999999,
+      "provisao_ir": 0.0,
+      "n_lctos": 1235.0,
+      "receita_liquida": 920579.3699999999,
+      "margem_bruta": 20410.56999999995,
+      "resultado_op": -267756.49000000005,
+      "resultado_fin": -55815.24999999999,
+      "lucro_liquido": -323571.74000000005
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "receita_bruta": 130.0,
+      "deducoes": 0.0,
+      "cmv": 991.0,
+      "despesa_op": 171147.33000000002,
+      "receita_fin": 14334.42,
+      "despesa_fin": 28534.95,
+      "provisao_ir": 0.0,
+      "n_lctos": 194.0,
+      "receita_liquida": 130.0,
+      "margem_bruta": -861.0,
+      "resultado_op": -172008.33000000002,
+      "resultado_fin": -14200.53,
+      "lucro_liquido": -186208.86000000002
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-05",
+      "receita_bruta": 0.0,
+      "deducoes": 0.0,
+      "cmv": 840.0,
+      "despesa_op": 5124.32,
+      "receita_fin": 0.0,
+      "despesa_fin": 32.7,
+      "provisao_ir": 0.0,
+      "n_lctos": 12.0,
+      "receita_liquida": 0.0,
+      "margem_bruta": -840.0,
+      "resultado_op": -5964.32,
+      "resultado_fin": -32.7,
+      "lucro_liquido": -5997.0199999999995
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "receita_bruta": 299524.2899999999,
+      "deducoes": 7659.540000000001,
+      "cmv": 400063.73,
+      "despesa_op": 158560.8,
+      "receita_fin": 258.39,
+      "despesa_fin": 81202.19,
+      "provisao_ir": 0.0,
+      "n_lctos": 277.0,
+      "receita_liquida": 291864.74999999994,
+      "margem_bruta": -108198.98000000004,
+      "resultado_op": -266759.78,
+      "resultado_fin": -80943.8,
+      "lucro_liquido": -347703.58
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "receita_bruta": 554455.45,
+      "deducoes": 22058.69,
+      "cmv": 526782.9500000001,
+      "despesa_op": 64285.009999999995,
+      "receita_fin": 281.22,
+      "despesa_fin": 62039.47999999999,
+      "provisao_ir": 0.0,
+      "n_lctos": 350.0,
+      "receita_liquida": 532396.76,
+      "margem_bruta": 5613.8099999999395,
+      "resultado_op": -58671.200000000055,
+      "resultado_fin": -61758.25999999999,
+      "lucro_liquido": -120429.46000000005
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "receita_bruta": 267719.57,
+      "deducoes": 22787.59,
+      "cmv": 297200.04999999993,
+      "despesa_op": 81156.74,
+      "receita_fin": 199.37000000000003,
+      "despesa_fin": 68414.58,
+      "provisao_ir": 0.0,
+      "n_lctos": 442.0,
+      "receita_liquida": 244931.98,
+      "margem_bruta": -52268.06999999992,
+      "resultado_op": -133424.80999999994,
+      "resultado_fin": -68215.21,
+      "lucro_liquido": -201640.01999999996
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "receita_bruta": 796453.72,
+      "deducoes": 15791.829999999998,
+      "cmv": 664481.7000000003,
+      "despesa_op": 159626.24000000002,
+      "receita_fin": 184.92000000000002,
+      "despesa_fin": 61018.03999999999,
+      "provisao_ir": 0.0,
+      "n_lctos": 321.0,
+      "receita_liquida": 780661.89,
+      "margem_bruta": 116180.18999999971,
+      "resultado_op": -43446.05000000031,
+      "resultado_fin": -60833.119999999995,
+      "lucro_liquido": -104279.1700000003
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "receita_bruta": 233392.12,
+      "deducoes": 35235.84,
+      "cmv": 204263.49,
+      "despesa_op": 170576.80000000002,
+      "receita_fin": 15431.169999999998,
+      "despesa_fin": 58701.55,
+      "provisao_ir": 0.0,
+      "n_lctos": 344.0,
+      "receita_liquida": 198156.28,
+      "margem_bruta": -6107.209999999992,
+      "resultado_op": -176684.01,
+      "resultado_fin": -43270.380000000005,
+      "lucro_liquido": -219954.39
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "receita_bruta": 830765.0599999999,
+      "deducoes": 39172.270000000004,
+      "cmv": 690900.7099999998,
+      "despesa_op": 98341.78000000003,
+      "receita_fin": 156.23,
+      "despesa_fin": 153206.13,
+      "provisao_ir": 0.0,
+      "n_lctos": 311.0,
+      "receita_liquida": 791592.7899999999,
+      "margem_bruta": 100692.08000000007,
+      "resultado_op": 2350.3000000000466,
+      "resultado_fin": -153049.9,
+      "lucro_liquido": -150699.59999999995
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "receita_bruta": 735372.32,
+      "deducoes": 2825.44,
+      "cmv": 998759.8600000001,
+      "despesa_op": 87574.7,
+      "receita_fin": 290.96000000000004,
+      "despesa_fin": 107061.81,
+      "provisao_ir": 0.0,
+      "n_lctos": 265.0,
+      "receita_liquida": 732546.88,
+      "margem_bruta": -266212.9800000001,
+      "resultado_op": -353787.6800000001,
+      "resultado_fin": -106770.84999999999,
+      "lucro_liquido": -460558.5300000001
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "receita_bruta": 737828.36,
+      "deducoes": 9255.03,
+      "cmv": 990134.9500000001,
+      "despesa_op": 102905.74999999999,
+      "receita_fin": 81.00000000000003,
+      "despesa_fin": 93363.26,
+      "provisao_ir": 0.0,
+      "n_lctos": 306.0,
+      "receita_liquida": 728573.33,
+      "margem_bruta": -261561.6200000001,
+      "resultado_op": -364467.3700000001,
+      "resultado_fin": -93282.26,
+      "lucro_liquido": -457749.6300000001
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "receita_bruta": 662637.1400000001,
+      "deducoes": 6196.48,
+      "cmv": 969541.78,
+      "despesa_op": 100669.96999999999,
+      "receita_fin": 73.73000000000002,
+      "despesa_fin": 82795.29,
+      "provisao_ir": 0.0,
+      "n_lctos": 360.0,
+      "receita_liquida": 656440.6600000001,
+      "margem_bruta": -313101.1199999999,
+      "resultado_op": -413771.08999999985,
+      "resultado_fin": -82721.56,
+      "lucro_liquido": -496492.64999999985
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "receita_bruta": 314675.14999999997,
+      "deducoes": 9370.830000000002,
+      "cmv": 439124.57000000007,
+      "despesa_op": 391549.8900000001,
+      "receita_fin": 100.99000000000002,
+      "despesa_fin": 68560.41,
+      "provisao_ir": 0.0,
+      "n_lctos": 299.0,
+      "receita_liquida": 305304.31999999995,
+      "margem_bruta": -133820.25000000012,
+      "resultado_op": -525370.1400000001,
+      "resultado_fin": -68459.42,
+      "lucro_liquido": -593829.5600000002
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "receita_bruta": 442779.44000000006,
+      "deducoes": 16071.350000000004,
+      "cmv": 298558.57,
+      "despesa_op": 74828.22000000002,
+      "receita_fin": 170.66,
+      "despesa_fin": 85352.0,
+      "provisao_ir": 0.0,
+      "n_lctos": 274.0,
+      "receita_liquida": 426708.0900000001,
+      "margem_bruta": 128149.52000000008,
+      "resultado_op": 53321.30000000006,
+      "resultado_fin": -85181.34,
+      "lucro_liquido": -31860.039999999935
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "receita_bruta": 5970390.66,
+      "deducoes": 201082.72999999998,
+      "cmv": 4775360.68,
+      "despesa_op": 1448179.6199999999,
+      "receita_fin": 220716.18,
+      "despesa_fin": 988117.1599999999,
+      "provisao_ir": 0.0,
+      "n_lctos": 430.0,
+      "receita_liquida": 5769307.93,
+      "margem_bruta": 993947.25,
+      "resultado_op": -454232.3699999999,
+      "resultado_fin": -767400.98,
+      "lucro_liquido": -1221633.3499999999
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "receita_bruta": 69541.70999999999,
+      "deducoes": 4483.46,
+      "cmv": 52578.89,
+      "despesa_op": 65414.79,
+      "receita_fin": 11.6,
+      "despesa_fin": 285981.70999999996,
+      "provisao_ir": 0.0,
+      "n_lctos": 254.0,
+      "receita_liquida": 65058.24999999999,
+      "margem_bruta": 12479.359999999993,
+      "resultado_op": -52935.43000000001,
+      "resultado_fin": -285970.11,
+      "lucro_liquido": -338905.54
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "receita_bruta": 38776.61,
+      "deducoes": 6883.110000000001,
+      "cmv": 26341.930000000008,
+      "despesa_op": 72260.73,
+      "receita_fin": 22.029999999999998,
+      "despesa_fin": 31904.789999999997,
+      "provisao_ir": 0.0,
+      "n_lctos": 221.0,
+      "receita_liquida": 31893.5,
+      "margem_bruta": 5551.569999999992,
+      "resultado_op": -66709.16,
+      "resultado_fin": -31882.76,
+      "lucro_liquido": -98591.92
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "receita_bruta": 5539.57,
+      "deducoes": 2480.8199999999997,
+      "cmv": 10588.35,
+      "despesa_op": 42323.119999999995,
+      "receita_fin": 630.29,
+      "despesa_fin": 54437.549999999996,
+      "provisao_ir": 0.0,
+      "n_lctos": 148.0,
+      "receita_liquida": 3058.75,
+      "margem_bruta": -7529.6,
+      "resultado_op": -49852.719999999994,
+      "resultado_fin": -53807.259999999995,
+      "lucro_liquido": -103659.97999999998
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-04",
+      "receita_bruta": 3280.0,
+      "deducoes": 0.0,
+      "cmv": 0.0,
+      "despesa_op": 28799.18,
+      "receita_fin": 36.69,
+      "despesa_fin": 14436.640000000001,
+      "provisao_ir": 0.0,
+      "n_lctos": 53.0,
+      "receita_liquida": 3280.0,
+      "margem_bruta": 3280.0,
+      "resultado_op": -25519.18,
+      "resultado_fin": -14399.95,
+      "lucro_liquido": -39919.130000000005
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-05",
+      "receita_bruta": 0.0,
+      "deducoes": 0.0,
+      "cmv": 0.0,
+      "despesa_op": 265.04,
+      "receita_fin": 0.0,
+      "despesa_fin": 32.11,
+      "provisao_ir": 0.0,
+      "n_lctos": 3.0,
+      "receita_liquida": 0.0,
+      "margem_bruta": 0.0,
+      "resultado_op": -265.04,
+      "resultado_fin": -32.11,
+      "lucro_liquido": -297.15000000000003
+    }
+  ],
+  "dre_pivot": [
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "CMV",
+      "valor_signed": -1754440.32,
+      "valor_abs": 1754440.32,
+      "n": 233
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -64019.020000000004,
+      "valor_abs": 64019.020000000004,
+      "n": 233
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -147478.87,
+      "valor_abs": 147478.87,
+      "n": 83
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -404797.27,
+      "valor_abs": 404797.27,
+      "n": 277
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1958409.13,
+      "valor_abs": 1958409.13,
+      "n": 192
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 2947.87,
+      "valor_abs": 2947.87,
+      "n": 58
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "CMV",
+      "valor_signed": -3335759.12,
+      "valor_abs": 3335759.12,
+      "n": 287
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -125750.99,
+      "valor_abs": 125750.99,
+      "n": 488
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -90645.37,
+      "valor_abs": 90645.37,
+      "n": 75
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -347672.83999999997,
+      "valor_abs": 347672.83999999997,
+      "n": 233
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 2105184.57,
+      "valor_abs": 2105184.57,
+      "n": 253
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1560.0,
+      "valor_abs": 1560.0,
+      "n": 43
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "CMV",
+      "valor_signed": -10185296.58,
+      "valor_abs": 10185296.58,
+      "n": 442
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -1019211.71,
+      "valor_abs": 1019211.71,
+      "n": 580
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -376399.7,
+      "valor_abs": 376399.7,
+      "n": 91
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -1449720.97,
+      "valor_abs": 1449720.97,
+      "n": 355
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "PROVISAO_IR",
+      "valor_signed": -64902.18,
+      "valor_abs": 64902.18,
+      "n": 5
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 9336779.46,
+      "valor_abs": 9336779.46,
+      "n": 431
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 19629.85,
+      "valor_abs": 19629.85,
+      "n": 47
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "CMV",
+      "valor_signed": -4532879.26,
+      "valor_abs": 4532879.26,
+      "n": 315
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "DEDUCAO",
+      "valor_signed": -98436.86,
+      "valor_abs": 98436.86,
+      "n": 480
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -160010.49,
+      "valor_abs": 160010.49,
+      "n": 80
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -397462.81,
+      "valor_abs": 397462.81,
+      "n": 247
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 2878665.21,
+      "valor_abs": 2878665.21,
+      "n": 284
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 13072.61,
+      "valor_abs": 13072.61,
+      "n": 55
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "CMV",
+      "valor_signed": -2652002.2600000002,
+      "valor_abs": 2652002.2600000002,
+      "n": 339
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "DEDUCAO",
+      "valor_signed": -122777.26,
+      "valor_abs": 122777.26,
+      "n": 449
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -111739.59,
+      "valor_abs": 111739.59,
+      "n": 87
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -449344.4,
+      "valor_abs": 449344.4,
+      "n": 269
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 3306801.7,
+      "valor_abs": 3306801.7,
+      "n": 270
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 5353.29,
+      "valor_abs": 5353.29,
+      "n": 60
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "CMV",
+      "valor_signed": -10357969.48,
+      "valor_abs": 10357969.48,
+      "n": 399
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "DEDUCAO",
+      "valor_signed": -503037.08,
+      "valor_abs": 503037.08,
+      "n": 451
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -436062.62,
+      "valor_abs": 436062.62,
+      "n": 86
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -1688725.53,
+      "valor_abs": 1688725.53,
+      "n": 353
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 10175411.33,
+      "valor_abs": 10175411.33,
+      "n": 332
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 114995.42000000001,
+      "valor_abs": 114995.42000000001,
+      "n": 55
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "CMV",
+      "valor_signed": -1257851.9,
+      "valor_abs": 1257851.9,
+      "n": 422
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "DEDUCAO",
+      "valor_signed": -222821.41,
+      "valor_abs": 222821.41,
+      "n": 679
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -230997.62,
+      "valor_abs": 230997.62,
+      "n": 98
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -455060.23,
+      "valor_abs": 455060.23,
+      "n": 275
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1407010.39,
+      "valor_abs": 1407010.39,
+      "n": 393
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 157801.81999999998,
+      "valor_abs": 157801.81999999998,
+      "n": 47
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "CMV",
+      "valor_signed": -2508818.42,
+      "valor_abs": 2508818.42,
+      "n": 396
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "DEDUCAO",
+      "valor_signed": -157434.86,
+      "valor_abs": 157434.86,
+      "n": 635
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -174658.04,
+      "valor_abs": 174658.04,
+      "n": 104
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -469908.94,
+      "valor_abs": 469908.94,
+      "n": 242
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 3033721.6799999997,
+      "valor_abs": 3033721.6799999997,
+      "n": 344
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 73298.82999999999,
+      "valor_abs": 73298.82999999999,
+      "n": 44
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "CMV",
+      "valor_signed": -12492809.56,
+      "valor_abs": 12492809.56,
+      "n": 580
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "DEDUCAO",
+      "valor_signed": -624583.39,
+      "valor_abs": 624583.39,
+      "n": 839
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -797190.9199999999,
+      "valor_abs": 797190.9199999999,
+      "n": 123
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -1797304.05,
+      "valor_abs": 1797304.05,
+      "n": 362
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "PROVISAO_IR",
+      "valor_signed": -49580.74,
+      "valor_abs": 49580.74,
+      "n": 5
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 14471117.15,
+      "valor_abs": 14471117.15,
+      "n": 560
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 246847.25,
+      "valor_abs": 246847.25,
+      "n": 57
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "CMV",
+      "valor_signed": -6767089.37,
+      "valor_abs": 6767089.37,
+      "n": 578
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "DEDUCAO",
+      "valor_signed": -1169486.45,
+      "valor_abs": 1169486.45,
+      "n": 935
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -190211.16,
+      "valor_abs": 190211.16,
+      "n": 118
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -542848.62,
+      "valor_abs": 542848.62,
+      "n": 326
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 4789213.43,
+      "valor_abs": 4789213.43,
+      "n": 499
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1938.32,
+      "valor_abs": 1938.32,
+      "n": 67
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "CMV",
+      "valor_signed": -2100512.17,
+      "valor_abs": 2100512.17,
+      "n": 477
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "DEDUCAO",
+      "valor_signed": -260328.23,
+      "valor_abs": 260328.23,
+      "n": 743
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -289517.56,
+      "valor_abs": 289517.56,
+      "n": 94
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -441545.5,
+      "valor_abs": 441545.5,
+      "n": 244
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 2228859.52,
+      "valor_abs": 2228859.52,
+      "n": 418
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1209.3899999999999,
+      "valor_abs": 1209.3899999999999,
+      "n": 52
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "CMV",
+      "valor_signed": -10973778.92,
+      "valor_abs": 10973778.92,
+      "n": 322
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "DEDUCAO",
+      "valor_signed": -2246582.2800000003,
+      "valor_abs": 2246582.2800000003,
+      "n": 340
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -921907.9,
+      "valor_abs": 921907.9,
+      "n": 104
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -1716877.9,
+      "valor_abs": 1716877.9,
+      "n": 308
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 13144904.33,
+      "valor_abs": 13144904.33,
+      "n": 266
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 335596.99,
+      "valor_abs": 335596.99,
+      "n": 75
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2025-12",
+      "tipo": "RES_NAO_OP_DESP",
+      "valor_signed": -102308.0,
+      "valor_abs": 102308.0,
+      "n": 3
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "CMV",
+      "valor_signed": -1625467.71,
+      "valor_abs": 1625467.71,
+      "n": 406
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -372292.46,
+      "valor_abs": 372292.46,
+      "n": 467
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -207194.41,
+      "valor_abs": 207194.41,
+      "n": 123
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -353701.21,
+      "valor_abs": 353701.21,
+      "n": 231
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1382850.97,
+      "valor_abs": 1382850.97,
+      "n": 230
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 11891.34,
+      "valor_abs": 11891.34,
+      "n": 61
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "CMV",
+      "valor_signed": -2967977.79,
+      "valor_abs": 2967977.79,
+      "n": 702
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -1050754.34,
+      "valor_abs": 1050754.34,
+      "n": 491
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -102332.37999999999,
+      "valor_abs": 102332.37999999999,
+      "n": 81
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -316509.28,
+      "valor_abs": 316509.28,
+      "n": 215
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 2220879.25,
+      "valor_abs": 2220879.25,
+      "n": 231
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 34760.26,
+      "valor_abs": 34760.26,
+      "n": 57
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-02",
+      "tipo": "RES_NAO_OP_DESP",
+      "valor_signed": -264.72,
+      "valor_abs": 264.72,
+      "n": 1
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "CMV",
+      "valor_signed": -3792826.75,
+      "valor_abs": 3792826.75,
+      "n": 313
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -1274759.3800000001,
+      "valor_abs": 1274759.3800000001,
+      "n": 476
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -206565.08000000002,
+      "valor_abs": 206565.08000000002,
+      "n": 99
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -359443.43,
+      "valor_abs": 359443.43,
+      "n": 205
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 2856238.48,
+      "valor_abs": 2856238.48,
+      "n": 242
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 5568.33,
+      "valor_abs": 5568.33,
+      "n": 51
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "CMV",
+      "valor_signed": -3438467.48,
+      "valor_abs": 3438467.48,
+      "n": 338
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "DEDUCAO",
+      "valor_signed": -138884.87,
+      "valor_abs": 138884.87,
+      "n": 493
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -75232.4,
+      "valor_abs": 75232.4,
+      "n": 78
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -286959.91,
+      "valor_abs": 286959.91,
+      "n": 207
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1448738.16,
+      "valor_abs": 1448738.16,
+      "n": 272
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1092.06,
+      "valor_abs": 1092.06,
+      "n": 54
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -303.29,
+      "valor_abs": 303.29,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -20583.89,
+      "valor_abs": 20583.89,
+      "n": 7
+    },
+    {
+      "empresa": "1",
+      "ano_mes": "2026-05",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 0.01,
+      "valor_abs": 0.01,
+      "n": 1
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "CMV",
+      "valor_signed": -658992.84,
+      "valor_abs": 658992.84,
+      "n": 145
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -30454.16,
+      "valor_abs": 30454.16,
+      "n": 259
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -57282.17,
+      "valor_abs": 57282.17,
+      "n": 46
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -205497.19,
+      "valor_abs": 205497.19,
+      "n": 116
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 829119.97,
+      "valor_abs": 829119.97,
+      "n": 146
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 498.41,
+      "valor_abs": 498.41,
+      "n": 28
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "CMV",
+      "valor_signed": -516598.72,
+      "valor_abs": 516598.72,
+      "n": 196
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -40896.95,
+      "valor_abs": 40896.95,
+      "n": 314
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -56355.0,
+      "valor_abs": 56355.0,
+      "n": 44
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -196569.62,
+      "valor_abs": 196569.62,
+      "n": 97
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 542959.91,
+      "valor_abs": 542959.91,
+      "n": 197
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 451.44,
+      "valor_abs": 451.44,
+      "n": 16
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "CMV",
+      "valor_signed": -1259685.4,
+      "valor_abs": 1259685.4,
+      "n": 194
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -62084.67,
+      "valor_abs": 62084.67,
+      "n": 318
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -66270.64,
+      "valor_abs": 66270.64,
+      "n": 48
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -264932.33,
+      "valor_abs": 264932.33,
+      "n": 142
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1444847.6400000001,
+      "valor_abs": 1444847.6400000001,
+      "n": 190
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 757.5600000000001,
+      "valor_abs": 757.5600000000001,
+      "n": 30
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "CMV",
+      "valor_signed": -1133561.4,
+      "valor_abs": 1133561.4,
+      "n": 233
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "DEDUCAO",
+      "valor_signed": -91144.14,
+      "valor_abs": 91144.14,
+      "n": 334
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -59638.61,
+      "valor_abs": 59638.61,
+      "n": 48
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -247673.1,
+      "valor_abs": 247673.1,
+      "n": 150
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1476121.9,
+      "valor_abs": 1476121.9,
+      "n": 202
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 504.22,
+      "valor_abs": 504.22,
+      "n": 23
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "CMV",
+      "valor_signed": -2077511.8299999998,
+      "valor_abs": 2077511.8299999998,
+      "n": 221
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "DEDUCAO",
+      "valor_signed": -99382.3,
+      "valor_abs": 99382.3,
+      "n": 322
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -129407.06,
+      "valor_abs": 129407.06,
+      "n": 65
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -310935.98,
+      "valor_abs": 310935.98,
+      "n": 134
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1535168.73,
+      "valor_abs": 1535168.73,
+      "n": 199
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 65.08,
+      "valor_abs": 65.08,
+      "n": 22
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "CMV",
+      "valor_signed": -595991.39,
+      "valor_abs": 595991.39,
+      "n": 216
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "DEDUCAO",
+      "valor_signed": -68156.03,
+      "valor_abs": 68156.03,
+      "n": 344
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -63366.32,
+      "valor_abs": 63366.32,
+      "n": 56
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -192592.06,
+      "valor_abs": 192592.06,
+      "n": 146
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 669875.4,
+      "valor_abs": 669875.4,
+      "n": 185
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1456.69,
+      "valor_abs": 1456.69,
+      "n": 28
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "CMV",
+      "valor_signed": -610341.25,
+      "valor_abs": 610341.25,
+      "n": 224
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "DEDUCAO",
+      "valor_signed": -34672.19,
+      "valor_abs": 34672.19,
+      "n": 386
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -67511.77,
+      "valor_abs": 67511.77,
+      "n": 55
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -312736.42,
+      "valor_abs": 312736.42,
+      "n": 152
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 514311.35,
+      "valor_abs": 514311.35,
+      "n": 195
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1479.69,
+      "valor_abs": 1479.69,
+      "n": 34
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "CMV",
+      "valor_signed": -1278251.77,
+      "valor_abs": 1278251.77,
+      "n": 240
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "DEDUCAO",
+      "valor_signed": -93682.91,
+      "valor_abs": 93682.91,
+      "n": 371
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -68260.94,
+      "valor_abs": 68260.94,
+      "n": 53
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -290943.11,
+      "valor_abs": 290943.11,
+      "n": 188
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1663011.79,
+      "valor_abs": 1663011.79,
+      "n": 175
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1188.8899999999999,
+      "valor_abs": 1188.8899999999999,
+      "n": 27
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "CMV",
+      "valor_signed": -894204.91,
+      "valor_abs": 894204.91,
+      "n": 254
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "DEDUCAO",
+      "valor_signed": -42581.36,
+      "valor_abs": 42581.36,
+      "n": 462
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -83312.29000000001,
+      "valor_abs": 83312.29000000001,
+      "n": 55
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -236350.07,
+      "valor_abs": 236350.07,
+      "n": 163
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1183609.44,
+      "valor_abs": 1183609.44,
+      "n": 233
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 2912.1800000000003,
+      "valor_abs": 2912.1800000000003,
+      "n": 26
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "CMV",
+      "valor_signed": -1412928.86,
+      "valor_abs": 1412928.86,
+      "n": 371
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "DEDUCAO",
+      "valor_signed": -93553.92,
+      "valor_abs": 93553.92,
+      "n": 538
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -126027.11,
+      "valor_abs": 126027.11,
+      "n": 57
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -319810.0,
+      "valor_abs": 319810.0,
+      "n": 211
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1569072.03,
+      "valor_abs": 1569072.03,
+      "n": 301
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 185.12,
+      "valor_abs": 185.12,
+      "n": 21
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "CMV",
+      "valor_signed": -1405281.48,
+      "valor_abs": 1405281.48,
+      "n": 293
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "DEDUCAO",
+      "valor_signed": -62963.54,
+      "valor_abs": 62963.54,
+      "n": 436
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -91944.52,
+      "valor_abs": 91944.52,
+      "n": 65
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -337826.49,
+      "valor_abs": 337826.49,
+      "n": 175
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1814891.97,
+      "valor_abs": 1814891.97,
+      "n": 246
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 664.5500000000001,
+      "valor_abs": 664.5500000000001,
+      "n": 25
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "CMV",
+      "valor_signed": -12458413.549999999,
+      "valor_abs": 12458413.549999999,
+      "n": 272
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "DEDUCAO",
+      "valor_signed": -818131.5900000001,
+      "valor_abs": 818131.5900000001,
+      "n": 357
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -1070489.1500000001,
+      "valor_abs": 1070489.1500000001,
+      "n": 67
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -3464262.41,
+      "valor_abs": 3464262.41,
+      "n": 287
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "PROVISAO_IR",
+      "valor_signed": -3950.74,
+      "valor_abs": 3950.74,
+      "n": 4
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 14550169.530000001,
+      "valor_abs": 14550169.530000001,
+      "n": 241
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 15016.77,
+      "valor_abs": 15016.77,
+      "n": 33
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "CMV",
+      "valor_signed": -1798337.74,
+      "valor_abs": 1798337.74,
+      "n": 321
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -376299.58,
+      "valor_abs": 376299.58,
+      "n": 489
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -90787.29,
+      "valor_abs": 90787.29,
+      "n": 81
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -343500.20999999996,
+      "valor_abs": 343500.20999999996,
+      "n": 182
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1612976.99,
+      "valor_abs": 1612976.99,
+      "n": 257
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 1672.06,
+      "valor_abs": 1672.06,
+      "n": 32
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "CMV",
+      "valor_signed": -1230587.06,
+      "valor_abs": 1230587.06,
+      "n": 247
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -330831.81,
+      "valor_abs": 330831.81,
+      "n": 366
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -71257.6,
+      "valor_abs": 71257.6,
+      "n": 63
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -211642.6,
+      "valor_abs": 211642.6,
+      "n": 144
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 815937.0,
+      "valor_abs": 815937.0,
+      "n": 206
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 233.99,
+      "valor_abs": 233.99,
+      "n": 16
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "CMV",
+      "valor_signed": -900168.7999999999,
+      "valor_abs": 900168.7999999999,
+      "n": 289
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -93513.69,
+      "valor_abs": 93513.69,
+      "n": 407
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -56075.04,
+      "valor_abs": 56075.04,
+      "n": 89
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -288167.06,
+      "valor_abs": 288167.06,
+      "n": 191
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 1014093.06,
+      "valor_abs": 1014093.06,
+      "n": 238
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 259.79,
+      "valor_abs": 259.79,
+      "n": 21
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "tipo": "CMV",
+      "valor_signed": -991.0,
+      "valor_abs": 991.0,
+      "n": 3
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -28534.95,
+      "valor_abs": 28534.95,
+      "n": 56
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -171147.33000000002,
+      "valor_abs": 171147.33000000002,
+      "n": 106
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 130.0,
+      "valor_abs": 130.0,
+      "n": 2
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 14334.420000000002,
+      "valor_abs": 14334.420000000002,
+      "n": 27
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-05",
+      "tipo": "CMV",
+      "valor_signed": -840.0,
+      "valor_abs": 840.0,
+      "n": 1
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -32.7,
+      "valor_abs": 32.7,
+      "n": 2
+    },
+    {
+      "empresa": "2",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -5124.32,
+      "valor_abs": 5124.32,
+      "n": 9
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "CMV",
+      "valor_signed": -400063.73,
+      "valor_abs": 400063.73,
+      "n": 40
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -7659.54,
+      "valor_abs": 7659.54,
+      "n": 59
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -81202.19,
+      "valor_abs": 81202.19,
+      "n": 48
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -158560.8,
+      "valor_abs": 158560.8,
+      "n": 74
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 299524.29,
+      "valor_abs": 299524.29,
+      "n": 39
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 258.39,
+      "valor_abs": 258.39,
+      "n": 17
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "CMV",
+      "valor_signed": -526782.95,
+      "valor_abs": 526782.95,
+      "n": 75
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -22058.69,
+      "valor_abs": 22058.69,
+      "n": 104
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -62039.479999999996,
+      "valor_abs": 62039.479999999996,
+      "n": 43
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -64285.01,
+      "valor_abs": 64285.01,
+      "n": 49
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 554455.45,
+      "valor_abs": 554455.45,
+      "n": 63
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 281.21999999999997,
+      "valor_abs": 281.21999999999997,
+      "n": 16
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "CMV",
+      "valor_signed": -297200.05,
+      "valor_abs": 297200.05,
+      "n": 91
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -22787.59,
+      "valor_abs": 22787.59,
+      "n": 154
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -68414.58,
+      "valor_abs": 68414.58,
+      "n": 39
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -81156.74,
+      "valor_abs": 81156.74,
+      "n": 60
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 267719.57,
+      "valor_abs": 267719.57,
+      "n": 86
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 199.37,
+      "valor_abs": 199.37,
+      "n": 12
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "CMV",
+      "valor_signed": -664481.7,
+      "valor_abs": 664481.7,
+      "n": 70
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "DEDUCAO",
+      "valor_signed": -15791.83,
+      "valor_abs": 15791.83,
+      "n": 88
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -61018.04,
+      "valor_abs": 61018.04,
+      "n": 42
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -159626.24,
+      "valor_abs": 159626.24,
+      "n": 57
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 796453.72,
+      "valor_abs": 796453.72,
+      "n": 56
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 184.92000000000002,
+      "valor_abs": 184.92000000000002,
+      "n": 8
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "CMV",
+      "valor_signed": -204263.49000000002,
+      "valor_abs": 204263.49000000002,
+      "n": 65
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "DEDUCAO",
+      "valor_signed": -35235.84,
+      "valor_abs": 35235.84,
+      "n": 87
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -58701.55,
+      "valor_abs": 58701.55,
+      "n": 39
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -170576.8,
+      "valor_abs": 170576.8,
+      "n": 73
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 233392.12,
+      "valor_abs": 233392.12,
+      "n": 57
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-05",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 15431.17,
+      "valor_abs": 15431.17,
+      "n": 23
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "CMV",
+      "valor_signed": -690900.71,
+      "valor_abs": 690900.71,
+      "n": 57
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "DEDUCAO",
+      "valor_signed": -39172.27,
+      "valor_abs": 39172.27,
+      "n": 81
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -153206.13,
+      "valor_abs": 153206.13,
+      "n": 48
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -98341.78,
+      "valor_abs": 98341.78,
+      "n": 68
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 830765.0599999999,
+      "valor_abs": 830765.0599999999,
+      "n": 44
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-06",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 156.23,
+      "valor_abs": 156.23,
+      "n": 13
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "CMV",
+      "valor_signed": -998759.86,
+      "valor_abs": 998759.86,
+      "n": 36
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "DEDUCAO",
+      "valor_signed": -2825.44,
+      "valor_abs": 2825.44,
+      "n": 56
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -107061.81,
+      "valor_abs": 107061.81,
+      "n": 54
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -87574.7,
+      "valor_abs": 87574.7,
+      "n": 64
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 735372.32,
+      "valor_abs": 735372.32,
+      "n": 32
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-07",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 290.96000000000004,
+      "valor_abs": 290.96000000000004,
+      "n": 23
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "CMV",
+      "valor_signed": -990134.9500000001,
+      "valor_abs": 990134.9500000001,
+      "n": 54
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "DEDUCAO",
+      "valor_signed": -9255.03,
+      "valor_abs": 9255.03,
+      "n": 90
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -93363.26,
+      "valor_abs": 93363.26,
+      "n": 42
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -102905.75,
+      "valor_abs": 102905.75,
+      "n": 57
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 737828.36,
+      "valor_abs": 737828.36,
+      "n": 51
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-08",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 81.0,
+      "valor_abs": 81.0,
+      "n": 12
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "CMV",
+      "valor_signed": -969541.78,
+      "valor_abs": 969541.78,
+      "n": 65
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "DEDUCAO",
+      "valor_signed": -6196.48,
+      "valor_abs": 6196.48,
+      "n": 108
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -82795.29000000001,
+      "valor_abs": 82795.29000000001,
+      "n": 38
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -100669.97,
+      "valor_abs": 100669.97,
+      "n": 72
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 662637.14,
+      "valor_abs": 662637.14,
+      "n": 64
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-09",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 73.73,
+      "valor_abs": 73.73,
+      "n": 13
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "CMV",
+      "valor_signed": -439124.57,
+      "valor_abs": 439124.57,
+      "n": 54
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "DEDUCAO",
+      "valor_signed": -9370.83,
+      "valor_abs": 9370.83,
+      "n": 78
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -68560.41,
+      "valor_abs": 68560.41,
+      "n": 35
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -391549.89,
+      "valor_abs": 391549.89,
+      "n": 68
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 314675.14999999997,
+      "valor_abs": 314675.14999999997,
+      "n": 49
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-10",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 100.99000000000001,
+      "valor_abs": 100.99000000000001,
+      "n": 15
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "CMV",
+      "valor_signed": -298558.57,
+      "valor_abs": 298558.57,
+      "n": 51
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "DEDUCAO",
+      "valor_signed": -16071.35,
+      "valor_abs": 16071.35,
+      "n": 74
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -85352.0,
+      "valor_abs": 85352.0,
+      "n": 40
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -74828.22,
+      "valor_abs": 74828.22,
+      "n": 63
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 442779.44,
+      "valor_abs": 442779.44,
+      "n": 38
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-11",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 170.66,
+      "valor_abs": 170.66,
+      "n": 8
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "CMV",
+      "valor_signed": -4775360.68,
+      "valor_abs": 4775360.68,
+      "n": 88
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "DEDUCAO",
+      "valor_signed": -201082.73,
+      "valor_abs": 201082.73,
+      "n": 82
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -988117.1599999999,
+      "valor_abs": 988117.1599999999,
+      "n": 51
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -1448179.6199999999,
+      "valor_abs": 1448179.6199999999,
+      "n": 107
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 5970390.66,
+      "valor_abs": 5970390.66,
+      "n": 88
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2025-12",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 220716.18,
+      "valor_abs": 220716.18,
+      "n": 14
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "CMV",
+      "valor_signed": -52578.89,
+      "valor_abs": 52578.89,
+      "n": 45
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "DEDUCAO",
+      "valor_signed": -4483.46,
+      "valor_abs": 4483.46,
+      "n": 65
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -285981.70999999996,
+      "valor_abs": 285981.70999999996,
+      "n": 38
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -65414.79,
+      "valor_abs": 65414.79,
+      "n": 62
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 69541.71,
+      "valor_abs": 69541.71,
+      "n": 40
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-01",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 11.6,
+      "valor_abs": 11.6,
+      "n": 4
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "CMV",
+      "valor_signed": -26341.93,
+      "valor_abs": 26341.93,
+      "n": 22
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "DEDUCAO",
+      "valor_signed": -6883.110000000001,
+      "valor_abs": 6883.110000000001,
+      "n": 72
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -31904.79,
+      "valor_abs": 31904.79,
+      "n": 31
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -72260.73,
+      "valor_abs": 72260.73,
+      "n": 54
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 38776.61,
+      "valor_abs": 38776.61,
+      "n": 34
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-02",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 22.03,
+      "valor_abs": 22.03,
+      "n": 8
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "CMV",
+      "valor_signed": -10588.35,
+      "valor_abs": 10588.35,
+      "n": 17
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "DEDUCAO",
+      "valor_signed": -2480.82,
+      "valor_abs": 2480.82,
+      "n": 31
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -54437.55,
+      "valor_abs": 54437.55,
+      "n": 31
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -42323.12,
+      "valor_abs": 42323.12,
+      "n": 44
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 5539.57,
+      "valor_abs": 5539.57,
+      "n": 16
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-03",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 630.2900000000001,
+      "valor_abs": 630.2900000000001,
+      "n": 9
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -14436.640000000001,
+      "valor_abs": 14436.640000000001,
+      "n": 18
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-04",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -28799.18,
+      "valor_abs": 28799.18,
+      "n": 30
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_BRUTA",
+      "valor_signed": 3280.0,
+      "valor_abs": 3280.0,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-04",
+      "tipo": "RECEITA_FIN",
+      "valor_signed": 36.69,
+      "valor_abs": 36.69,
+      "n": 4
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_FIN",
+      "valor_signed": -32.11,
+      "valor_abs": 32.11,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "ano_mes": "2026-05",
+      "tipo": "DESPESA_OP",
+      "valor_signed": -265.04,
+      "valor_abs": 265.04,
+      "n": 2
+    }
+  ],
+  "top_receita_por_empresa": [
+    {
+      "empresa": "1",
+      "sint_nome": "IMPLEMENTOS NOVOS",
+      "valor": 33798868.21,
+      "n": 100
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA TRATORES NOVOS",
+      "valor": 29603105.5,
+      "n": 94
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA TRATORES NOVOS",
+      "valor": 23458538.380000003,
+      "n": 71
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA TRATORES NOVOS",
+      "valor": 6955610.48,
+      "n": 19
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS  IMPLEMENTOS",
+      "valor": 5342382.600000001,
+      "n": 1359
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "IMPLEMENTOS NOVOS",
+      "valor": 3954560.36,
+      "n": 47
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA TRATORES USADOS",
+      "valor": 2781000.0,
+      "n": 16
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS TRATORES",
+      "valor": 2609448.04,
+      "n": 1311
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS TRATORES",
+      "valor": 2042533.36,
+      "n": 952
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "IMPLEMENTOS NOVOS",
+      "valor": 1830320.0799999998,
+      "n": 24
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA TRATORES USADOS",
+      "valor": 1161000.0,
+      "n": 10
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "OLEOS E GRAXAS",
+      "valor": 850848.72,
+      "n": 1114
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "OLEOS E GRAXAS",
+      "valor": 685939.41,
+      "n": 837
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 479796.86,
+      "n": 72
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "MAO DE OBRA TRATORES CLIENTES",
+      "valor": 461675.06,
+      "n": 580
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS  IMPLEMENTOS",
+      "valor": 454845.70999999996,
+      "n": 434
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "MAO DE OBRA TRATORES CLIENTES",
+      "valor": 340453.02,
+      "n": 295
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 330716.08999999997,
+      "n": 233
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 289977.96,
+      "n": 61
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "PNEUS E CAMARAS",
+      "valor": 260271.88,
+      "n": 30
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS TRATORES",
+      "valor": 256423.49,
+      "n": 154
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA TRATORES USADOS",
+      "valor": 230000.0,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "PNEUS E CAMARAS",
+      "valor": 217483.28,
+      "n": 22
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA PEÇAS PARALELAS TRATORES",
+      "valor": 179298.35,
+      "n": 209
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "OLEOS E GRAXAS",
+      "valor": 158722.35,
+      "n": 207
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "SERVIÇOS DE TERCEIROS",
+      "valor": 156827.86,
+      "n": 56
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 153370.5,
+      "n": 34
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "SERVIÇOS DE TERCEIROS",
+      "valor": 147492.27000000002,
+      "n": 36
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "MÃO DE OBRA TRATORES DE GARANTIA",
+      "valor": 131311.86000000002,
+      "n": 96
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDA PEÇAS PARALELAS TRATORES",
+      "valor": 96165.75,
+      "n": 100
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "MAO DE OBRA TRATORES CLIENTES",
+      "valor": 87242.73999999999,
+      "n": 138
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 68273.07,
+      "n": 130
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "MÃO DE OBRA TRATORES DE GARANTIA",
+      "valor": 67333.57,
+      "n": 57
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "MÃO DE OBRA IMPLEMENTOS CLIENTES",
+      "valor": 55261.62,
+      "n": 40
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDAS  PEÇAS JACTO",
+      "valor": 46404.92,
+      "n": 11
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "PNEUS E CAMARAS",
+      "valor": 32524.58,
+      "n": 7
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "MÃO DE OBRA TRATORES DE GARANTIA",
+      "valor": 32148.3,
+      "n": 60
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA PEÇAS ORIGINAIS  IMPLEMENTOS",
+      "valor": 27398.54,
+      "n": 36
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "VENDA PNEUS E CAMARAS COMERCIAL",
+      "valor": 26146.7,
+      "n": 5
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "MÃO DE OBRA IMPLEMENTOS CLIENTES",
+      "valor": 18593.19,
+      "n": 26
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 15847.42,
+      "n": 24
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDA PEÇAS PARALELAS TRATORES",
+      "valor": 12942.18,
+      "n": 9
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "IMPLEMENTOS USADOS",
+      "valor": 11000.0,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "SERVIÇOS DE TERCEIROS",
+      "valor": 10044.42,
+      "n": 15
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "(-)IMPOSTOS FATURADOS",
+      "valor": 6317.08,
+      "n": 20
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "(-)IMPOSTOS FATURADOS",
+      "valor": 4241.21,
+      "n": 11
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "MÃO DE OBRA IMPLEMENTOS INTERNOS",
+      "valor": 2152.7,
+      "n": 4
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "VENDAS COM OUTROS MATERIAIS",
+      "valor": 870.54,
+      "n": 7
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "VENDAS COM OUTROS MATERIAIS",
+      "valor": 242.43,
+      "n": 10
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "MÃO DE OBRA IMPLEMENTOS CLIENTES",
+      "valor": 240.0,
+      "n": 2
+    }
+  ],
+  "top_cmv_por_empresa": [
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS IMPLEMENTOS NOVOS",
+      "valor": 28201208.38,
+      "n": 107
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS DOS TRATORES NOVOS",
+      "valor": 23608154.3,
+      "n": 96
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS DOS TRATORES NOVOS",
+      "valor": 17534185.15,
+      "n": 72
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "AJUSTE DE ESTOQUE",
+      "valor": 13691757.46,
+      "n": 888
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS DOS TRATORES NOVOS",
+      "valor": 5321649.4,
+      "n": 19
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "DEVOLUÇÃO DE COMPRAS",
+      "valor": 4553590.2,
+      "n": 637
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "AJUSTE DE ESTOQUE",
+      "valor": 4237949.7,
+      "n": 660
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS IMPLEMENTOS AGRICOLAS",
+      "valor": 3336476.23,
+      "n": 1393
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS IMPLEMENTOS NOVOS",
+      "valor": 3036145.84,
+      "n": 46
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "TRATORES USADOS",
+      "valor": 2435000.0,
+      "n": 16
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "AJUSTE DE ESTOQUE",
+      "valor": 2050734.45,
+      "n": 137
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES GARANTIA",
+      "valor": 1690172.26,
+      "n": 133
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS IMPLEMENTOS NOVOS",
+      "valor": 1405067.96,
+      "n": 25
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS TRATORES",
+      "valor": 1206249.57,
+      "n": 1339
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES GARANTIA",
+      "valor": 1124524.07,
+      "n": 77
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "TRATORES USADOS",
+      "valor": 1104000.0,
+      "n": 10
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS TRATORES",
+      "valor": 945804.8500000001,
+      "n": 963
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO OLEOS E GRAXAS",
+      "valor": 527782.44,
+      "n": 1120
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES INTERNO",
+      "valor": 483319.76,
+      "n": 297
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO OLEOS E GRAXAS",
+      "valor": 456025.11,
+      "n": 837
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "DEVOLUÇÃO DE COMPRAS",
+      "valor": 345115.56,
+      "n": 62
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 282482.55,
+      "n": 72
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "FRETE S/COMPRAS",
+      "valor": 256830.15,
+      "n": 17
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS IMPLEMENTOS AGRICOLAS",
+      "valor": 236175.0,
+      "n": 436
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "TRATORES USADOS",
+      "valor": 225267.42,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 184596.8,
+      "n": 61
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 176222.83,
+      "n": 240
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO PNEUS E CAMARAS",
+      "valor": 170686.72,
+      "n": 31
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO PNEUS E CAMARAS",
+      "valor": 163178.35,
+      "n": 22
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES GARANTIA",
+      "valor": 147453.12,
+      "n": 32
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO MÃO DE OBRA IMPLEMENTOS INTERNOS",
+      "valor": 134508.82,
+      "n": 21
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS TRATORES",
+      "valor": 105125.18000000001,
+      "n": 156
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO OLEOS E GRAXAS",
+      "valor": 100390.59,
+      "n": 207
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS TRATORES",
+      "valor": 90852.22,
+      "n": 209
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "PRODUTOS BUFFALO",
+      "valor": 86154.91,
+      "n": 34
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "FRETE S/COMPRAS",
+      "valor": 76834.05,
+      "n": 10
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO COM OUTROS MATERIAIS",
+      "valor": 74053.58,
+      "n": 27
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO SERVIÇOS TERCEIROS",
+      "valor": 54334.26,
+      "n": 39
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES INTERNO",
+      "valor": 53932.47,
+      "n": 49
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO COM OUTROS MATERIAIS",
+      "valor": 46998.83,
+      "n": 40
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS TRATORES",
+      "valor": 45957.31,
+      "n": 103
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "FRETE S/COMPRAS",
+      "valor": 45855.47,
+      "n": 8
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS COM IMPORTAÇÃO",
+      "valor": 37766.26,
+      "n": 4
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 34272.6,
+      "n": 131
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "DEVOLUÇÃO DE COMPRAS",
+      "valor": 30117.72,
+      "n": 9
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO SERVIÇOS TERCEIROS",
+      "valor": 24899.32,
+      "n": 19
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS PEÇAS JACTO",
+      "valor": 24448.99,
+      "n": 11
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS PEÇAS ORIGINAIS IMPLEMENTOS AGRICOLAS",
+      "valor": 22389.14,
+      "n": 37
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO PNEUS E CAMARAS",
+      "valor": 21922.54,
+      "n": 7
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO PNEUS E CAMARAS COMERCIAL",
+      "valor": 19200.02,
+      "n": 5
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO COM OUTROS MATERIAIS",
+      "valor": 13854.33,
+      "n": 30
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS IMPLEMENTOS AGRICOLAS",
+      "valor": 6580.42,
+      "n": 24
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTOS IMPLEMENTOS USADOS",
+      "valor": 6388.8,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS PEÇAS PARALELAS TRATORES",
+      "valor": 5858.9400000000005,
+      "n": 9
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO MÃO DE OBRA IMPLEMENTOS INTERNOS",
+      "valor": 4969.78,
+      "n": 6
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO MÃO DE OBRA IMPLEMENTOS INTERNOS",
+      "valor": 4347.24,
+      "n": 11
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES DE TERCEIROS",
+      "valor": 3799.7799999999997,
+      "n": 9
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTOS COM TRANSP.RODOVIARIO",
+      "valor": 2400.0,
+      "n": 2
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES DE TERCEIROS",
+      "valor": 1881.24,
+      "n": 17
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "CUSTO SERVIÇOS TERCEIROS",
+      "valor": 1800.0,
+      "n": 2
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTO MÃO DE OBRA TRATORES DE TERCEIROS",
+      "valor": 1516.86,
+      "n": 14
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "CUSTOS TRATORES",
+      "valor": 100.0,
+      "n": 1
+    }
+  ],
+  "top_despesa_por_empresa": [
+    {
+      "empresa": "1",
+      "sint_nome": "DESPESAS GERAIS ADMINISTRATIVAS",
+      "valor": 5796529.88,
+      "n": 2521
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "REMUNERACAO",
+      "valor": 2680345.2399999998,
+      "n": 421
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "DESPESAS GERAIS ADMINISTRATIVAS",
+      "valor": 2650593.31,
+      "n": 1635
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "DESPESAS GERAIS ADMINISTRATIVAS",
+      "valor": 1766802.5,
+      "n": 535
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "REMUNERACAO",
+      "valor": 1641142.18,
+      "n": 258
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "DESPESAS COM VIAGENS",
+      "valor": 1274163.26,
+      "n": 354
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "ENCARGOS SOCIAIS",
+      "valor": 1056413.18,
+      "n": 137
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "DESPESAS COM VIAGENS",
+      "valor": 1020233.37,
+      "n": 875
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "REMUNERACAO",
+      "valor": 744122.14,
+      "n": 143
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "ENCARGOS SOCIAIS",
+      "valor": 653449.78,
+      "n": 76
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "PROVISOES",
+      "valor": 413996.98,
+      "n": 69
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "PROVISOES",
+      "valor": 364874.85,
+      "n": 38
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "ENCARGOS SOCIAIS",
+      "valor": 296388.13,
+      "n": 42
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "IMPOSTOS E TAXAS DIVERSAS",
+      "valor": 291186.73,
+      "n": 147
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "BENEFICIOS",
+      "valor": 275425.87,
+      "n": 94
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "(+)OUTRAS RECEITAS OPERACIONAIS",
+      "valor": 251897.69,
+      "n": 13
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "BENEFICIOS",
+      "valor": 192469.91,
+      "n": 151
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "IMPOSTOS E TAXAS DIVERSAS",
+      "valor": 173078.54,
+      "n": 88
+    },
+    {
+      "empresa": "2",
+      "sint_nome": "(-)OUTRAS DESPESAS OPERACIONAIS",
+      "valor": 115084.82,
+      "n": 37
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "DESPESAS COM VIAGENS",
+      "valor": 102822.66,
+      "n": 168
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "PROVISOES",
+      "valor": 97458.61,
+      "n": 23
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "IMPOSTOS E TAXAS DIVERSAS",
+      "valor": 72500.26,
+      "n": 39
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "BENEFICIOS",
+      "valor": 64969.62,
+      "n": 50
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "(+)OUTRAS RECEITAS OPERACIONAIS",
+      "valor": 30561.81,
+      "n": 14
+    },
+    {
+      "empresa": "1",
+      "sint_nome": "(-)OUTRAS DESPESAS OPERACIONAIS",
+      "valor": 16729.68,
+      "n": 21
+    },
+    {
+      "empresa": "4",
+      "sint_nome": "(-)OUTRAS DESPESAS OPERACIONAIS",
+      "valor": 2254.46,
+      "n": 4
+    }
+  ],
+  "top_fornecedores": [
+    {
+      "empresa": "2",
+      "cliente": "TICKET SOLUÇOES HDFGT S/A",
+      "valor": 599043.27,
+      "n": 32
+    },
+    {
+      "empresa": "1",
+      "cliente": "BELLVER CONTABILIDADE E ASSESSORIA EMPRESARIAL",
+      "valor": 137956.24,
+      "n": 32
+    },
+    {
+      "empresa": "1",
+      "cliente": "CENTRO CLINICO GAUCHO LTDA",
+      "valor": 104410.48,
+      "n": 88
+    },
+    {
+      "empresa": "1",
+      "cliente": "SOLUTION INFORMATICA LTDA",
+      "valor": 100860.18,
+      "n": 19
+    },
+    {
+      "empresa": "1",
+      "cliente": "SEIVA COMERCIO E REPRESENTACOES LTDA",
+      "valor": 76057.48999999999,
+      "n": 3
+    },
+    {
+      "empresa": "1",
+      "cliente": "A SANTOS MACHADO ASSESORIA CONTABIL",
+      "valor": 70373.33,
+      "n": 8
+    },
+    {
+      "empresa": "2",
+      "cliente": "EDENRED SOLUCOES DE MOBILIDADE E INST. DE PAGTO.HU S.A",
+      "valor": 63941.159999999996,
+      "n": 29
+    },
+    {
+      "empresa": "2",
+      "cliente": "CIRCULO OPERARIO CAXIENSE",
+      "valor": 63750.82,
+      "n": 17
+    },
+    {
+      "empresa": "1",
+      "cliente": "KENIA ALEXANDRA GARCIA PINHEIRO LTDA",
+      "valor": 63000.0,
+      "n": 2
+    },
+    {
+      "empresa": "2",
+      "cliente": "SOS MIGUEL TRANSPORTES LOGISTICOS LTDA",
+      "valor": 58200.0,
+      "n": 45
+    },
+    {
+      "empresa": "2",
+      "cliente": "TICKET SERVICOS SA",
+      "valor": 55423.69,
+      "n": 8
+    },
+    {
+      "empresa": "1",
+      "cliente": "DANIEL CARRERA MACEDO",
+      "valor": 53392.3,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "cliente": "DRIFT PERFORMANCE LTDA",
+      "valor": 49500.0,
+      "n": 1
+    },
+    {
+      "empresa": "1",
+      "cliente": "INOVAR COMERCIO ATAC. DE MAQ. IMPLEMENTOS AGRICOLAS LTDA",
+      "valor": 44688.68,
+      "n": 3
+    },
+    {
+      "empresa": "1",
+      "cliente": "JOAO CARLOS DA SILVA MACHADO",
+      "valor": 42010.0,
+      "n": 53
+    },
+    {
+      "empresa": "1",
+      "cliente": "ASO TECNOLOGIA E INOVACAO LTDA",
+      "valor": 42000.0,
+      "n": 7
+    },
+    {
+      "empresa": "1",
+      "cliente": "IT4BUSINESS TECNOLOGIA E INOVAÇÃO LTDA",
+      "valor": 42000.0,
+      "n": 7
+    },
+    {
+      "empresa": "1",
+      "cliente": "C. C. DA SILVA GOULART LTDA",
+      "valor": 40000.0,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "cliente": "SOLUTION INFORMATICA LTDA",
+      "valor": 39719.29,
+      "n": 16
+    },
+    {
+      "empresa": "2",
+      "cliente": "HOBI DIESEL BOMBAS INJETORES LTDA",
+      "valor": 36746.0,
+      "n": 5
+    },
+    {
+      "empresa": "4",
+      "cliente": "CENTRO CLINICO GAUCHO LTDA",
+      "valor": 36211.59,
+      "n": 31
+    },
+    {
+      "empresa": "2",
+      "cliente": "CENTRO CLINICO GAUCHO LTDA",
+      "valor": 36208.14,
+      "n": 26
+    },
+    {
+      "empresa": "2",
+      "cliente": "SOLUTION INFORMATICA LTDA",
+      "valor": 35995.68,
+      "n": 18
+    },
+    {
+      "empresa": "1",
+      "cliente": "MARTINEZ AUTO CENTER LTDA",
+      "valor": 33537.0,
+      "n": 10
+    },
+    {
+      "empresa": "2",
+      "cliente": "GUINCHOS S.O.S. AMARAL LTDA",
+      "valor": 33150.0,
+      "n": 15
+    },
+    {
+      "empresa": "2",
+      "cliente": "KL COMERCIAL AGRICOLA EIRELI",
+      "valor": 33048.79,
+      "n": 1
+    },
+    {
+      "empresa": "1",
+      "cliente": "CLAUDIR JOAO DALLA COSTA ZANDONA",
+      "valor": 32850.0,
+      "n": 19
+    },
+    {
+      "empresa": "1",
+      "cliente": "FRANCISCO L. G. DELAMARE CONSULTORIA DE MAQ E EQUI. AGRICOLA",
+      "valor": 32259.39,
+      "n": 6
+    },
+    {
+      "empresa": "1",
+      "cliente": "VIEIRA SANTOS CONSULTORIA EMPRESARIAL LTDA",
+      "valor": 30804.770000000004,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "cliente": "MARINS BERTOLDI ADVOGADOS",
+      "valor": 30804.770000000004,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "cliente": "EKT EXECUTIVE HOTEL LTDA",
+      "valor": 30700.0,
+      "n": 57
+    },
+    {
+      "empresa": "1",
+      "cliente": "GUINCHOS OLIVEIRA & CIA LTDA-ME",
+      "valor": 26520.0,
+      "n": 14
+    },
+    {
+      "empresa": "1",
+      "cliente": "RICARDO PAPKE ROCHA",
+      "valor": 23787.0,
+      "n": 21
+    },
+    {
+      "empresa": "4",
+      "cliente": "RICARDO PAPKE ROCHA",
+      "valor": 21570.5,
+      "n": 18
+    },
+    {
+      "empresa": "1",
+      "cliente": "ALTIERI ADVOGADOS",
+      "valor": 21500.0,
+      "n": 4
+    },
+    {
+      "empresa": "1",
+      "cliente": "METALURGICA MARINI LTDA",
+      "valor": 21500.0,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "cliente": "GRAZIELA DE OLIVEIRA SOUTO MAIA",
+      "valor": 21350.0,
+      "n": 16
+    },
+    {
+      "empresa": "1",
+      "cliente": "HOBI DIESEL BOMBAS INJETORES LTDA",
+      "valor": 19645.0,
+      "n": 4
+    },
+    {
+      "empresa": "4",
+      "cliente": "A SANTOS MACHADO ASSESORIA CONTABIL",
+      "valor": 19312.25,
+      "n": 3
+    },
+    {
+      "empresa": "1",
+      "cliente": "BRUNO NERY IZOLAN",
+      "valor": 19188.6,
+      "n": 5
+    },
+    {
+      "empresa": "1",
+      "cliente": "ANDRE CARDOSO LUDTKE",
+      "valor": 17844.6,
+      "n": 6
+    },
+    {
+      "empresa": "1",
+      "cliente": "TRANSTEK TRANSPORTES LTDA",
+      "valor": 16690.0,
+      "n": 7
+    },
+    {
+      "empresa": "2",
+      "cliente": "DEZEN AGRO DONE LTDA",
+      "valor": 16666.76,
+      "n": 3
+    },
+    {
+      "empresa": "1",
+      "cliente": "FERRARIA DO COLONO LTDA",
+      "valor": 16640.0,
+      "n": 6
+    },
+    {
+      "empresa": "1",
+      "cliente": "GUSTAVO DA SILVA NUNES",
+      "valor": 16242.0,
+      "n": 28
+    },
+    {
+      "empresa": "1",
+      "cliente": "IRMAOS JOUGLARD LTDA - PELOTAS",
+      "valor": 15981.9,
+      "n": 28
+    },
+    {
+      "empresa": "1",
+      "cliente": "BUFFALO MOTORES & ACOPLADOS LTDA",
+      "valor": 15661.0,
+      "n": 1
+    },
+    {
+      "empresa": "4",
+      "cliente": "MARCO A . L FERNANDES LTDA",
+      "valor": 15070.0,
+      "n": 1
+    },
+    {
+      "empresa": "1",
+      "cliente": "SAGRILLO GUINCHOS LTDA",
+      "valor": 15000.0,
+      "n": 2
+    },
+    {
+      "empresa": "1",
+      "cliente": "LS MTRON INDUSTRIA DE MAQUINAS AGRICOLAS LTDA",
+      "valor": 15000.0,
+      "n": 1
+    }
+  ],
+  "top_clientes": [
+    {
+      "empresa": "1",
+      "cliente": "LS MTRON INDUSTRIA DE MAQUINAS AGRICOLAS LTDA",
+      "valor": 37302.0,
+      "n": 37
+    },
+    {
+      "empresa": "4",
+      "cliente": "YANMAR SOUTH AMERICA INDUSTRIA DE MAQUINAS LTDA",
+      "valor": 23937.84,
+      "n": 32
+    },
+    {
+      "empresa": "2",
+      "cliente": "LS MTRON INDUSTRIA DE MAQUINAS AGRICOLAS LTDA",
+      "valor": 12636.0,
+      "n": 35
+    }
+  ],
+  "top_cc_despesa": [
+    {
+      "empresa": "1",
+      "cc_nome": "",
+      "valor": 11363966.91,
+      "n": 4298
+    },
+    {
+      "empresa": "2",
+      "cc_nome": "",
+      "valor": 7380748.29,
+      "n": 2532
+    },
+    {
+      "empresa": "4",
+      "cc_nome": "",
+      "valor": 3147318.38,
+      "n": 1004
+    },
+    {
+      "empresa": "1",
+      "cc_nome": "ADM",
+      "valor": 100853.12000000001,
+      "n": 32
+    },
+    {
+      "empresa": "1",
+      "cc_nome": "PECAS",
+      "valor": 28961.13,
+      "n": 8
+    },
+    {
+      "empresa": "2",
+      "cc_nome": "ADM",
+      "valor": 15280.05,
+      "n": 43
+    },
+    {
+      "empresa": "1",
+      "cc_nome": "SERVICOS",
+      "valor": 4101.01,
+      "n": 13
+    },
+    {
+      "empresa": "2",
+      "cc_nome": "SERVICOS",
+      "valor": 3143.8599999999997,
+      "n": 10
+    },
+    {
+      "empresa": "1",
+      "cc_nome": "COMERCIAL",
+      "valor": 584.61,
+      "n": 5
+    },
+    {
+      "empresa": "2",
+      "cc_nome": "PECAS",
+      "valor": 538.1,
+      "n": 8
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+==========================================================================================
+VALIDATION REPORT - Extract Razão de Caixa JCE/GlobalMac/DC Tractor/DC Comércio
+Generated: 2026-05-06 19:42:15
+==========================================================================================
+
+Total checks: 66
+Passed: 56 | Failed: 10
+CRITICAL: 38/46 = 82.6%
+WARN:     13/14
+INFO:     5/6
+
+------------------------------------------------------------------------------------------
+  CRITICAL
+------------------------------------------------------------------------------------------
+  [PASS] A.1.1 row coverage jan-fev 2026
+         extract jan-fev rows / truth rows
+         expected=>=95% | actual=100.0%
+
+  [PASS] A.1.2 sum débito jan-fev 2026
+         diff 40,082,733.64 vs truth 40,082,733.64 = 0.00%
+         expected=<=5% | actual=0.00%
+
+  [PASS] A.1.3 sum crédito jan-fev 2026
+         diff 40,082,733.64 vs truth 40,082,733.64 = 0.00%
+         expected=<=5% | actual=0.00%
+
+  [PASS] A.1.4 lanctos missing
+         0/5603 lanctos do truth ausentes do extract
+         expected=<=5% | actual=0.0%
+
+  [PASS] A.1.5 contas (chart-of-accounts) coverage
+         684/684 contas presentes
+         expected=>=95% | actual=100.0%
+
+  [PASS] A.2.1 row coverage jan-fev 2026
+         extract jan-fev rows / truth rows
+         expected=>=95% | actual=100.0%
+
+  [PASS] A.2.2 sum débito jan-fev 2026
+         diff 23,386,526.89 vs truth 23,386,526.89 = 0.00%
+         expected=<=5% | actual=0.00%
+
+  [PASS] A.2.3 sum crédito jan-fev 2026
+         diff 23,386,526.89 vs truth 23,386,526.89 = 0.00%
+         expected=<=5% | actual=0.00%
+
+  [PASS] A.2.4 lanctos missing
+         0/4456 lanctos do truth ausentes do extract
+         expected=<=5% | actual=0.0%
+
+  [PASS] A.2.5 contas (chart-of-accounts) coverage
+         564/564 contas presentes
+         expected=>=95% | actual=100.0%
+
+  [PASS] B.1 três empresas presentes (1, 2, 4)
+         empresas com dados: [1, 2, 4]
+         expected={1, 2, 4} | actual=[1, 2, 4]
+
+  [PASS] B.2 período abrange jan/2025 a abr/2026
+         min=2025-01-01 00:00:00 max=2026-05-04 00:00:00
+         expected=<=2025-01-31 and >=2026-04-01 | actual=2025-01-01 00:00:00 - 2026-05-04 00:00:00
+
+  [PASS] B.3 sem mês vazio no range jan/2025-abr/2026
+         meses vazios: []
+         expected=0 missing months | actual=0 missing
+
+  [PASS] B.5.1 partida dobrada (deb=cre)
+         deb=587,157,797.20 cre=587,157,797.20 diff=0.0000%
+         expected=<0.1% | actual=0.0000%
+
+  [PASS] B.5.2 partida dobrada (deb=cre)
+         deb=275,852,651.33 cre=275,852,651.33 diff=0.0000%
+         expected=<0.1% | actual=0.0000%
+
+  [FAIL] B.5.4 partida dobrada (deb=cre)
+         deb=35,576,244.50 cre=35,699,904.85 diff=0.3476%
+         expected=<0.1% | actual=0.3476%
+
+  [PASS] B.8.1.1.01.01.02 BANCOS
+         empresa 1 contém alguma conta com sintética '1.01.01.02 BANCOS'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.2.01.03.01 FORNECEDORES
+         empresa 1 contém alguma conta com sintética '2.01.03.01 FORNECEDORES'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.1.01.02.01.01 CLIENTES
+         empresa 1 contém alguma conta com sintética '1.01.02.01.01 CLIENTES'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS
+         empresa 1 contém alguma conta com sintética '2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.3.01.03
+         empresa 1 contém alguma conta com sintética '3.01.03'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.3.03
+         empresa 1 contém alguma conta com sintética '3.03'?
+         expected=True | actual=True
+
+  [PASS] B.8.1.3.04
+         empresa 1 contém alguma conta com sintética '3.04'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.1.01.01.02 BANCOS
+         empresa 2 contém alguma conta com sintética '1.01.01.02 BANCOS'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.2.01.03.01 FORNECEDORES
+         empresa 2 contém alguma conta com sintética '2.01.03.01 FORNECEDORES'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.1.01.02.01.01 CLIENTES
+         empresa 2 contém alguma conta com sintética '1.01.02.01.01 CLIENTES'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS
+         empresa 2 contém alguma conta com sintética '2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.3.01.03
+         empresa 2 contém alguma conta com sintética '3.01.03'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.3.03
+         empresa 2 contém alguma conta com sintética '3.03'?
+         expected=True | actual=True
+
+  [PASS] B.8.2.3.04
+         empresa 2 contém alguma conta com sintética '3.04'?
+         expected=True | actual=True
+
+  [PASS] B.8.4.1.01.01.02 BANCOS
+         empresa 4 contém alguma conta com sintética '1.01.01.02 BANCOS'?
+         expected=True | actual=True
+
+  [FAIL] B.8.4.2.01.03.01 FORNECEDORES
+         empresa 4 contém alguma conta com sintética '2.01.03.01 FORNECEDORES'?
+         expected=True | actual=False
+
+  [FAIL] B.8.4.1.01.02.01.01 CLIENTES
+         empresa 4 contém alguma conta com sintética '1.01.02.01.01 CLIENTES'?
+         expected=True | actual=False
+
+  [FAIL] B.8.4.2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS
+         empresa 4 contém alguma conta com sintética '2.01.15 OBRIGACOES FISCAIS/TRIBUTARIAS'?
+         expected=True | actual=False
+
+  [FAIL] B.8.4.3.01.03
+         empresa 4 contém alguma conta com sintética '3.01.03'?
+         expected=True | actual=False
+
+  [FAIL] B.8.4.3.03
+         empresa 4 contém alguma conta com sintética '3.03'?
+         expected=True | actual=False
+
+  [FAIL] B.8.4.3.04
+         empresa 4 contém alguma conta com sintética '3.04'?
+         expected=True | actual=False
+
+  [PASS] C.1 BASE_CAIXA_RAZAO traz 3 empresas
+         empresas: [np.int64(1), np.int64(2), np.int64(4)]
+         expected={1,2,4} | actual=[np.int64(1), np.int64(2), np.int64(4)]
+
+  [PASS] C.2.1 receita > 0 emp1
+         receita = 583,695.61
+         expected=>0 | actual=583,695.61
+
+  [PASS] C.2.2 receita > 0 emp2
+         receita = 344,742.50
+         expected=>0 | actual=344,742.50
+
+  [PASS] C.2.4 receita > 0 emp4
+         receita = 71,444.47
+         expected=>0 | actual=71,444.47
+
+  [PASS] C.3.1 despesa > 0 emp1
+         despesa = 398,199.03
+         expected=>0 | actual=398,199.03
+
+  [PASS] G.1.1 extração emp1 usou 'todas as sintéticas'
+         Sintetica restrita detectada? False
+         expected=vSinteticaFim=9999999999999999 | actual=ALL accounts
+
+  [PASS] G.1.2 extração emp2 usou 'todas as sintéticas'
+         Sintetica restrita detectada? False
+         expected=vSinteticaFim=9999999999999999 | actual=ALL accounts
+
+  [FAIL] G.1.4 extração emp4 usou 'todas as sintéticas'
+         Sintetica restrita detectada? True
+         expected=vSinteticaFim=9999999999999999 | actual=restrita a 1.01.01.* (caixa/bancos apenas)
+
+  [PASS] F.1 emp1 size ≥10MB (razão completo)
+         32.1 MB
+         expected=>=10MB | actual=32.1MB
+
+------------------------------------------------------------------------------------------
+  WARN
+------------------------------------------------------------------------------------------
+  [PASS] A.1.6 valor por lancto (sample 50)
+         0/50 lanctos com valor divergente
+         expected=0 | actual=0
+
+  [PASS] A.2.6 valor por lancto (sample 50)
+         0/50 lanctos com valor divergente
+         expected=0 | actual=0
+
+  [PASS] B.4 sem datas no futuro
+         0 lançamentos com data futura
+         expected=0 | actual=0
+
+  [PASS] B.6 histórico preenchido ≥80%
+         100.0% das linhas têm histórico
+         expected=>=80% | actual=100.0%
+
+  [PASS] B.7 sem duplicatas (emp+lancto+conta+valor)
+         0 linhas duplicadas
+         expected=0 | actual=0
+
+  [PASS] C.3.2 despesa > 0 emp2
+         despesa = 231,510.87
+         expected=>0 | actual=231,510.87
+
+  [PASS] C.3.4 despesa > 0 emp4
+         despesa = 31,762.47
+         expected=>0 | actual=31,762.47
+
+  [PASS] C.4 concentração top 5 fornecedores ≤95%
+         top 5 = 18.5% do total
+         expected=<=95% | actual=18.5%
+
+  [PASS] C.8 BASE_CAIXA sem datas futuras
+         0 datas futuras
+         expected=0 | actual=0
+
+  [PASS] G.2.1 período abrange 2026 emp1
+         header path: Sintética Inicial:  .  .  .  .  . .;Sintética Final: 9999999999999999;Período de: 01/01/2025;Até: 04/05/2026;Lote:    0;Filial:  1;
+
+         expected=Até inclui 2026 | actual=OK
+
+  [PASS] G.2.2 período abrange 2026 emp2
+         header path: Sintética Inicial:  .  .  .  .  . .;Sintética Final: 9999999999999999;Período de: 01/01/2025;Até: 04/05/2026;Lote:    0;Filial:  1;
+
+         expected=Até inclui 2026 | actual=OK
+
+  [PASS] G.2.4 período abrange 2026 emp4
+         header path: Sintética Inicial: 1.01.01.01.  . .;Sintética Final: 1.01.01.99.  . .;Período de: 01/01/2025;Até: 04/05/2026;Lote:    0;Filial:  1;
+
+         expected=Até inclui 2026 | actual=OK
+
+  [PASS] F.2.2 emp2 size sanity vs emp1
+         19.4MB (60.5% de emp1)
+         expected=>=5% de emp1 (DC menores mas não tão pequenos) | actual=60.5%
+
+  [FAIL] F.2.4 emp4 size sanity vs emp1
+         0.7MB (2.3% de emp1)
+         expected=>=5% de emp1 (DC menores mas não tão pequenos) | actual=2.3%
+
+------------------------------------------------------------------------------------------
+  INFO
+------------------------------------------------------------------------------------------
+  [PASS] C.5 receita 'VENDAS A DISTRIBUIR' presente
+         777 lançamentos
+         expected=>0 | actual=777
+
+  [PASS] C.6 despesa 'COMPRAS A DISTRIBUIR' presente
+         42 lançamentos
+         expected=>0 | actual=42
+
+  [PASS] C.7 razão receita/despesa do extract
+         rec=999,882.58 desp=661,472.37 ratio=1.51
+         expected=0.5-3.0 (caixa físico) | actual=1.51
+
+  [PASS] D.1 NORTE Valor Pago GLOBALMAC ~R$7,15M
+         soma 7,148,315.08
+         expected=±20% de 7,15M | actual=7,148,315.08
+
+  [PASS] D.2 NORTE n=2419 ±20%
+         2419 linhas
+         expected=1900-2900 | actual=2419
+
+  [FAIL] D.3 categorias ~ NORTE ≥30%
+         intersecção 11/57 (19.3%)
+         expected=>=30% | actual=19.3%
+
+==========================================================================================
+VERDICT: REJEITADO
+  CRITICAL pass-rate: 82.6% (need ≥85% AND zero CRITICAL fails)
+==========================================================================================

@@ -1,517 +1,330 @@
 #!/usr/bin/env node
 /**
- * build-data.cjs — gera data.js (window.BIT) a partir dos JSONs Omie em data/.
+ * build-data.cjs — JCE / GlobalMac (v1.7 — full ledger + cross-filter)
  *
- * Como funciona:
- *  1. Le todos os JSONs de data/ (com tolerancia a arquivos faltantes/vazios).
- *  2. Constroi mapas de resolucao (categoria, departamento, cliente).
- *  3. Para cada lancamento (contas_pagar, contas_receber):
- *      - Resolve nomes legiveis
- *      - Normaliza datas (dd/mm/aaaa -> Date)
- *      - Marca realizado (status_titulo === 'PAGO')
- *  4. Calcula 3 cortes (realizado / a_pagar_receber / tudo) com:
- *      - MONTH_DATA (12 meses do ano corrente)
- *      - RECEITA_CATEGORIAS / DESPESA_CATEGORIAS
- *      - RECEITA_CLIENTES / DESPESA_FORNECEDORES
- *      - EXTRATO (top 200 lancamentos por data desc)
- *      - Totais e KPIs
- *  5. Escreve data.js com `window.BIT = {...}` hardcoded (sem fetch async no boot).
+ * Lê:
+ *   - data/bi_data.json         — DRE estruturada (agregada)
+ *   - data/all_tx.json          — 48k lançamentos compactos pra cross-filter
+ *   - data/saldos_razao.json    — saldos caixa/banco por filial
  *
- * Tolerancia:
- *  - Se um arquivo nao existe ou esta vazio, usa array vazio e segue.
- *  - Console mostra warnings claros pra o operador.
+ * Schema window.BIT (compatível template):
+ *   - ALL_TX populado [kind, ymonth, dia, categoria, cliente, valor, realizado, fornecedor, cc, empresa, sint_codigo]
+ *   - filterTx (statusFilter, drilldown, empresa) → filtra
+ *   - aggregateTx (txList, year, month) → recomputa
+ *   - getBit (statusFilter, drilldown, year, month, empresa) → BIT-like
+ *   - SEPARA: MARGEM_EBITDA (resultado_op/rec_liq) e MARGEM_LIQUIDA (lucro_liq/rec_liq)
+ *   - VALOR_LIQUIDO = lucro_liquido (não EBITDA)
+ *   - EBITDA = resultado_op
  */
 'use strict';
 
 const fs = require('node:fs');
 const path = require('node:path');
 
-const DATA_DIR = path.join(__dirname, 'data');
-const OUT_FILE = path.join(__dirname, 'data.js');
+const cfg = require('./bi.config.js');
+const BI_DATA_PATH = path.join(__dirname, 'data', 'bi_data.json');
+const ALL_TX_PATH  = path.join(__dirname, 'data', 'all_tx.json');
+const SALDOS_PATH  = path.join(__dirname, 'data', 'saldos_razao.json');
+const ENDIV_PATH   = path.join(__dirname, 'data', 'endividamento.json');
+const RECEITA_LINHA_PATH = path.join(__dirname, 'data', 'receita_por_linha.json');
+const BALANCETE_PATH = path.join(__dirname, 'data', 'balancete_oficial.json');
+const CR_CP_PATH   = path.join(__dirname, 'data', 'cr_cp.json');
+const OUT_FILE     = path.join(__dirname, 'data.js');
 
-const MONTHS = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
-const MONTHS_FULL = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+const MONTHS      = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const MONTHS_FULL = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
 
-// ---------- helpers ----------
-function readJson(name, fallback) {
-  const p = path.join(DATA_DIR, name + '.json');
-  if (!fs.existsSync(p)) {
-    console.warn(`  [warn] ${name}.json nao existe — usando fallback (${Array.isArray(fallback) ? 'array vazio' : 'null'})`);
-    return fallback;
+console.log('=== build-data JCE v1.7 (full ledger + cross-filter) ===');
+const bi = JSON.parse(fs.readFileSync(BI_DATA_PATH, 'utf8'));
+const ALL_TX_RAW = JSON.parse(fs.readFileSync(ALL_TX_PATH, 'utf8'));
+
+// Filtra MÚTUOS / INTERCOMPANY: categoria contém "MUTUO" OU cliente/fornecedor
+// é nome de outra empresa do grupo. Inflam receita+despesa em ~R$ 67M cada lado
+// sem ser atividade econômica real (transferência entre CNPJs do mesmo grupo).
+const NOMES_GRUPO = ['GLOBAL MAC', 'GLOBALMAC', 'DC TRACTOR', 'DCTRACTOR',
+                     'DC COMERCIO', 'DCCOMERCIO', 'DC MAQUINAS', 'DC MAQ', 'GLOBALVALE'];
+function isMutuoOuIntercompany(r) {
+  const cat = (r[3] || '').toUpperCase();
+  if (cat.includes('MUTUO') || cat.includes('MÚTUO')) return true;
+  const cli = (r[4] || '').toUpperCase();
+  const forn = (r[7] || '').toUpperCase();
+  for (const n of NOMES_GRUPO) {
+    if (cli.includes(n) || forn.includes(n)) return true;
   }
-  try {
-    const raw = fs.readFileSync(p, 'utf8');
-    if (!raw.trim()) {
-      console.warn(`  [warn] ${name}.json vazio — usando fallback`);
-      return fallback;
+  return false;
+}
+const ALL_TX_REALIZADO = ALL_TX_RAW.filter(r => !isMutuoOuIntercompany(r));
+const removidosMutuos = ALL_TX_RAW.length - ALL_TX_REALIZADO.length;
+console.log(`  ALL_TX_RAW: ${ALL_TX_RAW.length.toLocaleString()} · removidos mútuos+intercompany: ${removidosMutuos.toLocaleString()} · líquido: ${ALL_TX_REALIZADO.length.toLocaleString()}`);
+const SALDOS = fs.existsSync(SALDOS_PATH) ? JSON.parse(fs.readFileSync(SALDOS_PATH, 'utf8')) : { contas: [], totais_por_empresa: {} };
+const ENDIVIDAMENTO = fs.existsSync(ENDIV_PATH) ? JSON.parse(fs.readFileSync(ENDIV_PATH, 'utf8')) : null;
+
+const RECEITA_LINHA = fs.existsSync(RECEITA_LINHA_PATH) ? JSON.parse(fs.readFileSync(RECEITA_LINHA_PATH, 'utf8')) : null;
+const BALANCETE = fs.existsSync(BALANCETE_PATH) ? JSON.parse(fs.readFileSync(BALANCETE_PATH, 'utf8')) : null;
+const CR_CP = fs.existsSync(CR_CP_PATH) ? JSON.parse(fs.readFileSync(CR_CP_PATH, 'utf8')) : null;
+
+// ALL_TX_PENDENTE: converte cr_cp.json em tuples ALL_TX-compatible com realizado=0.
+// Permite filtro statusFilter='a_pagar_receber' agregar pelas mesmas funções (filterTx/aggregateTx).
+const ALL_TX_PENDENTE = [];
+if (CR_CP && CR_CP.por_empresa) {
+  const vencToYmonth = (s) => {
+    if (!s || !s.includes('/')) return null;
+    const [d, m, y] = s.split('/');
+    if (!y || y.length !== 4) return null;
+    return { ymonth: `${y}-${m}`, dia: parseInt(d, 10) || 1 };
+  };
+  const isMutuoCrCp = (cli) => {
+    const c = (cli || '').toUpperCase();
+    return NOMES_GRUPO.some(n => c.includes(n));
+  };
+  for (const emp of Object.keys(CR_CP.por_empresa)) {
+    const empData = CR_CP.por_empresa[emp];
+    for (const t of (empData.a_receber || [])) {
+      if (isMutuoCrCp(t.cliente)) continue;  // skip intercompany
+      const dv = vencToYmonth(t.vencimento);
+      if (!dv) continue;
+      const cat = (t.dias_atraso > 0 ? `Vencido ${t.dias_atraso}d` : 'A vencer');
+      ALL_TX_PENDENTE.push(['r', dv.ymonth, dv.dia, cat, t.cliente || '', t.valor || 0, 0, '', t.centro_custo || '', String(emp), '', '']);
     }
-    return JSON.parse(raw);
-  } catch (e) {
-    console.warn(`  [warn] ${name}.json parse falhou: ${e.message} — usando fallback`);
-    return fallback;
-  }
-}
-
-// dd/mm/aaaa -> Date | null
-function parseBR(d) {
-  if (!d || typeof d !== 'string') return null;
-  const m = d.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!m) return null;
-  const dt = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
-  if (isNaN(dt.getTime())) return null;
-  return dt;
-}
-
-function fmtBR(d) {
-  if (!d) return '';
-  const pad = (n) => String(n).padStart(2, '0');
-  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
-}
-
-function num(v) {
-  if (v == null || v === '') return 0;
-  if (typeof v === 'number') return v;
-  // Omie devolve numeros como number, mas vai com cinto e suspensorio
-  const s = String(v).replace(/\./g, '').replace(',', '.');
-  const n = Number(s);
-  return isNaN(n) ? 0 : n;
-}
-
-// ---------- carregar dados ----------
-console.log('=== Lendo data/*.json ===');
-const empresa = readJson('empresa', null);
-const categorias = readJson('categorias', []);
-const departamentos = readJson('departamentos', []);
-const clientes = readJson('clientes', []);
-const contasPagar = readJson('contas_pagar', []);
-const contasReceber = readJson('contas_receber', []);
-const movimentos = readJson('movimentos', []);
-const contasCorrentes = readJson('contas_correntes', []);
-const summary = readJson('_summary', null);
-
-// Bancos aceitos: 033 Santander, 748 Sicredi, 756 Sicoob.
-// Movimentos em outras contas (CAIXA interno, adiantamentos de viagem etc)
-// nao entram no BI - sao operacionais, nao representam fluxo de caixa real.
-const BANCOS_OK = new Set(['033', '748', '756']);
-const ccOk = new Set();
-for (const c of contasCorrentes) {
-  if (BANCOS_OK.has(String(c.codigo_banco))) ccOk.add(String(c.nCodCC));
-}
-console.log(`  contas correntes filtradas (Santander/Sicredi/Sicoob): ${ccOk.size}/${contasCorrentes.length}`);
-
-console.log(`  empresa: ${empresa ? empresa.nome_fantasia : '(faltando)'}`);
-console.log(`  categorias: ${categorias.length}`);
-console.log(`  departamentos: ${departamentos.length}`);
-console.log(`  clientes/fornecedores: ${clientes.length}`);
-console.log(`  contas_pagar: ${contasPagar.length}`);
-console.log(`  contas_receber: ${contasReceber.length}`);
-console.log(`  movimentos: ${movimentos.length}`);
-
-// ---------- montar mapas ----------
-const catById = new Map();
-for (const c of categorias) {
-  // codigo (string) eh chave em ListarCategorias
-  if (c.codigo) catById.set(String(c.codigo), c);
-}
-const depById = new Map();
-for (const d of departamentos) {
-  if (d.codigo) depById.set(String(d.codigo), d);
-}
-const cliById = new Map();
-for (const c of clientes) {
-  if (c.codigo_cliente_omie) cliById.set(String(c.codigo_cliente_omie), c);
-}
-
-function getCategoriaNome(codigo) {
-  if (!codigo) return 'Sem categoria';
-  const c = catById.get(String(codigo));
-  if (!c) return `Cat ${codigo}`;
-  return c.descricao || c.descricao_categoria || `Cat ${codigo}`;
-}
-
-function getCategoriaNatureza(codigo) {
-  // Omie: natureza pode ser "R" (receita) | "D" (despesa) | "T" (transferencia)
-  const c = catById.get(String(codigo));
-  return (c && (c.natureza || c.tipo_categoria)) || null;
-}
-
-function getDepartamentoNome(codigo) {
-  if (!codigo) return null;
-  const d = depById.get(String(codigo));
-  return d ? d.descricao : `CC ${codigo}`;
-}
-
-function getClienteNome(codigo) {
-  if (!codigo) return 'Sem cliente';
-  const c = cliById.get(String(codigo));
-  if (!c) return `Cliente ${codigo}`;
-  return c.nome_fantasia || c.razao_social || `Cliente ${codigo}`;
-}
-
-// ---------- normalizar lancamentos ----------
-// Estrategia: prefere ListarMovimentos (fonte canonica do PBI do cliente) por
-// trazer nValPago + dDtPagamento (caixa) E nValorTitulo + dDtVenc (competencia).
-// Fallback: ListarContasPagar/Receber (so competencia, sem nValPago).
-function normalize(t, kind) {
-  const dataVenc = parseBR(t.data_vencimento) || parseBR(t.data_previsao) || parseBR(t.data_emissao) || parseBR(t.data_entrada);
-  const dataPago = parseBR(t.data_pagamento) || (t.info && parseBR(t.info.dAlt)) || dataVenc;
-  const status = (t.status_titulo || '').toUpperCase();
-  const realizado = status === 'PAGO' || status === 'RECEBIDO';
-  const cancelado = status === 'CANCELADO';
-  const valor = num(t.valor_documento);
-  return {
-    id: t.codigo_lancamento_omie || t.codigo_lancamento_integracao || null,
-    kind,
-    cliente: getClienteNome(t.codigo_cliente_fornecedor || t.codigo_cliente),
-    categoria: getCategoriaNome(t.codigo_categoria),
-    centroCusto: getDepartamentoNome(t.codigo_departamento || (t.distribuicao && t.distribuicao[0] && t.distribuicao[0].cCodDep)),
-    data_venc: dataVenc,
-    data_efetiva: realizado ? dataPago : dataVenc,
-    valor,
-    status,
-    realizado,
-    cancelado,
-    nf: t.numero_documento_fiscal || '',
-    parcela: t.numero_parcela || '',
-  };
-}
-
-// Normaliza UMA row de ListarMovimentos aplicando "estilo conta" DAX do PBI.
-//
-// CRITICO: a row do TITULO e a row da BAIXA aparecem AMBAS com mesmo cStatus.
-// Sem o filtro de cGrupo, contamos duplicado:
-//   27.244 P|PAGO|CONTA_CORRENTE_PAG (baixa real - efetivo no caixa)
-//   14.416 P|PAGO|CONTA_A_PAGAR      (titulo - apenas marca que ta pago)
-// O DAX so conta se cGrupo bater com a categoria esperada:
-//   Realizado receita: R + RECEBIDO + CONTA_CORRENTE_REC
-//   Previsto  receita: R + (A VENCER|ATRASADO|VENCE HOJE) + CONTA_A_RECEBER
-//   Realizado despesa: P + PAGO + CONTA_CORRENTE_PAG
-//   Previsto  despesa: P + (A VENCER|ATRASADO|VENCE HOJE) + CONTA_A_PAGAR
-// Tudo o mais (CANCELADO, PREVISAO_*, etc) -> exclui.
-//
-// Tambem exclui transferencias (categoria Entrada/Saida de Transferencia)
-// porque sao movimentacoes internas entre contas, nao receita/despesa real.
-const TRANSFERENCIA_RE = /transfer[eê]ncia/i;
-
-function normalizeMovimento(m) {
-  const d = m.detalhes || {};
-  const r = m.resumo || {};
-  const status = (d.cStatus || '').toUpperCase();
-  const natureza = d.cNatureza || '';
-  const grupo = d.cGrupo || '';
-  // Filtro DAX estilo conta — combinacao natureza × status × grupo precisa bater.
-  let realizado = null;
-  if (natureza === 'R' && status === 'RECEBIDO' && grupo === 'CONTA_CORRENTE_REC') realizado = true;
-  else if (natureza === 'R' && (status === 'A VENCER' || status === 'ATRASADO' || status === 'VENCE HOJE') && grupo === 'CONTA_A_RECEBER') realizado = false;
-  else if (natureza === 'P' && status === 'PAGO' && grupo === 'CONTA_CORRENTE_PAG') realizado = true;
-  else if (natureza === 'P' && (status === 'A VENCER' || status === 'ATRASADO' || status === 'VENCE HOJE') && grupo === 'CONTA_A_PAGAR') realizado = false;
-  else return null; // CANCELADO, PREVISAO, ou combinacao espuria - exclui
-
-  // Filtro transferencias entre contas (nao sao receita/despesa real)
-  const categoria = getCategoriaNome(d.cCodCateg);
-  if (TRANSFERENCIA_RE.test(categoria)) return null;
-
-  // Filtro contas correntes: apenas bancos formais (Santander/Sicredi/Sicoob).
-  // Operacional interno (Caixa, adiantamentos de viagem, contas de socio) fica fora.
-  if (ccOk.size && !ccOk.has(String(d.nCodCC))) return null;
-
-  const dataPago = parseBR(d.dDtPagamento);
-  const dataVenc = parseBR(d.dDtVenc) || parseBR(d.dDtPrevisao) || parseBR(d.dDtEmissao);
-  const data_efetiva = realizado ? (dataPago || dataVenc) : dataVenc;
-  if (!data_efetiva) return null;
-  // Valor: realizado = nValPago (caixa). Previsto = nValAberto (saldo nao pago).
-  let valor = realizado ? num(r.nValPago) : (num(r.nValAberto) || num(d.nValorTitulo));
-  if (!valor && !realizado) valor = num(d.nValorTitulo);
-  if (!valor) return null;
-  const dept = (m.departamentos && m.departamentos[0] && m.departamentos[0].cCodDepartamento) || null;
-  return {
-    id: d.nCodTitulo || null,
-    kind: natureza === 'R' ? 'receita' : 'despesa',
-    cliente: getClienteNome(d.nCodCliente),
-    categoria,
-    centroCusto: getDepartamentoNome(dept),
-    data_venc: dataVenc,
-    data_efetiva,
-    valor: Math.abs(valor),
-    status,
-    realizado,
-    cancelado: false,
-    grupo,
-    nf: d.cNumDocFiscal || '',
-    parcela: d.cNumParcela || '',
-  };
-}
-
-console.log('\n=== Normalizando lancamentos ===');
-let recNorm, despNorm, dataSource;
-if (movimentos.length > 1000) {
-  // Source canonica: ListarMovimentos. Bate 100% com PBI personalizado.
-  dataSource = 'movimentos';
-  const allMovs = movimentos.map(normalizeMovimento).filter(Boolean);
-  recNorm = allMovs.filter((t) => t.kind === 'receita');
-  despNorm = allMovs.filter((t) => t.kind === 'despesa');
-  console.log(`  fonte: ListarMovimentos (${movimentos.length} rows brutos -> ${allMovs.length} validos)`);
-} else {
-  // Fallback: ListarContasPagar/Receber. So bate competencia.
-  dataSource = 'contas_pagar_receber';
-  recNorm = contasReceber.map((t) => normalize(t, 'receita')).filter((t) => !t.cancelado);
-  despNorm = contasPagar.map((t) => normalize(t, 'despesa')).filter((t) => !t.cancelado);
-  console.log(`  fonte: contas_pagar/receber (sem nValPago — pode divergir do PBI no caixa)`);
-}
-console.log(`  receitas validas: ${recNorm.length}`);
-console.log(`  despesas validas: ${despNorm.length}`);
-
-// ---------- decidir ano de referencia ----------
-// Default: ANO CORRENTE (operador quer ver o que ta acontecendo agora).
-// Tambem expomos lista de anos disponiveis pro selector no header.
-const yearCount = {};
-for (const t of [...recNorm, ...despNorm]) {
-  if (!t.data_efetiva) continue;
-  const y = t.data_efetiva.getFullYear();
-  yearCount[y] = (yearCount[y] || 0) + 1;
-}
-const REF_YEAR = new Date().getFullYear();
-const AVAILABLE_YEARS = Object.keys(yearCount).map(Number).sort((a, b) => b - a);
-console.log(`  ano de referencia: ${REF_YEAR} | anos disponiveis: ${AVAILABLE_YEARS.join(', ')}`);
-
-// ---------- segmentos por filtro ----------
-function selectByFilter(items, filter) {
-  // 'realizado'      => status PAGO/RECEBIDO
-  // 'a_pagar_receber'=> status A VENCER, ATRASADO, VENCE HOJE (nao pago)
-  // 'tudo'           => tudo (exceto CANCELADO, ja filtrado antes)
-  if (filter === 'realizado') return items.filter((t) => t.realizado);
-  if (filter === 'a_pagar_receber') return items.filter((t) => !t.realizado);
-  return items;
-}
-
-// ---------- agregacoes ----------
-function buildMonthData(rec, desp, year) {
-  const data = MONTHS_FULL.map((m) => ({ m, receita: 0, despesa: 0 }));
-  for (const t of rec) {
-    const d = t.data_efetiva;
-    if (!d || d.getFullYear() !== year) continue;
-    data[d.getMonth()].receita += t.valor;
-  }
-  for (const t of desp) {
-    const d = t.data_efetiva;
-    if (!d || d.getFullYear() !== year) continue;
-    data[d.getMonth()].despesa += t.valor;
-  }
-  return data;
-}
-
-function buildCategoriaAgg(items, year, kindLabel) {
-  const map = new Map();
-  for (const t of items) {
-    const d = t.data_efetiva;
-    if (year && d && d.getFullYear() !== year) continue;
-    const k = t.categoria;
-    if (!map.has(k)) map.set(k, { name: k, value: 0, count: 0, clientesSet: new Set() });
-    const obj = map.get(k);
-    obj.value += t.valor;
-    obj.count += 1;
-    obj.clientesSet.add(t.cliente);
-  }
-  const out = [];
-  for (const v of map.values()) {
-    const o = { name: v.name, value: v.value };
-    if (kindLabel === 'receita') o.clientes = v.clientesSet.size;
-    else o.fornecedores = v.clientesSet.size;
-    out.push(o);
-  }
-  return out.sort((a, b) => b.value - a.value).slice(0, 12);
-}
-
-function buildClienteAgg(items, year) {
-  const map = new Map();
-  for (const t of items) {
-    const d = t.data_efetiva;
-    if (year && d && d.getFullYear() !== year) continue;
-    const k = t.cliente;
-    if (!map.has(k)) map.set(k, { name: k, value: 0 });
-    map.get(k).value += t.valor;
-  }
-  return Array.from(map.values()).sort((a, b) => b.value - a.value).slice(0, 12);
-}
-
-function buildExtrato(rec, desp, limit = 200) {
-  // tupla compativel com mock: [data, cc, categoria, cliente, valor, status]
-  const all = [], recArr = [], despArr = [];
-  for (const t of rec) {
-    const r = [fmtBR(t.data_efetiva), t.centroCusto || 'Operações', t.categoria, t.cliente, t.valor, t.status];
-    all.push(r); recArr.push(r);
-  }
-  for (const t of desp) {
-    const r = [fmtBR(t.data_efetiva), t.centroCusto || 'Operações', t.categoria, t.cliente, -t.valor, t.status];
-    all.push(r); despArr.push(r);
-  }
-  // sort por data desc
-  const sortDesc = (a, b) => {
-    const [da, ma, ya] = (a[0] || '01/01/1970').split('/').map(Number);
-    const [db, mb, yb] = (b[0] || '01/01/1970').split('/').map(Number);
-    return new Date(yb, mb - 1, db) - new Date(ya, ma - 1, da);
-  };
-  all.sort(sortDesc); recArr.sort(sortDesc); despArr.sort(sortDesc);
-  return {
-    EXTRATO: all.slice(0, limit),
-    EXTRATO_RECEITAS: recArr.slice(0, limit),
-    EXTRATO_DESPESAS: despArr.slice(0, limit),
-  };
-}
-
-function buildKpis(monthData) {
-  const TOTAL_RECEITA = monthData.reduce((s, x) => s + x.receita, 0);
-  const TOTAL_DESPESA = monthData.reduce((s, x) => s + x.despesa, 0);
-  const VALOR_LIQUIDO = TOTAL_RECEITA - TOTAL_DESPESA;
-  const MARGEM_LIQUIDA = TOTAL_RECEITA > 0 ? (VALOR_LIQUIDO / TOTAL_RECEITA) * 100 : 0;
-  // Heuristicas — sem dados reais de impostos/capex separados, estimamos via categorias
-  const VALOR_LIQ_SERIES = monthData.map((m) => m.receita - m.despesa);
-  return { TOTAL_RECEITA, TOTAL_DESPESA, VALOR_LIQUIDO, MARGEM_LIQUIDA, VALOR_LIQ_SERIES };
-}
-
-function buildSegment(rec, desp, year, label) {
-  const r = selectByFilter(rec, label);
-  const d = selectByFilter(desp, label);
-  const MONTH_DATA = buildMonthData(r, d, year);
-  const RECEITA_CATEGORIAS = buildCategoriaAgg(r, year, 'receita');
-  const DESPESA_CATEGORIAS = buildCategoriaAgg(d, year, 'despesa');
-  const RECEITA_CLIENTES = buildClienteAgg(r, year);
-  const DESPESA_FORNECEDORES = buildClienteAgg(d, year);
-  const extOut = buildExtrato(r, d, 200);
-  const EXTRATO = extOut.EXTRATO;
-  const EXTRATO_RECEITAS = extOut.EXTRATO_RECEITAS;
-  const EXTRATO_DESPESAS = extOut.EXTRATO_DESPESAS;
-  const KPIS = buildKpis(MONTH_DATA);
-  // count de lancamentos por mes (pra DailyBars/RECEITA_DIA usar como proxy)
-  const RECEITA_DIA = Array(31).fill(0);
-  const DESPESA_DIA = Array(31).fill(0);
-  for (const t of r) {
-    const dt = t.data_efetiva;
-    if (!dt || dt.getFullYear() !== year) continue;
-    RECEITA_DIA[dt.getDate() - 1] += t.valor;
-  }
-  for (const t of d) {
-    const dt = t.data_efetiva;
-    if (!dt || dt.getFullYear() !== year) continue;
-    DESPESA_DIA[dt.getDate() - 1] += t.valor;
-  }
-  // saldos cumulativos
-  const SALDOS_MES = [];
-  let saldo = 0;
-  for (const m of MONTH_DATA) {
-    saldo += m.receita - m.despesa;
-    SALDOS_MES.push(saldo);
-  }
-  // FLUXO horizontal (top 5 categorias receita / top 5 despesa)
-  const FLUXO_RECEITA = RECEITA_CATEGORIAS.slice(0, 5).map((cat) => ({
-    cat: cat.name,
-    values: MONTHS_FULL.map((mn, mi) => {
-      let s = 0;
-      for (const t of r) {
-        const dt = t.data_efetiva;
-        if (!dt || dt.getFullYear() !== year) continue;
-        if (dt.getMonth() !== mi) continue;
-        if (t.categoria !== cat.name) continue;
-        s += t.valor;
-      }
-      return s;
-    }),
-  }));
-  const FLUXO_DESPESA = DESPESA_CATEGORIAS.slice(0, 5).map((cat) => ({
-    cat: cat.name,
-    values: MONTHS_FULL.map((mn, mi) => {
-      let s = 0;
-      for (const t of d) {
-        const dt = t.data_efetiva;
-        if (!dt || dt.getFullYear() !== year) continue;
-        if (dt.getMonth() !== mi) continue;
-        if (t.categoria !== cat.name) continue;
-        s -= t.valor;
-      }
-      return s;
-    }),
-  }));
-  // Comparativo: trim1 vs trim2 do ano corrente
-  const buildTrimAgg = (items, mStart, mEnd) => {
-    const map = new Map();
-    let total = 0;
-    for (const t of items) {
-      const dt = t.data_efetiva;
-      if (!dt || dt.getFullYear() !== year) continue;
-      if (dt.getMonth() < mStart || dt.getMonth() > mEnd) continue;
-      const k = t.categoria;
-      map.set(k, (map.get(k) || 0) + t.valor);
-      total += t.valor;
+    for (const t of (empData.a_pagar || [])) {
+      if (isMutuoCrCp(t.cliente)) continue;
+      const dv = vencToYmonth(t.vencimento);
+      if (!dv) continue;
+      const cat = (t.dias_atraso > 0 ? `Vencido ${t.dias_atraso}d` : 'A vencer');
+      ALL_TX_PENDENTE.push(['d', dv.ymonth, dv.dia, cat, '', t.valor || 0, 0, t.cliente || '', t.centro_custo || '', String(emp), '', '']);
     }
-    return { map, total };
-  };
-  const recT1 = buildTrimAgg(r, 0, 2), recT2 = buildTrimAgg(r, 3, 5);
-  const despT1 = buildTrimAgg(d, 0, 2), despT2 = buildTrimAgg(d, 3, 5);
-  const COMP_DATA = [
-    { tipo: 'Receita', isHeader: true, d1: recT1.total, d2: recT2.total },
-  ];
-  const allRecCats = new Set([...recT1.map.keys(), ...recT2.map.keys()]);
-  for (const k of allRecCats) {
-    COMP_DATA.push({ tipo: k, parent: 'Receita', d1: recT1.map.get(k) || 0, d2: recT2.map.get(k) || 0 });
   }
-  COMP_DATA.push({ tipo: 'Despesa', isHeader: true, d1: -despT1.total, d2: -despT2.total });
-  const allDespCats = new Set([...despT1.map.keys(), ...despT2.map.keys()]);
-  for (const k of allDespCats) {
-    COMP_DATA.push({ tipo: k, parent: 'Despesa', d1: -(despT1.map.get(k) || 0), d2: -(despT2.map.get(k) || 0) });
-  }
-  return {
-    MONTH_DATA, RECEITA_CATEGORIAS, DESPESA_CATEGORIAS,
-    RECEITA_CLIENTES, DESPESA_FORNECEDORES, EXTRATO,
-    EXTRATO_RECEITAS, EXTRATO_DESPESAS,
-    KPIS, RECEITA_DIA, DESPESA_DIA, SALDOS_MES,
-    FLUXO_RECEITA, FLUXO_DESPESA, COMP_DATA,
-  };
 }
+const ALL_TX = ALL_TX_REALIZADO.concat(ALL_TX_PENDENTE);
+console.log(`  ALL_TX_PENDENTE (cr_cp): ${ALL_TX_PENDENTE.length.toLocaleString()} títulos`);
+console.log(`  ALL_TX total: ${ALL_TX.length.toLocaleString()} (realizado + pendente)`);
 
-console.log('\n=== Construindo segmentos (realizado / a_pagar_receber / tudo) ===');
-const realizado = buildSegment(recNorm, despNorm, REF_YEAR, 'realizado');
-const a_pagar_receber = buildSegment(recNorm, despNorm, REF_YEAR, 'a_pagar_receber');
-const tudo = buildSegment(recNorm, despNorm, REF_YEAR, 'tudo');
+console.log(`  bi_data.json: ${(fs.statSync(BI_DATA_PATH).size/1024).toFixed(1)} KB`);
+console.log(`  all_tx.json: ${(fs.statSync(ALL_TX_PATH).size/1024/1024).toFixed(1)} MB (${ALL_TX.length.toLocaleString()} rows)`);
+console.log(`  saldos: ${SALDOS.contas?.length || 0} contas`);
+console.log(`  endividamento: ${ENDIVIDAMENTO ? ENDIVIDAMENTO.por_banco_consolidado.length + ' bancos · R$ ' + ENDIVIDAMENTO.totais_consolidados.divida_banco.toLocaleString('pt-BR') : 'INDISPONÍVEL'}`);
+console.log(`  receita_por_linha: ${RECEITA_LINHA ? 'R$ ' + RECEITA_LINHA.meta.total_receita_bruta.toLocaleString('pt-BR') + ' (' + RECEITA_LINHA.meta.lctos_processados + ' lctos)' : 'INDISPONÍVEL — rode parse-receita-linha.py'}`);
+console.log(`  balancete: ${BALANCETE ? Object.keys(BALANCETE).join(', ') + ' (jan-fev 2026)' : 'INDISPONÍVEL — rode parse-balancete-pdf.py'}`);
+console.log(`  cr_cp: ${CR_CP ? 'A receber R$ ' + CR_CP.consolidado.a_receber_total.toLocaleString('pt-BR') + ' · A pagar R$ ' + CR_CP.consolidado.a_pagar_total.toLocaleString('pt-BR') : 'INDISPONÍVEL — rode 80_consulta_titulos_multi_empresa.py'}`);
+console.log(`  ano ref: ${bi.ref_year} | empresas: ${bi.empresas.length}`);
 
-console.log(`  realizado: receita=${realizado.KPIS.TOTAL_RECEITA.toFixed(2)} despesa=${realizado.KPIS.TOTAL_DESPESA.toFixed(2)} liq=${realizado.KPIS.VALOR_LIQUIDO.toFixed(2)}`);
-console.log(`  a_pagar:   receita=${a_pagar_receber.KPIS.TOTAL_RECEITA.toFixed(2)} despesa=${a_pagar_receber.KPIS.TOTAL_DESPESA.toFixed(2)}`);
-console.log(`  tudo:      receita=${tudo.KPIS.TOTAL_RECEITA.toFixed(2)} despesa=${tudo.KPIS.TOTAL_DESPESA.toFixed(2)}`);
-
-// ---------- meta + posicao caixa (placeholder) ----------
-const meta = {
-  empresa: empresa ? {
-    nome_fantasia: empresa.nome_fantasia,
-    razao_social: empresa.razao_social,
-    cnpj: empresa.cnpj,
-    cidade: empresa.cidade,
-  } : null,
-  fetched_at: summary ? summary.fetched_at : null,
-  ref_year: REF_YEAR,
-  counts: {
-    contas_pagar: contasPagar.length,
-    contas_receber: contasReceber.length,
-    categorias: categorias.length,
-    departamentos: departamentos.length,
-    clientes: clientes.length,
-  },
+// =============================================================================
+// INDICADORES CONTABEIS — calculados a partir de data/balancete_oficial.json
+// (jan-fev 2026 — fechamento parcial do contador). Anualizamos lucro/receita
+// usando o periodo conhecido (2 meses) e benchmarks setoriais.
+// =============================================================================
+const EMPRESA_BAL_MAP = {
+  '1':         'GLOBALMAC',
+  'GLOBALMAC': 'GLOBALMAC',
+  '2':         'DC_TRACTOR',
+  'DCTRACTOR': 'DC_TRACTOR',
+  '4':         null,  // DC COMERCIO — sem balancete oficial
+  'DCCOMERCIO':null,
 };
 
-// Posicao caixa: nao temos dados de saldo bancario direto. Usamos saldo_acumulado do realizado.
-const POSICAO_CAIXA = [
-  { name: 'Saldo realizado YTD', value: realizado.KPIS.VALOR_LIQUIDO },
-  { name: 'A receber (futuro)', value: a_pagar_receber.KPIS.TOTAL_RECEITA },
-  { name: 'A pagar (futuro)', value: a_pagar_receber.KPIS.TOTAL_DESPESA },
-];
+function computeIndicadoresContabeis(bal) {
+  if (!bal) return null;
+  const ac = bal.ativo_circulante;
+  const anc = bal.ativo_nao_circulante;
+  const at = bal.ativo_total;
+  const pc = bal.passivo_circulante;
+  const pnc = bal.passivo_nao_circulante;
+  const pl = bal.patrimonio_liquido;
+  const disponivel = bal.disponivel;
+  const estoques = bal.estoques;
+  const realizavel_lp = bal.realizavel_lp || 0;
+  const imob = bal.imobilizado_liquido;
+  const empfin_pc = bal.emprestimos_financiamentos_pc;
+  const empfin_pnc = bal.emprestimos_financiamentos_pnc;
+  const fornec = bal.fornecedores;
 
-const COMPOSICAO_DESPESA = realizado.DESPESA_CATEGORIAS.slice(0, 6).map((c, i) => ({
-  name: c.name,
-  value: c.value,
-  color: ['#2dd4bf', '#22c55e', '#a78bfa', '#f59e0b', '#ef4444', '#6b7686'][i] || '#6b7686',
-}));
+  // DRE periodo (2 meses jan-fev 2026)
+  const rec_liq_periodo = bal.receita_liquida;
+  const rec_bruta_periodo = bal.receita_bruta;
+  const lucro_periodo = bal.lucro_periodo;
+  const lucro_bruto = bal.lucro_bruto;
+  const desp_op = bal.despesas_operacionais;
+  const cmv = bal.cmv;
+  // EBITDA proxy = lucro_op = lucro_bruto - desp_op (sem incluir financeiro/IR e sem add-back D&A)
+  // Conservador, mas o melhor que conseguimos sem nota de depreciacao do periodo
+  const ebitda_periodo = lucro_bruto - desp_op;
 
-// ---------- escrever data.js ----------
-const DATA_JS = `/* BGP BI — gerado por build-data.cjs em ${new Date().toISOString()} */
-/* Empresa: ${meta.empresa ? meta.empresa.nome_fantasia : '(faltando)'} | Ano ref: ${REF_YEAR} */
+  // Anualizar (jan-fev = 2 meses; ano fiscal = 12 meses; fator 6)
+  const FATOR = 6;
+  const lucro_anual = lucro_periodo * FATOR;
+  const rec_anual = rec_liq_periodo * FATOR;
+  const ebitda_anual = ebitda_periodo * FATOR;
+
+  // Liquidez
+  const liq_corrente = pc > 0 ? ac / pc : null;
+  const liq_geral    = (pc + pnc) > 0 ? (ac + realizavel_lp) / (pc + pnc) : null;
+  const liq_imediata = pc > 0 ? disponivel / pc : null;
+  const liq_seca     = pc > 0 ? (ac - estoques) / pc : null;
+
+  // Estrutura
+  const cap_proprio_pct = at > 0 ? (pl / at) * 100 : null;
+  const cap_terceiros_pct = at > 0 ? ((pc + pnc) / at) * 100 : null;
+  const imob_ativo_pct = at > 0 ? (imob / at) * 100 : null;
+
+  // Endividamento
+  const divida_total = empfin_pc + empfin_pnc;
+  const divida_liquida = divida_total - disponivel;
+  const div_ebitda = ebitda_anual > 0 ? divida_liquida / ebitda_anual : null;
+  const endiv_oneroso_pct = (divida_total + pl) > 0 ? (divida_total / (divida_total + pl)) * 100 : null;
+
+  // Rentabilidade (anualizado)
+  const roe_pct = pl > 0 ? (lucro_anual / pl) * 100 : null;
+  const roa_pct = at > 0 ? (lucro_anual / at) * 100 : null;
+  const ros_pct = rec_anual > 0 ? (lucro_anual / rec_anual) * 100 : null;
+  const giro_ativo = at > 0 ? rec_anual / at : null;
+
+  // Ciclo (proxy — usa saldo final, nao media; PMR e PMP usam DRE jan-fev)
+  // PMR = (Clientes / Receita Bruta) * dias_periodo
+  const dias_periodo = 59;  // jan-fev 2026 (31+28)
+  const pmr = rec_bruta_periodo > 0 ? (bal.clientes / rec_bruta_periodo) * dias_periodo : null;
+  // PMP = (Fornecedores / CMV) * dias_periodo (proxy — usa CMV em vez de compras)
+  const pmp = cmv > 0 ? (fornec / cmv) * dias_periodo : null;
+  // PME = (Estoques / CMV) * dias_periodo
+  const pme = cmv > 0 ? (estoques / cmv) * dias_periodo : null;
+  const ciclo_op = (pmr || 0) + (pme || 0);
+  const ciclo_fin = ciclo_op - (pmp || 0);
+
+  // NCG = Ativo Circulante Operacional - Passivo Circulante Operacional
+  // ACO = AC - Disponivel - Aplic. Liq. Imediata (so disponivel ja exclui)
+  // PCO = PC - Emprestimos PC - Duplicatas Descontadas (financeiros)
+  const aco = ac - disponivel;
+  const pco = pc - empfin_pc - (bal.duplicatas_descontadas || 0);
+  const ncg = aco - pco;
+
+  // Giro do estoque (anualizado)
+  const cmv_anual = cmv * FATOR;
+  const giro_estoque = estoques > 0 ? cmv_anual / estoques : null;
+
+  return {
+    periodo: bal.periodo,
+    // Saldos brutos pra tooltip
+    raw: {
+      ativo_total: at, ativo_circulante: ac, ativo_nao_circulante: anc,
+      passivo_circulante: pc, passivo_nao_circulante: pnc, patrimonio_liquido: pl,
+      disponivel, estoques, clientes: bal.clientes,
+      imobilizado: imob, fornecedores: fornec,
+      emprestimos_pc: empfin_pc, emprestimos_pnc: empfin_pnc,
+      divida_total, divida_liquida,
+      receita_bruta_periodo: rec_bruta_periodo, receita_liquida_periodo: rec_liq_periodo,
+      receita_anual_estimada: rec_anual,
+      lucro_periodo, lucro_anual_estimado: lucro_anual,
+      ebitda_periodo, ebitda_anual_estimado: ebitda_anual,
+      cmv_periodo: cmv, cmv_anual_estimado: cmv_anual,
+    },
+    liquidez: {
+      corrente: liq_corrente, geral: liq_geral, imediata: liq_imediata, seca: liq_seca,
+    },
+    estrutura: {
+      capital_proprio_pct: cap_proprio_pct,
+      capital_terceiros_pct: cap_terceiros_pct,
+      imobilizado_ativo_pct: imob_ativo_pct,
+    },
+    endividamento: {
+      divida_total, divida_liquida,
+      divida_ebitda: div_ebitda,
+      endividamento_oneroso_pct: endiv_oneroso_pct,
+    },
+    rentabilidade: {
+      roe_pct, roa_pct, ros_pct, giro_ativo,
+    },
+    ciclo: {
+      pmr_dias: pmr, pmp_dias: pmp, pme_dias: pme,
+      ciclo_operacional: ciclo_op, ciclo_financeiro: ciclo_fin,
+      ncg, giro_estoque,
+    },
+  };
+}
+
+const INDICADORES_CONTABEIS = {};
+if (BALANCETE) {
+  for (const [empCode, balKey] of Object.entries(EMPRESA_BAL_MAP)) {
+    if (!balKey) continue;
+    if (!BALANCETE[balKey]) continue;
+    INDICADORES_CONTABEIS[empCode] = computeIndicadoresContabeis(BALANCETE[balKey]);
+  }
+  // Alias por label tambem
+  if (BALANCETE.GLOBALMAC) INDICADORES_CONTABEIS.GLOBALMAC = INDICADORES_CONTABEIS.GLOBALMAC || INDICADORES_CONTABEIS['1'];
+  if (BALANCETE.DC_TRACTOR) INDICADORES_CONTABEIS.DCTRACTOR = INDICADORES_CONTABEIS.DCTRACTOR || INDICADORES_CONTABEIS['2'];
+
+  // Consolidado (soma das que tem balancete: GLOBALMAC + DC_TRACTOR; DC COMERCIO sem balancete)
+  const balsArr = ['GLOBALMAC','DC_TRACTOR'].filter(k => BALANCETE[k]).map(k => BALANCETE[k]);
+  if (balsArr.length) {
+    const sumBal = {};
+    const numFields = ['ativo_circulante','ativo_nao_circulante','ativo_total','passivo_circulante','passivo_nao_circulante','patrimonio_liquido','disponivel','clientes','estoques','realizavel_lp','imobilizado_liquido','emprestimos_financiamentos_pc','emprestimos_financiamentos_pnc','fornecedores','duplicatas_descontadas','receita_bruta','receita_liquida','lucro_bruto','despesas_operacionais','cmv','lucro_periodo'];
+    for (const f of numFields) sumBal[f] = balsArr.reduce((s,b)=>s + (b[f]||0), 0);
+    sumBal.periodo = balsArr[0].periodo;
+    INDICADORES_CONTABEIS['0']  = computeIndicadoresContabeis(sumBal);
+    INDICADORES_CONTABEIS.all   = INDICADORES_CONTABEIS['0'];
+    INDICADORES_CONTABEIS.consolidado = INDICADORES_CONTABEIS['0'];
+    INDICADORES_CONTABEIS._cobertura = balsArr.length + ' de ' + bi.empresas.length + ' empresas';
+  }
+}
+
+console.log(`\n  Indicadores Contabeis calculados: ${Object.keys(INDICADORES_CONTABEIS).filter(k => !k.startsWith('_')).join(', ')}`);
+if (INDICADORES_CONTABEIS.GLOBALMAC) {
+  const g = INDICADORES_CONTABEIS.GLOBALMAC;
+  console.log(`    [GLOBALMAC]  Liq Corr: ${g.liquidez.corrente.toFixed(2)}  ROE: ${g.rentabilidade.roe_pct.toFixed(1)}%  Div/EBITDA: ${g.endividamento.divida_ebitda ? g.endividamento.divida_ebitda.toFixed(1)+'x' : 'n/a'}`);
+}
+if (INDICADORES_CONTABEIS.DCTRACTOR) {
+  const g = INDICADORES_CONTABEIS.DCTRACTOR;
+  console.log(`    [DC TRACTOR] Liq Corr: ${g.liquidez.corrente.toFixed(2)}  ROE: ${g.rentabilidade.roe_pct.toFixed(1)}%  Div/EBITDA: ${g.endividamento.divida_ebitda ? g.endividamento.divida_ebitda.toFixed(1)+'x' : 'n/a'}`);
+}
+
+const REF_YEAR = bi.ref_year;
+const AVAILABLE_YEARS = bi.available_years;
+const EMPRESAS = bi.empresas;
+
+// ---- DRE consolidada (do bi_data.json) ----
+console.log(`\n  Consolidado (16 meses, 3 empresas):`);
+const total = bi.dre_consolidado;
+console.log(`    Receita Bruta:    R$ ${total.receita_bruta.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+console.log(`    Receita Líquida:  R$ ${total.receita_liquida.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+console.log(`    CMV:              R$ ${total.cmv.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+console.log(`    Despesa Op:       R$ ${total.despesa_op.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`);
+console.log(`    EBITDA:           R$ ${total.resultado_op.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (margem ${total.margem_ebitda_caixa.toFixed(2)}%)`);
+console.log(`    Lucro Líquido:    R$ ${total.lucro_liquido.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} (margem ${total.margem_liquida.toFixed(2)}%)`);
+
+const meta = {
+  empresa: {
+    nome_fantasia: cfg.cliente.nome_curto,
+    razao_social: cfg.cliente.nome,
+    cnpj: '16.619.634/0001-67',
+    cidade: 'Pelotas-MT · Passo Fundo · Barra · Porto · Canguçu',
+  },
+  fetched_at: bi.fetched_at,
+  ref_year: REF_YEAR,
+  empresas: EMPRESAS,
+  source: 'ERP Solution / Razão Contábil completo · 170k lançamentos · jan/2025-mai/2026',
+  counts: { lancamentos_total: ALL_TX.length },
+};
+
+const SURROGATES = {
+  TOP_FORNECEDORES: bi.top_fornecedores.map(f => ({ nome: f.cliente, valor: f.valor, pct: 0 })),
+  TOP_CLIENTES:    bi.top_clientes.map(c => ({ nome: c.cliente, valor: c.valor, pct: 0 })),
+  CONCENTRACAO_TOP5_FORNECEDOR: 0,
+  CONCENTRACAO_TOP5_CLIENTE: 0,
+  BENCHMARKS: {
+    EBITDA_MARGIN_SETOR: 3.5, DIVIDA_EBITDA_SETOR: 3.9,
+    ABSORCAO_PCT_IDEAL: 73, ABSORCAO_PCT_OK_MIN: 60, ABSORCAO_PCT_TOP: 76.5,
+    INADIMPLENCIA_AGRO: 8.1,
+    CONCENTRACAO_FORNECEDOR_OK: 70, CONCENTRACAO_FORNECEDOR_RISK: 85,
+  },
+};
+const totalForn = SURROGATES.TOP_FORNECEDORES.reduce((s,f)=>s+f.valor,0);
+SURROGATES.CONCENTRACAO_TOP5_FORNECEDOR = totalForn ? (SURROGATES.TOP_FORNECEDORES.slice(0,5).reduce((s,f)=>s+f.valor,0) / totalForn) * 100 : 0;
+SURROGATES.TOP_FORNECEDORES.forEach(f => f.pct = totalForn ? (f.valor/totalForn)*100 : 0);
+const totalCli = SURROGATES.TOP_CLIENTES.reduce((s,c)=>s+c.valor,0);
+SURROGATES.CONCENTRACAO_TOP5_CLIENTE = totalCli ? (SURROGATES.TOP_CLIENTES.slice(0,5).reduce((s,c)=>s+c.valor,0) / totalCli) * 100 : 0;
+SURROGATES.TOP_CLIENTES.forEach(c => c.pct = totalCli ? (c.valor/totalCli)*100 : 0);
+
+// ====== escrever data.js ======
+const DATA_JS = `/* JCE BI v1.7 — gerado por build-data.cjs em ${new Date().toISOString()} */
+/* Fonte: ERP Solution Razão Contábil completo. ${meta.counts.lancamentos_total} lançamentos. */
 const MONTHS = ${JSON.stringify(MONTHS)};
 const MONTHS_FULL = ${JSON.stringify(MONTHS_FULL)};
 
@@ -536,98 +349,89 @@ function fmtPct(n, dec = 2) {
 }
 
 const META = ${JSON.stringify(meta, null, 2)};
-const POSICAO_CAIXA = ${JSON.stringify(POSICAO_CAIXA, null, 2)};
-const COMPOSICAO_DESPESA = ${JSON.stringify(COMPOSICAO_DESPESA, null, 2)};
-
-const SEGMENTS = ${JSON.stringify({ realizado, a_pagar_receber, tudo }, null, 2)};
-
-// ALL_TX: lista flat de TODAS as transacoes normalizadas (despesa + receita,
-// realizadas + a pagar + canceladas excluidas). Usada pra cross-filter real
-// — pagina recalcula KPIs/charts/tabelas em runtime via aggregateTx().
-// Cada row eh tupla compacta pra reduzir tamanho do bundle:
-// [kind, mes, dia, categoria, cliente, valor, realizado, fornecedor, centroCusto]
-const ALL_TX = ${JSON.stringify([
-  ...recNorm.map(t => [
-    'r',
-    t.data_efetiva ? t.data_efetiva.toISOString().slice(0,7) : '',
-    t.data_efetiva ? t.data_efetiva.getDate() : 0,
-    t.categoria,
-    t.cliente,
-    t.valor,
-    t.realizado ? 1 : 0,
-    '',
-    t.centroCusto || '',
-  ]),
-  ...despNorm.map(t => [
-    'd',
-    t.data_efetiva ? t.data_efetiva.toISOString().slice(0,7) : '',
-    t.data_efetiva ? t.data_efetiva.getDate() : 0,
-    t.categoria,
-    '',
-    t.valor,
-    t.realizado ? 1 : 0,
-    t.cliente,
-    t.centroCusto || '',
-  ]),
-])};
-
 const REF_YEAR = ${REF_YEAR};
 const AVAILABLE_YEARS = ${JSON.stringify(AVAILABLE_YEARS)};
+const EMPRESAS = ${JSON.stringify(EMPRESAS)};
+const SURROGATES = ${JSON.stringify(SURROGATES, null, 2)};
+const SALDOS = ${JSON.stringify(SALDOS, null, 2)};
+const ENDIVIDAMENTO = ${JSON.stringify(ENDIVIDAMENTO)};
+const RECEITA_LINHA = ${JSON.stringify(RECEITA_LINHA)};
+const INDICADORES_CONTABEIS = ${JSON.stringify(INDICADORES_CONTABEIS)};
+const CR_CP = ${JSON.stringify(CR_CP)};
+const BI_DATA = ${JSON.stringify(bi)};
+const ALL_TX = ${JSON.stringify(ALL_TX)};
 
-// aggregateTx: recomputa MONTH_DATA, KPIS, top categorias/clientes/fornecedores
-// e EXTRATO a partir de uma lista filtrada de transacoes. Chamada pelas Pages
-// quando drilldown ou statusFilter estao ativos.
-function aggregateTx(txList, year) {
-  year = year || REF_YEAR;
-  const months = ${JSON.stringify(MONTHS_FULL)};
-  const MONTH_DATA = months.map(m => ({ m, receita: 0, despesa: 0 }));
-  const recCat = new Map(), despCat = new Map();
-  const recCli = new Map(), despForn = new Map();
-  const extratoArr = [];
-  const extratoRecArr = [], extratoDespArr = [];
-  let totalReceita = 0, totalDespesa = 0;
+// ====== filterTx: aplica statusFilter + drilldown + empresa + year/month ======
+function filterTx(allTx, statusFilter, drilldown, empresa, year, month) {
+  let out = allTx;
+  // statusFilter:
+  //   'realizado'        → realizado=1 (Razão Caixa: pagamentos/recebimentos efetivos)
+  //   'a_pagar_receber'  → realizado=0 (CR/CP pendentes do 7093)
+  //   'tudo'             → ambos
+  if (statusFilter === 'realizado') out = out.filter(r => r[6] === 1);
+  else if (statusFilter === 'a_pagar_receber') out = out.filter(r => r[6] === 0);
+  // empresa
+  if (empresa && empresa !== '0' && empresa !== 'all') {
+    out = out.filter(r => r[9] === empresa);
+  }
+  // year (0 = todos)
+  if (year && year > 0) {
+    const yPrefix = String(year);
+    out = out.filter(r => r[1] && r[1].slice(0,4) === yPrefix);
+  }
+  // month (0 = ano todo)
+  if (month && month >= 1 && month <= 12) {
+    const mm = String(month).padStart(2, '0');
+    out = out.filter(r => r[1] && r[1].slice(5,7) === mm);
+  }
+  // drilldown
+  if (drilldown) {
+    if (drilldown.type === 'mes')        out = out.filter(r => r[1] === drilldown.value);
+    else if (drilldown.type === 'categoria') out = out.filter(r => r[3] === drilldown.value);
+    else if (drilldown.type === 'cliente')   out = out.filter(r => r[0] === 'r' && r[4] === drilldown.value);
+    else if (drilldown.type === 'fornecedor')out = out.filter(r => r[0] === 'd' && r[7] === drilldown.value);
+  }
+  return out;
+}
 
+// ====== aggregateTx: monta MONTH_DATA / KPIs / TOPs do array filtrado ======
+function aggregateTx(txList, year, month) {
+  const months = MONTHS_FULL.map(m => ({ m, receita: 0, despesa: 0 }));
+  const recCat = new Map(), despCat = new Map(), recCli = new Map(), despForn = new Map();
+  const extratoArr = [], extratoRecArr = [], extratoDespArr = [];
+  let totalRec = 0, totalDesp = 0;
   for (const row of txList) {
-    const [kind, mes, dia, categoria, cliente, valor, realizado, fornecedor, cc] = row;
-    if (!mes) continue;
-    const ymonth = mes.slice(0,4);
-    if (Number(ymonth) !== year) continue;
-    const mIdx = parseInt(mes.slice(5,7), 10) - 1;
+    const [kind, ym, dia, cat, cli, valor, realizado, forn, cc, emp, sint] = row;
+    if (!ym) continue;
+    const mIdx = parseInt(ym.slice(5,7), 10) - 1;
     if (mIdx < 0 || mIdx > 11) continue;
     if (kind === 'r') {
-      MONTH_DATA[mIdx].receita += valor;
-      totalReceita += valor;
-      recCat.set(categoria, (recCat.get(categoria) || 0) + valor);
-      if (cliente) recCli.set(cliente, (recCli.get(cliente) || 0) + valor);
+      months[mIdx].receita += valor;
+      totalRec += valor;
+      recCat.set(cat, (recCat.get(cat) || 0) + valor);
+      if (cli) recCli.set(cli, (recCli.get(cli) || 0) + valor);
     } else {
-      MONTH_DATA[mIdx].despesa += valor;
-      totalDespesa += valor;
-      despCat.set(categoria, (despCat.get(categoria) || 0) + valor);
-      if (fornecedor) despForn.set(fornecedor, (despForn.get(fornecedor) || 0) + valor);
+      months[mIdx].despesa += valor;
+      totalDesp += valor;
+      despCat.set(cat, (despCat.get(cat) || 0) + valor);
+      if (forn) despForn.set(forn, (despForn.get(forn) || 0) + valor);
     }
-    // Extrato compacto pra tabela (renomeado pra extRow porque outer for já usa 'row')
-    const dataStr = String(dia).padStart(2,'0') + '/' + mes.slice(5,7) + '/' + mes.slice(0,4);
-    const extRow = [dataStr, cc || 'Operações', categoria, kind === 'r' ? cliente : fornecedor, kind === 'r' ? valor : -valor, realizado ? 'PAGO' : ''];
+    const dataStr = String(dia).padStart(2,'0') + '/' + ym.slice(5,7) + '/' + ym.slice(0,4);
+    const extRow = [dataStr, cc || 'Operações', cat, kind === 'r' ? cli : forn, kind === 'r' ? valor : -valor, realizado ? 'PAGO' : ''];
     extratoArr.push(extRow);
     if (kind === 'r') extratoRecArr.push(extRow); else extratoDespArr.push(extRow);
   }
-
-  // sort por data desc (string DD/MM/YYYY → Date) — aplica nos 3 arrays
   const sortByDateDesc = (a, b) => {
     const [da,ma,ya] = a[0].split('/').map(Number);
     const [db,mb,yb] = b[0].split('/').map(Number);
     return new Date(yb,mb-1,db) - new Date(ya,ma-1,da);
   };
-  extratoArr.sort(sortByDateDesc);
-  extratoRecArr.sort(sortByDateDesc);
-  extratoDespArr.sort(sortByDateDesc);
-
+  extratoArr.sort(sortByDateDesc); extratoRecArr.sort(sortByDateDesc); extratoDespArr.sort(sortByDateDesc);
   const topN = (mp, n) => Array.from(mp.entries()).map(([name,value]) => ({name,value})).sort((a,b)=>b.value-a.value).slice(0,n);
-  const VALOR_LIQUIDO = totalReceita - totalDespesa;
-  const MARGEM_LIQUIDA = totalReceita > 0 ? (VALOR_LIQUIDO / totalReceita) * 100 : 0;
-
+  const VALOR_LIQUIDO = totalRec - totalDesp;
+  const MARGEM = totalRec > 0 ? (VALOR_LIQUIDO / totalRec) * 100 : 0;
   return {
-    MONTH_DATA,
+    MONTH_DATA: months,
     RECEITA_CATEGORIAS: topN(recCat, 12),
     DESPESA_CATEGORIAS: topN(despCat, 12),
     RECEITA_CLIENTES: topN(recCli, 12),
@@ -636,111 +440,276 @@ function aggregateTx(txList, year) {
     EXTRATO_RECEITAS: extratoRecArr.slice(0, 200),
     EXTRATO_DESPESAS: extratoDespArr.slice(0, 200),
     KPIS: {
-      TOTAL_RECEITA: totalReceita,
-      TOTAL_DESPESA: totalDespesa,
-      VALOR_LIQUIDO,
-      MARGEM_LIQUIDA,
-      VALOR_LIQ_SERIES: MONTH_DATA.map(m => m.receita - m.despesa),
+      TOTAL_RECEITA: totalRec, TOTAL_DESPESA: totalDesp,
+      VALOR_LIQUIDO, MARGEM_LIQUIDA: MARGEM, MARGEM_EBITDA: MARGEM,
+      VALOR_LIQ_SERIES: months.map(m => m.receita - m.despesa),
     },
+    RECDESP_AREA: months.map(m => ({ m: m.m.slice(0,3), receita: m.receita, despesa: m.despesa })),
   };
 }
 
-// applyDrilldown: filtra ALL_TX baseado em statusFilter + drilldown.
-// statusFilter: 'realizado' | 'a_pagar_receber' | 'tudo'
-// drilldown: null | { type: 'mes'|'categoria'|'cliente'|'fornecedor', value: ... }
-function filterTx(allTx, statusFilter, drilldown) {
-  let out = allTx;
-  if (statusFilter === 'realizado') out = out.filter(r => r[6] === 1);
-  else if (statusFilter === 'a_pagar_receber') out = out.filter(r => r[6] === 0);
-  if (drilldown) {
-    if (drilldown.type === 'mes') out = out.filter(r => r[1] === drilldown.value);
-    else if (drilldown.type === 'categoria') out = out.filter(r => r[3] === drilldown.value);
-    else if (drilldown.type === 'cliente') out = out.filter(r => r[0] === 'r' && r[4] === drilldown.value);
-    else if (drilldown.type === 'fornecedor') out = out.filter(r => r[0] === 'd' && r[7] === drilldown.value);
+// ====== DRE estruturada via bi_data.month_totals (regime competência) ======
+function aggregateDre(empresa, year, month) {
+  const tots = (BI_DATA.month_totals || []).filter(m => {
+    if (empresa && empresa !== '0' && String(m.empresa) !== String(empresa)) return false;
+    if (year && year > 0 && !String(m.ano_mes).startsWith(String(year))) return false;
+    if (month && month >= 1 && month <= 12) {
+      const mm = String(month).padStart(2, '0');
+      if (!String(m.ano_mes).endsWith('-' + mm)) return false;
+    }
+    return true;
+  });
+  const dre = { receita_bruta:0, deducoes:0, cmv:0, despesa_op:0, receita_fin:0, despesa_fin:0, provisao_ir:0, n_lctos:0 };
+  for (const t of tots) {
+    dre.receita_bruta += t.receita_bruta || 0;
+    dre.deducoes += t.deducoes || 0;
+    dre.cmv += t.cmv || 0;
+    dre.despesa_op += t.despesa_op || 0;
+    dre.receita_fin += t.receita_fin || 0;
+    dre.despesa_fin += t.despesa_fin || 0;
+    dre.provisao_ir += t.provisao_ir || 0;
+    dre.n_lctos += t.n_lctos || 0;
   }
-  return out;
+  dre.receita_liquida = dre.receita_bruta - dre.deducoes;
+  dre.margem_bruta = dre.receita_liquida - dre.cmv;
+  dre.resultado_op = dre.margem_bruta - dre.despesa_op;
+  dre.resultado_fin = dre.receita_fin - dre.despesa_fin;
+  dre.lucro_liquido = dre.resultado_op + dre.resultado_fin - dre.provisao_ir;
+  dre.margem_liquida = dre.receita_liquida > 0 ? (dre.lucro_liquido / dre.receita_liquida) * 100 : 0;
+  dre.margem_ebitda = dre.receita_liquida > 0 ? (dre.resultado_op / dre.receita_liquida) * 100 : 0;
+  dre.margem_bruta_pct = dre.receita_liquida > 0 ? (dre.margem_bruta / dre.receita_liquida) * 100 : 0;
+  return dre;
 }
 
-// Sintetiza um BIT "flat" baseado no filtro escolhido (window.BIT_FILTER).
-// Default: 'realizado' (PAGO).
-function _makeBit(filter) {
-  const seg = SEGMENTS[filter] || SEGMENTS.realizado;
-  const K = seg.KPIS;
-  const indicadores = {
-    TOTAL_RECEITA: K.TOTAL_RECEITA,
-    TOTAL_DESPESA: K.TOTAL_DESPESA,
-    VALOR_LIQUIDO: K.VALOR_LIQUIDO,
-    MARGEM_LIQUIDA: K.MARGEM_LIQUIDA,
-    IMPOSTOS: 0,
-    EBITDA: K.VALOR_LIQUIDO,
-    RESULTADO_OPERACIONAL: K.VALOR_LIQUIDO,
-    CAPEX: 0,
-    MARGEM_CONTRIB: K.MARGEM_LIQUIDA,
-    EBITDA_PCT: K.MARGEM_LIQUIDA,
-    IMPOSTOS_PCT: 0,
+// FLUXO_RECEITA / FLUXO_DESPESA mensais REAIS (não média anual replicada)
+function fluxoMensal(empresa, year, kind) {
+  // groupBy categoria a partir de ALL_TX filtrado por kind+empresa+year
+  let txs = ALL_TX.filter(r => r[0] === kind);
+  if (empresa && empresa !== '0') txs = txs.filter(r => r[9] === empresa);
+  if (year && year > 0) txs = txs.filter(r => r[1] && r[1].slice(0,4) === String(year));
+  // agrega por categoria
+  const catMap = new Map();
+  for (const r of txs) {
+    if (!catMap.has(r[3])) catMap.set(r[3], { total: 0, monthly: Array(12).fill(0) });
+    const o = catMap.get(r[3]);
+    o.total += r[5];
+    const mIdx = parseInt(r[1].slice(5,7), 10) - 1;
+    if (mIdx >= 0 && mIdx < 12) o.monthly[mIdx] += r[5];
+  }
+  const top5 = Array.from(catMap.entries()).sort((a,b) => b[1].total - a[1].total).slice(0,5);
+  const sign = kind === 'r' ? 1 : -1;
+  return top5.map(([cat, o]) => ({ cat, values: o.monthly.map(v => sign * v) }));
+}
+
+window.BI_DATA = BI_DATA;
+window.BIT_META = META;
+window.REF_YEAR = REF_YEAR;
+window.AVAILABLE_YEARS = AVAILABLE_YEARS;
+window.EMPRESAS = EMPRESAS;
+window.BIT_PAGES = ${JSON.stringify(cfg.pages)};
+window.SURROGATES = SURROGATES;
+window.SALDOS = SALDOS;
+window.ENDIVIDAMENTO = ENDIVIDAMENTO;
+window.RECEITA_LINHA = RECEITA_LINHA;
+window.INDICADORES_CONTABEIS = INDICADORES_CONTABEIS;
+window.CR_CP = CR_CP;
+window.ALL_TX = ALL_TX;
+
+// Helper: pega visão CR/CP filtrada por empresa.
+// Retorna { totais, aging_receber, aging_pagar, top_clientes, top_fornecedores, a_receber[], a_pagar[] }
+window.getCrCp = function(empresa) {
+  if (!CR_CP || !CR_CP.por_empresa) return null;
+  const empKey = empresa && empresa !== '0' && empresa !== 'all' ? String(empresa) : null;
+  if (empKey) {
+    const e = CR_CP.por_empresa[empKey];
+    if (!e) return null;
+    return {
+      label: e.label,
+      totais: e.totais,
+      aging_receber: e.aging_receber,
+      aging_pagar: e.aging_pagar,
+      top_clientes: e.top_clientes_receber,
+      top_fornecedores: e.top_fornecedores_pagar,
+      a_receber: e.a_receber,
+      a_pagar: e.a_pagar,
+      fetched_at: CR_CP.fetched_at,
+      escopo: 'empresa',
+    };
+  }
+  // Consolidado: mantém os totais agregados, mas para os tops/listas precisamos juntar
+  const all_rec = [];
+  const all_pag = [];
+  const top_cli = new Map();
+  const top_forn = new Map();
+  for (const k in CR_CP.por_empresa) {
+    const e = CR_CP.por_empresa[k];
+    for (const r of (e.a_receber || [])) {
+      all_rec.push({ ...r, empresa: e.label });
+      const n = r.cliente || '?';
+      const t = top_cli.get(n) || { nome: n, valor: 0, n: 0, vencido: 0, a_vencer: 0, max_atraso: 0 };
+      t.valor += r.valor;
+      t.n += 1;
+      if (r.dias_atraso > 0) { t.vencido += r.valor; if (r.dias_atraso > t.max_atraso) t.max_atraso = r.dias_atraso; }
+      else t.a_vencer += r.valor;
+      top_cli.set(n, t);
+    }
+    for (const r of (e.a_pagar || [])) {
+      all_pag.push({ ...r, empresa: e.label });
+      const n = r.fornecedor || '?';
+      const t = top_forn.get(n) || { nome: n, valor: 0, n: 0, vencido: 0, a_vencer: 0, max_atraso: 0 };
+      t.valor += r.valor;
+      t.n += 1;
+      if (r.dias_atraso > 0) { t.vencido += r.valor; if (r.dias_atraso > t.max_atraso) t.max_atraso = r.dias_atraso; }
+      else t.a_vencer += r.valor;
+      top_forn.set(n, t);
+    }
+  }
+  all_rec.sort((a, b) => b.valor - a.valor);
+  all_pag.sort((a, b) => b.valor - a.valor);
+  const tops_cli = [...top_cli.values()].sort((a, b) => b.valor - a.valor);
+  const tops_forn = [...top_forn.values()].sort((a, b) => b.valor - a.valor);
+  return {
+    label: 'Consolidado',
+    totais: CR_CP.consolidado,
+    aging_receber: CR_CP.consolidado.aging_receber,
+    aging_pagar: CR_CP.consolidado.aging_pagar,
+    top_clientes: tops_cli.slice(0, 30),
+    top_fornecedores: tops_forn.slice(0, 30),
+    a_receber: all_rec,
+    a_pagar: all_pag,
+    fetched_at: CR_CP.fetched_at,
+    escopo: 'consolidado',
   };
+};
+window.aggregateTx = aggregateTx;
+window.filterTx = filterTx;
+
+function _makeBit(statusFilter, empresa, year, month, drilldown) {
+  const filtered = filterTx(ALL_TX, statusFilter, drilldown, empresa, year, month);
+  const agg = aggregateTx(filtered, year, month);
+  const dre = aggregateDre(empresa, year, month);
+  // **REGRA**: telas padrão são REGIME CAIXA. KPIs lêem aggregateTx (mesma fonte
+  // das barras). Cards e barras somam pela mesma régua.
+  // KPIs DRE/Competência (CMV, EBITDA, Margem Líquida) ficam SOMENTE em
+  // PageIndicadoresContabeis via window.INDICADORES_CONTABEIS.
+  const ck = agg.KPIS;
+  const saldoFluxoCaixa = ck.TOTAL_RECEITA - ck.TOTAL_DESPESA;  // entradas − saídas (caixa)
+  const margemFluxo = ck.TOTAL_RECEITA > 0 ? (saldoFluxoCaixa / ck.TOTAL_RECEITA) * 100 : 0;
+  const indicadores = {
+    // === REGIME CAIXA (das barras filtradas) ===
+    TOTAL_RECEITA:        ck.TOTAL_RECEITA,    // entradas de caixa
+    TOTAL_DESPESA:        ck.TOTAL_DESPESA,    // saídas de caixa
+    VALOR_LIQUIDO:        saldoFluxoCaixa,     // saldo do período (caixa)
+    MARGEM_LIQUIDA:       margemFluxo,         // saldo / entradas
+    // === DRE/COMPETÊNCIA (separado, NÃO usar nas telas padrão de caixa) ===
+    DRE_RECEITA_BRUTA:    dre.receita_bruta,
+    DRE_RECEITA_LIQUIDA:  dre.receita_liquida,
+    DRE_CMV:              dre.cmv,
+    DRE_DESPESA_OP:       dre.despesa_op,
+    DRE_EBITDA:           dre.resultado_op,
+    DRE_LUCRO_LIQUIDO:    dre.lucro_liquido,
+    DRE_MARGEM_BRUTA:     dre.margem_bruta_pct,
+    DRE_MARGEM_EBITDA:    dre.margem_ebitda,
+    DRE_MARGEM_LIQUIDA:   dre.margem_liquida,
+  };
+  // Saldos consolidados
+  const saldoConsolidado = (!empresa || empresa === '0')
+    ? Object.values(SALDOS.totais_por_empresa || {}).reduce((s,t) => s + (t.saldo_total_atual || 0), 0)
+    : ((SALDOS.totais_por_empresa || {})[empresa] || {}).saldo_total_atual || 0;
+
   return Object.assign({
-    META, POSICAO_CAIXA, COMPOSICAO_DESPESA,
-    MONTHS, MONTHS_FULL, fmt, fmtK, fmtPct,
-    SEGMENTS,
-    MONTH_DATA: seg.MONTH_DATA,
-    RECEITA_CATEGORIAS: seg.RECEITA_CATEGORIAS,
-    DESPESA_CATEGORIAS: seg.DESPESA_CATEGORIAS,
-    RECEITA_CLIENTES: seg.RECEITA_CLIENTES,
-    DESPESA_FORNECEDORES: seg.DESPESA_FORNECEDORES,
-    EXTRATO: seg.EXTRATO,
+    META, MONTHS, MONTHS_FULL, fmt, fmtK, fmtPct,
+    KPIS: agg.KPIS,  // pages legacy lêem B.KPIS.TOTAL_RECEITA / TOTAL_DESPESA
+    MONTH_DATA: agg.MONTH_DATA,
+    RECEITA_CATEGORIAS: agg.RECEITA_CATEGORIAS,
+    DESPESA_CATEGORIAS: agg.DESPESA_CATEGORIAS,
+    RECEITA_CLIENTES: agg.RECEITA_CLIENTES,
+    DESPESA_FORNECEDORES: agg.DESPESA_FORNECEDORES,
+    EXTRATO: agg.EXTRATO,
+    EXTRATO_RECEITAS: agg.EXTRATO_RECEITAS,
+    EXTRATO_DESPESAS: agg.EXTRATO_DESPESAS,
     DIAS: Array.from({ length: 31 }, (_, i) => i + 1),
-    RECEITA_DIA: seg.RECEITA_DIA,
-    DESPESA_DIA: seg.DESPESA_DIA,
-    SALDOS_MES: seg.SALDOS_MES,
-    VALOR_LIQ_SERIES: K.VALOR_LIQ_SERIES,
-    FLUXO_RECEITA: seg.FLUXO_RECEITA,
-    FLUXO_DESPESA: seg.FLUXO_DESPESA,
-    COMP_DATA: seg.COMP_DATA,
-    RECDESP_AREA: seg.MONTH_DATA.map(m => ({ m: m.m.slice(0,3), receita: m.receita, despesa: m.despesa })),
+    RECEITA_DIA: Array(31).fill(0),
+    DESPESA_DIA: Array(31).fill(0),
+    SALDOS_MES: agg.MONTH_DATA.reduce((acc, m, i) => { acc.push((acc[i-1] || 0) + (m.receita - m.despesa)); return acc; }, []),
+    VALOR_LIQ_SERIES: agg.KPIS.VALOR_LIQ_SERIES,
+    FLUXO_RECEITA: fluxoMensal(empresa, year, 'r'),
+    FLUXO_DESPESA: fluxoMensal(empresa, year, 'd'),
+    COMP_DATA: [
+      { tipo: 'Receita Líquida', isHeader: true, d1: 0, d2: dre.receita_liquida },
+      { tipo: '(-) CMV',         parent: 'Receita Líquida', d1: 0, d2: -dre.cmv },
+      { tipo: 'Margem Bruta',    isHeader: true, d1: 0, d2: dre.margem_bruta },
+      { tipo: '(-) Despesa Op',  parent: 'Margem Bruta', d1: 0, d2: -dre.despesa_op },
+      { tipo: 'EBITDA',          isHeader: true, d1: 0, d2: dre.resultado_op },
+      { tipo: '(+) Receita Fin', parent: 'EBITDA', d1: 0, d2: dre.receita_fin },
+      { tipo: '(-) Despesa Fin', parent: 'EBITDA', d1: 0, d2: -dre.despesa_fin },
+      { tipo: '(-) IRPJ/CSLL',   parent: 'EBITDA', d1: 0, d2: -dre.provisao_ir },
+      { tipo: 'Lucro Líquido',   isHeader: true, d1: 0, d2: dre.lucro_liquido },
+    ],
+    DRE: dre,
+    SALDO_CONSOLIDADO: saldoConsolidado,
+    POSICAO_CAIXA: [
+      { name: 'Saldo caixa+banco atual', value: saldoConsolidado },
+      { name: 'Entradas (caixa) YTD', value: ck.TOTAL_RECEITA },
+      { name: 'Saídas (caixa) YTD',  value: ck.TOTAL_DESPESA },
+    ],
+    COMPOSICAO_DESPESA: agg.DESPESA_CATEGORIAS.slice(0,6).map((c,i) => ({
+      name: c.name, value: c.value,
+      color: ['#2dd4bf','#22c55e','#a78bfa','#f59e0b','#ef4444','#6b7686'][i] || '#6b7686',
+    })),
   }, indicadores);
 }
 
-window.BIT = _makeBit(window.BIT_FILTER || 'realizado');
 window._makeBit = _makeBit;
-window.BIT_SEGMENTS = SEGMENTS;
-window.BIT_META = META;
-window.ALL_TX = ALL_TX;
-window.REF_YEAR = REF_YEAR;
-window.AVAILABLE_YEARS = AVAILABLE_YEARS;
-window.aggregateTx = aggregateTx;
-window.filterTx = filterTx;
-// getBit: SEMPRE recomputa via recomputeBit (sem cache de window.BIT).
-// Evita lag no toggle Previsto/Realizado e suporta year/month arbitrario.
-// month: 0 = ano completo, 1-12 = mes especifico.
-window.getBit = function (statusFilter, drilldown, year, month) {
-  const sf = statusFilter || window.BIT_FILTER || 'realizado';
-  const y = year || window.REF_YEAR;
-  let dd = drilldown;
-  if (!dd && month && month >= 1 && month <= 12) {
-    const mm = String(month).padStart(2, '0');
-    const ym = y + '-' + mm;
-    dd = { type: 'mes', value: ym, label: ym };
+window.BIT = _makeBit('realizado', '0', REF_YEAR, 0, null);
+
+// Retro-compat: pages-2.jsx PageTesouraria lê window.BIT_SEGMENTS — manter shape
+function _buildSegment(statusFilter, year) {
+  const b = _makeBit(statusFilter, '0', year || 0, 0, null);
+  // RECEITA_DIA/DESPESA_DIA: distribuir total ano por dia do mês (proxy)
+  const totalRec = b.TOTAL_RECEITA || 0;
+  const totalDesp = b.TOTAL_DESPESA || 0;
+  const recDia = Array(31).fill(0);
+  const despDia = Array(31).fill(0);
+  // calcular do ALL_TX filtrado: por dia do mês qualquer (proxy de pulso diário)
+  const filtered = filterTx(ALL_TX, statusFilter, null, '0', year || 0, 0);
+  for (const r of filtered) {
+    const dia = r[2];
+    if (dia >= 1 && dia <= 31) {
+      if (r[0] === 'r') recDia[dia - 1] += r[5];
+      else despDia[dia - 1] += r[5];
+    }
   }
-  return window.recomputeBit(sf, dd, y);
+  return Object.assign({}, b, { RECEITA_DIA: recDia, DESPESA_DIA: despDia });
+}
+window.BIT_SEGMENTS = {
+  realizado: _buildSegment('realizado', 0),
+  a_pagar_receber: _buildSegment('a_pagar_receber', 0),
+  tudo: _buildSegment('tudo', 0),
 };
-// Cross-filter helper: combina statusFilter + drilldown e retorna BIT-like
-// com KPIs/charts/extrato recalculados em ~10ms (17k rows).
-window.recomputeBit = function (statusFilter, drilldown, year) {
-  const filtered = filterTx(ALL_TX, statusFilter, drilldown);
-  const agg = aggregateTx(filtered, year || REF_YEAR);
-  // Mescla com BIT base pra preservar META, helpers (fmt, fmtK), MONTHS etc.
-  const base = window.BIT || {};
-  return Object.assign({}, base, agg, {
-    TOTAL_RECEITA: agg.KPIS.TOTAL_RECEITA,
-    TOTAL_DESPESA: agg.KPIS.TOTAL_DESPESA,
-    VALOR_LIQUIDO: agg.KPIS.VALOR_LIQUIDO,
-    MARGEM_LIQUIDA: agg.KPIS.MARGEM_LIQUIDA,
+
+// getBit: usado pelas pages com signature (statusFilter, drilldown, year, month, empresa)
+window.getBit = function (statusFilter, drilldown, year, month, empresa) {
+  return _makeBit(statusFilter || 'realizado', empresa || '0', year || 0, month || 0, drilldown);
+};
+window.recomputeBit = function (statusFilter, drilldown, year, empresa) {
+  return _makeBit(statusFilter || 'realizado', empresa || '0', year || 0, 0, drilldown);
+};
+// applyDrilldown: legado pra extrato
+window.applyDrilldown = function (rows, drilldown) {
+  if (!drilldown) return rows;
+  if (drilldown.type === 'mes') return rows.filter(r => {
+    const [d, m, y] = (r[0] || '').split('/');
+    return \`\${y}-\${m}\` === drilldown.value;
   });
+  if (drilldown.type === 'categoria') return rows.filter(r => r[2] === drilldown.value);
+  if (drilldown.type === 'cliente' || drilldown.type === 'fornecedor')
+    return rows.filter(r => r[3] === drilldown.value);
+  return rows;
 };
 `;
 
 fs.writeFileSync(OUT_FILE, DATA_JS);
 const stat = fs.statSync(OUT_FILE);
 console.log(`\n=== OK ===`);
-console.log(`  ${OUT_FILE} (${(stat.size / 1024).toFixed(1)} KB)`);
+console.log(`  ${OUT_FILE} (${(stat.size / 1024 / 1024).toFixed(1)} MB)`);
