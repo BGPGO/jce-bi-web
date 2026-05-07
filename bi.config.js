@@ -6,7 +6,7 @@ module.exports = {
     nome: "GLOBAL MAC / DC TRACTOR / DC COMERCIO",
     nome_curto: "GlobalMac",
     subdomain: "jce-bi",
-    coolify_app_uuid: "",         // preencher após provisionar Coolify
+    coolify_app_uuid: "op5u5crjadshump2r7p73jc1",
     cor_primaria: "#22d3ee",
   },
 
