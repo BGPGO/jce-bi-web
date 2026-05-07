@@ -103,15 +103,14 @@ console.log(`  bundling: ${SOURCES.join(', ')}`);
     // Drilldown global: setado quando o usuario clica numa barra/linha de grafico.
     var dd = useState(null);
     var drilldown = dd[0], setDrilldown = dd[1];
-    // Year selector: padrao = ano corrente (window.REF_YEAR)
+    // Year selector: padrão fixo 2026 (cliente solicitou). User pode trocar via select.
     var ys = useState(function () {
-      // Default = 0 (Todos os anos) — mostra R$ 120M consolidado em vez de só 5 meses
       try {
         var raw = localStorage.getItem('bi.year');
-        if (raw === null) return 0;
+        if (raw === null) return 2026;
         var y = parseInt(raw, 10);
-        return (y === 0 || y > 1900) ? y : 0;
-      } catch (e) { return 0; }
+        return (y === 0 || y > 1900) ? y : 2026;
+      } catch (e) { return 2026; }
     });
     var year = ys[0], setYear = ys[1];
     var ms = useState(function () {
