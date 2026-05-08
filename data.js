@@ -1,4 +1,4 @@
-/* JCE BI v1.7 — gerado por build-data.cjs em 2026-05-07T02:17:14.682Z */
+/* JCE BI v1.7 — gerado por build-data.cjs em 2026-05-08T05:24:11.920Z */
 /* Fonte: ERP Solution Razão Contábil completo. 21857 lançamentos. */
 const MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const MONTHS_FULL = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
